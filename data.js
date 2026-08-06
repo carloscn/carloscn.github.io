@@ -1,7 +1,4 @@
-/**
- * 公开导航数据（已不含公司内网链接）
- * 公司链接仅存于本机 data.company.local.js（不提交 Git）
- */
+/** Public personal navigation data */
 window.NAV_DATA = {
   "title": "Carlos' Nav",
   "groups": [
