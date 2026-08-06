@@ -718,6 +718,66 @@ window.NAV_DATA = {
       ]
     },
     {
+      "name": "公司",
+      "items": [
+        {
+          "name": "XCU4 Repo",
+          "url": "https://short-url.cc/1vpLu",
+          "logo": "assets/logos/gitlab.webp"
+        },
+        {
+          "name": "Meeting",
+          "url": "https://short-url.cc/1vpLz",
+          "logo": "assets/logos/wiki.webp"
+        },
+        {
+          "name": "security onboard",
+          "url": "https://short-url.cc/1B3ai",
+          "logo": "assets/logos/gitlab.webp"
+        },
+        {
+          "name": "Security Public",
+          "url": "https://short-url.cc/1vpLF",
+          "logo": "assets/logos/wiki.webp"
+        },
+        {
+          "name": "TCU",
+          "url": "https://short-url.cc/1B3ao",
+          "logo": "assets/logos/gitlab.webp"
+        },
+        {
+          "name": "New Expensify",
+          "url": "https://new.expensify.com/search/view/8671926336041131",
+          "logo": "assets/logos/expensify.png"
+        },
+        {
+          "name": "biometrics",
+          "url": "https://short-url.cc/1vpLO",
+          "logo": "assets/logos/gitlab.webp"
+        },
+        {
+          "name": "office",
+          "url": "https://short-url.cc/1vpL-",
+          "logo": "assets/logos/ONLYOFFICE_logo.png"
+        },
+        {
+          "name": "ZULIP",
+          "url": "https://short-url.cc/1B3aM",
+          "logo": "assets/logos/zulip.jpg"
+        },
+        {
+          "name": "Code",
+          "url": "https://short-url.cc/1vpMe",
+          "logo": "assets/logos/gitlab.webp"
+        },
+        {
+          "name": "Workrecord",
+          "url": "https://github.com/carloscn/workrecord",
+          "logo": "assets/logos/github.png"
+        }
+      ]
+    },
+    {
       "name": "收藏",
       "items": [
         {
