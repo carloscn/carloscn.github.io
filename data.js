@@ -1,0 +1,739 @@
+/**
+ * 公开导航数据（已不含公司内网链接）
+ * 公司链接仅存于本机 data.company.local.js（不提交 Git）
+ */
+window.NAV_DATA = {
+  "title": "Carlos' Nav",
+  "groups": [
+    {
+      "name": "首页",
+      "items": [
+        {
+          "name": "X",
+          "url": "https://x.com/",
+          "logo": "assets/logos/x.jpg"
+        },
+        {
+          "name": "YouTube",
+          "url": "https://www.youtube.com/",
+          "logo": "assets/logos/youtube.webp"
+        },
+        {
+          "name": "reddit",
+          "url": "http://www.reddit.com",
+          "logo": "assets/logos/reddit.png"
+        },
+        {
+          "name": "Bluesky",
+          "url": "https://bsky.app/",
+          "logo": "assets/logos/bluesky.jpg"
+        },
+        {
+          "name": "知乎",
+          "url": "https://www.zhihu.com/",
+          "logo": "assets/logos/zhihu.png"
+        },
+        {
+          "name": "小红书",
+          "url": "https://www.xiaohongshu.com/explore",
+          "logo": "assets/logos/XiaohongshuLOGO.png"
+        },
+        {
+          "name": "微博",
+          "url": "http://weibo.com/",
+          "logo": "assets/logos/weibo.png"
+        },
+        {
+          "name": "网易云音乐",
+          "url": "https://music.163.com/st/webplayer",
+          "logo": "assets/logos/netease_music.png"
+        },
+        {
+          "name": "Grok",
+          "url": "https://grok.com/?referrer=x",
+          "logo": "assets/logos/grok.webp"
+        },
+        {
+          "name": "Gmail",
+          "url": "https://www.gmail.com/",
+          "logo": "assets/logos/Gmail_icon_(2020).svg.webp"
+        },
+        {
+          "name": "Gemini",
+          "url": "https://gemini.google.com/",
+          "logo": "assets/logos/gemini.webp"
+        },
+        {
+          "name": "Google Drive",
+          "url": "https://drive.google.com/drive/my-drive",
+          "logo": "assets/logos/Google_Drive_icon_(2026).svg"
+        },
+        {
+          "name": "O2 Cloud",
+          "url": "https://cloud.o2online.es/#highlights",
+          "logo": "assets/logos/o2_cloud.png"
+        },
+        {
+          "name": "QQ邮箱",
+          "url": "https://mail.qq.com/",
+          "logo": "assets/logos/qq_mail.png"
+        },
+        {
+          "name": "网易邮箱",
+          "url": "https://email.163.com/",
+          "logo": "assets/logos/netease_mail.png"
+        },
+        {
+          "name": "icloud note",
+          "url": "https://www.icloud.com.cn/notes/",
+          "logo": "assets/logos/icloud_note.jpg"
+        },
+        {
+          "name": "GitHub",
+          "url": "https://github.com/",
+          "logo": "assets/logos/github.png"
+        },
+        {
+          "name": "Google Keep",
+          "url": "https://keep.google.com/#NOTE/1_dKq2de0cboYp0085AhBsBcQBPlNC5N-R5tUnZ3RNsR_34aOyFu6JyOMo3Ta4f38u5DQRSIu",
+          "logo": "assets/logos/google_keep.webp"
+        },
+        {
+          "name": "Google 翻译",
+          "url": "https://translate.google.com/?hl=zh-CN&sl=zh-CN&tl=es&op=translate",
+          "logo": "assets/logos/Google_Translate.png"
+        },
+        {
+          "name": "Google Map",
+          "url": "https://www.google.com/maps/@41.3485831,2.1344878,13.36z?entry=ttu&g_ep=EgoyMDI1MDczMC4wIKXMDSoASAFQAw%3D%3D",
+          "logo": "assets/logos/google_map.png"
+        },
+        {
+          "name": "Google Photos",
+          "url": "https://photos.google.com/",
+          "logo": "assets/logos/google_photo.png"
+        }
+      ]
+    },
+    {
+      "name": "社交媒体",
+      "items": [
+        {
+          "name": "抖音",
+          "url": "https://www.douyin.com/jingxuan?ug_source=doutui_cqt_dy_lydh_fj45jp",
+          "logo": "assets/logos/douyin.webp"
+        },
+        {
+          "name": "豆瓣网",
+          "url": "https://www.douban.com/",
+          "logo": "assets/logos/douban.png"
+        },
+        {
+          "name": "Bilibili",
+          "url": "https://bilibili.com",
+          "logo": "assets/logos/bilibili.svg"
+        },
+        {
+          "name": "京东",
+          "url": "https://www.6-u.com/web/jd.html",
+          "logo": "assets/logos/jd.png"
+        },
+        {
+          "name": "百度贴吧",
+          "url": "https://tieba.baidu.com/",
+          "logo": "assets/logos/baidu.png"
+        },
+        {
+          "name": "淘宝网",
+          "url": "https://www.taobao.com",
+          "logo": "assets/logos/taobao.webp"
+        },
+        {
+          "name": "携程旅行网",
+          "url": "https://www.ctrip.com/?AllianceID=3799814&sid=22840677&ouid=&app=0301C00",
+          "logo": "assets/logos/xiecheng.png"
+        },
+        {
+          "name": "instagram",
+          "url": "https://www.instagram.com/zzzzzmle/",
+          "logo": "assets/logos/instagram.jpg"
+        },
+        {
+          "name": "threads",
+          "url": "https://www.threads.com/",
+          "logo": "assets/logos/threads.webp"
+        },
+        {
+          "name": "facebook",
+          "url": "https://www.facebook.com/?locale=es_ES",
+          "logo": "assets/logos/facebook.webp"
+        },
+        {
+          "name": "联合早报",
+          "url": "https://www.zaobao.com/",
+          "logo": "assets/logos/lianhezaobao.png"
+        },
+        {
+          "name": "V2EX",
+          "url": "https://www.v2ex.com/",
+          "logo": "assets/logos/v2ex.webp"
+        },
+        {
+          "name": "Telegram",
+          "url": "https://web.telegram.org/",
+          "logo": "assets/logos/telegram.webp"
+        },
+        {
+          "name": "Quora",
+          "url": "https://www.quora.com/",
+          "logo": "assets/logos/quora.webp"
+        },
+        {
+          "name": "Tumblr",
+          "url": "https://www.tumblr.com/dashboard",
+          "logo": "assets/logos/tumblr.png"
+        },
+        {
+          "name": "贝壳找房",
+          "url": "https://map.ke.com/",
+          "logo": "assets/logos/beikezhaofang.png"
+        },
+        {
+          "name": "Famelack TV",
+          "url": "https://famelack.com/",
+          "logo": "assets/logos/famelack_tv.png"
+        }
+      ]
+    },
+    {
+      "name": "OABA",
+      "items": [
+        {
+          "name": "HSBC US",
+          "url": "https://www.us.hsbc.com/auth/?returnUrl=https://www.us.hsbc.com/bin/epep/postback.html?url=/online/dashboard/",
+          "logo": "assets/logos/hsbc_us.png"
+        },
+        {
+          "name": "HSBC CN",
+          "url": "https://www.hsbc.com.cn/zh-cn/auth/?returnUrl=https://www.services.online-banking.hsbc.com.cn/gpib/group/gpib/cmn/layouts/default.html?uid=dashboard&idv_cmd=idv.SaaSSecurityCommand",
+          "logo": "assets/logos/hsbc_cn.png"
+        },
+        {
+          "name": "HSBC UK",
+          "url": "https://www.hsbc.co.uk/auth/?returnUrl=https://www.hsbc.co.uk/bin/epep/postback.html?url=/online/dashboard/",
+          "logo": "assets/logos/hsbc_uk.png"
+        },
+        {
+          "name": "HSBC HK",
+          "url": "https://www.hsbc.com.hk/zh-hk/security",
+          "logo": "assets/logos/hsbc_hk.png"
+        },
+        {
+          "name": "西班牙税务",
+          "url": "https://sede.agenciatributaria.gob.es/Sede/inicio.html",
+          "logo": "assets/logos/spain_tax.png"
+        },
+        {
+          "name": "idp.seg-social.es",
+          "url": "https://idp.seg-social.es/PGIS/Login",
+          "logo": "assets/logos/spain-seg-social.jpg"
+        },
+        {
+          "name": "SEDE",
+          "url": "https://sede.administracionespublicas.gob.es/",
+          "logo": "assets/logos/spain-sede.png"
+        },
+        {
+          "name": "WISE",
+          "url": "https://wise.com/zh-cn/currency-converter/hkd-to-eur-rate?amount=1000",
+          "logo": "assets/logos/wise.webp"
+        },
+        {
+          "name": "Santander",
+          "url": "https://particulares.bancosantander.es/oneweb/",
+          "logo": "assets/logos/santander.png"
+        },
+        {
+          "name": "BBVA",
+          "url": "https://www.bbva.es/nimbus/signin.html",
+          "logo": "assets/logos/bbva.png"
+        },
+        {
+          "name": "Openbank",
+          "url": "https://www.openbank.es/",
+          "logo": "assets/logos/openbank.png"
+        },
+        {
+          "name": "Salut",
+          "url": "https://lamevasalut.gencat.cat/group/cps/home",
+          "logo": "assets/logos/spain_salut.png"
+        },
+        {
+          "name": "O2",
+          "url": "https://o2online.es/",
+          "logo": "assets/logos/o2.jpg"
+        },
+        {
+          "name": "DIGI",
+          "url": "https://midigi.digimobil.es/",
+          "logo": "assets/logos/digi.jpg"
+        },
+        {
+          "name": "simyo",
+          "url": "https://www.simyo.es/simyo/privatearea/home",
+          "logo": "assets/logos/simyo.png"
+        },
+        {
+          "name": "giffgaff",
+          "url": "https://www.giffgaff.com/profile/details",
+          "logo": "assets/logos/giffgaff.png"
+        },
+        {
+          "name": "ENTRENA-T24",
+          "url": "https://www.entrena-t24h.com/en/ciutat-de-la-justicia-club/",
+          "logo": "assets/logos/entrena-t24.webp"
+        },
+        {
+          "name": "mail.nwpu",
+          "url": "https://mail.nwpu.edu.cn/",
+          "logo": "assets/logos/mail.nwpu.svg"
+        },
+        {
+          "name": "翱翔门户",
+          "url": "https://uis.nwpu.edu.cn/",
+          "logo": "assets/logos/aoxiangmenhu.png"
+        },
+        {
+          "name": "学信网",
+          "url": "https://www.chsi.com.cn/",
+          "logo": "assets/logos/xuexinwang.png"
+        },
+        {
+          "name": "OANDA",
+          "url": "https://www.oanda.com/currency-converter/zh/",
+          "logo": "assets/logos/oanda.png"
+        }
+      ]
+    },
+    {
+      "name": "旅行",
+      "items": [
+        {
+          "name": "高德地图",
+          "url": "https://ditu.amap.com/",
+          "logo": "assets/logos/gaodemap.png"
+        },
+        {
+          "name": "flightConnections",
+          "url": "https://www.flightconnections.com/cn/%E8%88%AA%E7%BA%BF%E5%9B%BE-%E6%96%B0%E5%8A%A0%E5%9D%A1%E8%88%AA%E7%A9%BA%E5%85%AC%E5%8F%B8-sq",
+          "logo": "assets/logos/flightconnections.jpg"
+        },
+        {
+          "name": "iatatravelcentre",
+          "url": "https://www.iatatravelcentre.com/",
+          "logo": "assets/logos/iata.webp"
+        },
+        {
+          "name": "flightradar24",
+          "url": "https://www.flightradar24.com/",
+          "logo": "assets/logos/flightradar24.png"
+        },
+        {
+          "name": "aerolopa",
+          "url": "https://www.aerolopa.com/qr-788-1?from=fya&best=qr-788-1&pos=qr-789&lookup_id=259354",
+          "logo": "assets/logos/aerolopa.png"
+        },
+        {
+          "name": "polarsteps",
+          "url": "https://www.polarsteps.com/CarlosWei",
+          "logo": "assets/logos/polarsteps.jpg"
+        },
+        {
+          "name": "百度地图",
+          "url": "https://map.baidu.com/",
+          "logo": "assets/logos/baidu.png"
+        },
+        {
+          "name": "Tripadvisor",
+          "url": "https://www.tripadvisor.com/",
+          "logo": "assets/logos/tripadvisor.png"
+        }
+      ]
+    },
+    {
+      "name": "小工具",
+      "items": [
+        {
+          "name": "savetwitter",
+          "url": "https://savetwitter.net/zh-cn3",
+          "logo": "assets/logos/savetwitter.png"
+        },
+        {
+          "name": "speedtest",
+          "url": "https://www.speedtest.net/",
+          "logo": "assets/logos/speedtest.png"
+        },
+        {
+          "name": "dnsdumpster",
+          "url": "https://dnsdumpster.com/",
+          "logo": "assets/logos/dns.jpg"
+        },
+        {
+          "name": "submarinecablemap",
+          "url": "https://www.submarinecablemap.com/",
+          "logo": "assets/logos/submarinecablemap.png"
+        },
+        {
+          "name": "tagss",
+          "url": "https://tagss.pro/#/home",
+          "logo": "assets/logos/tagss.jpg"
+        },
+        {
+          "name": "Wormhole",
+          "url": "https://wormhole.app/",
+          "logo": "assets/logos/wormhole.jpg"
+        },
+        {
+          "name": "ElevenLabs",
+          "url": "https://elevenlabs.io/",
+          "logo": ""
+        },
+        {
+          "name": "Font Awesome",
+          "url": "https://fontawesome.com/icons",
+          "logo": ""
+        },
+        {
+          "name": "随机字符串",
+          "url": "http://www.toolzl.com/tools/createString.html",
+          "logo": ""
+        }
+      ]
+    },
+    {
+      "name": "办公工具",
+      "items": [
+        {
+          "name": "linkedin",
+          "url": "https://www.linkedin.com/feed/",
+          "logo": "assets/logos/linkedin.webp"
+        },
+        {
+          "name": "ChatGpt",
+          "url": "https://chat.openai.com/",
+          "logo": "assets/logos/chatgpt.webp"
+        },
+        {
+          "name": "iCloud",
+          "url": "https://www.icloud.com/",
+          "logo": "assets/logos/icloud.webp"
+        },
+        {
+          "name": "Claude",
+          "url": "https://claude.ai/",
+          "logo": "assets/logos/claude_code.png"
+        },
+        {
+          "name": "Yahoo Mail",
+          "url": "https://mail.yahoo.com/",
+          "logo": "assets/logos/yahoo_mail.webp"
+        },
+        {
+          "name": "Outlook",
+          "url": "https://outlook.live.com/",
+          "logo": "assets/logos/outlook.webp"
+        },
+        {
+          "name": "OneDrive",
+          "url": "https://onedrive.live.com/",
+          "logo": "assets/logos/onedrive.webp"
+        },
+        {
+          "name": "draw.io",
+          "url": "https://app.diagrams.net/",
+          "logo": "assets/logos/drawio.webp"
+        },
+        {
+          "name": "Google 日历",
+          "url": "https://calendar.google.com/",
+          "logo": "assets/logos/google_calendar.webp"
+        },
+        {
+          "name": "NotebookLM",
+          "url": "https://notebooklm.google.com/",
+          "logo": "assets/logos/notebooklm.png"
+        },
+        {
+          "name": "Grammarly",
+          "url": "https://app.grammarly.com/",
+          "logo": "assets/logos/grammarly.svg"
+        },
+        {
+          "name": "QuillBot",
+          "url": "https://quillbot.com/",
+          "logo": "assets/logos/quillbot.png"
+        },
+        {
+          "name": "ASCIIFlow",
+          "url": "https://asciiflow.com/",
+          "logo": "assets/logos/ASCIIFLOW.png"
+        },
+        {
+          "name": "PlantUML",
+          "url": "https://www.plantuml.com/plantuml/uml/",
+          "logo": "assets/logos/plantuml.webp"
+        },
+        {
+          "name": "UPGantt",
+          "url": "https://gantt.mindsup.com.cn/",
+          "logo": "assets/logos/upgantt.png"
+        },
+        {
+          "name": "Cambridge Write",
+          "url": "https://writeandimprove.com/",
+          "logo": ""
+        }
+      ]
+    },
+    {
+      "name": "技术",
+      "items": [
+        {
+          "name": "SegmentFault",
+          "url": "https://segmentfault.com/",
+          "logo": "assets/logos/segmentfault.png"
+        },
+        {
+          "name": "博客园",
+          "url": "https://www.cnblogs.com/sigma0/",
+          "logo": "assets/logos/cnblogs.svg"
+        },
+        {
+          "name": "LeetCode",
+          "url": "https://leetcode.cn/",
+          "logo": "assets/logos/leetcode.png"
+        },
+        {
+          "name": "Docker Hub",
+          "url": "https://hub.docker.com/",
+          "logo": "assets/logos/docker.png"
+        },
+        {
+          "name": "Writing OS in Rust",
+          "url": "https://os.phil-opp.com/",
+          "logo": "assets/logos/rust.webp"
+        },
+        {
+          "name": "TI Jacinto SDK",
+          "url": "https://www.ti.com/tool/PROCESSOR-SDK-J721E",
+          "logo": "assets/logos/ti.png"
+        },
+        {
+          "name": "NXP S32K",
+          "url": "https://community.nxp.com/t5/S32K/bd-p/S32K",
+          "logo": "assets/logos/NXP.jpg"
+        },
+        {
+          "name": "QEMU Docs",
+          "url": "https://www.qemu.org/docs/master/",
+          "logo": "assets/logos/qemu.svg"
+        },
+        {
+          "name": "CMake Tutorial",
+          "url": "https://cmake.org/cmake/help/latest/guide/tutorial/index.html",
+          "logo": ""
+        },
+        {
+          "name": "清华镜像",
+          "url": "https://mirrors.tuna.tsinghua.edu.cn/",
+          "logo": ""
+        },
+        {
+          "name": "Google C++ 风格",
+          "url": "https://zh-google-styleguide.readthedocs.io/en/latest/",
+          "logo": "assets/logos/google.png"
+        },
+        {
+          "name": "Linux C API",
+          "url": "https://wizardforcel.gitbooks.io/linux-c-api-ref/content/",
+          "logo": "assets/logos/linux.png"
+        },
+        {
+          "name": "Linaro Releases",
+          "url": "https://releases.linaro.org/components/toolchain/binaries/",
+          "logo": "assets/logos/arm.png"
+        },
+        {
+          "name": "AOSP Security",
+          "url": "https://source.android.google.cn/security?hl=zh-cn",
+          "logo": ""
+        },
+        {
+          "name": "PHYTEC Wiki",
+          "url": "https://wiki.phytec.com/",
+          "logo": "assets/logos/wiki.webp"
+        },
+        {
+          "name": "mbedTLS",
+          "url": "https://os.mbed.com/teams/sandbox/code/mbedtls/",
+          "logo": "assets/logos/mbedtls.png"
+        },
+        {
+          "name": "Work Record GitBook",
+          "url": "https://carloss-organization-4.gitbook.io/work-record/",
+          "logo": "assets/logos/github.png"
+        },
+        {
+          "name": "S32G Tech GitBook",
+          "url": "https://carloss-organization-4.gitbook.io/tech/",
+          "logo": "assets/logos/github.png"
+        }
+      ]
+    },
+    {
+      "name": "项目管理",
+      "items": [
+        {
+          "name": "GerritHub",
+          "url": "https://review.gerrithub.io/",
+          "logo": "assets/logos/gerrit.webp"
+        },
+        {
+          "name": "Slack",
+          "url": "https://app.slack.com/",
+          "logo": "assets/logos/slack.webp"
+        },
+        {
+          "name": "Confluence",
+          "url": "https://carloscn.atlassian.net/wiki/",
+          "logo": "assets/logos/confluence.jpg"
+        },
+        {
+          "name": "Jira",
+          "url": "https://quinnwen.atlassian.net/jira/",
+          "logo": "assets/logos/jra.svg"
+        },
+        {
+          "name": "World Time Buddy",
+          "url": "https://www.worldtimebuddy.com/",
+          "logo": "assets/logos/worldtimebuddy.png"
+        },
+        {
+          "name": "Cloudflare One",
+          "url": "https://one.dash.cloudflare.com/",
+          "logo": "assets/logos/cloudflare.png"
+        },
+        {
+          "name": "Hetzner",
+          "url": "https://console.hetzner.com/",
+          "logo": "assets/logos/hetzner.png"
+        },
+        {
+          "name": "Google Cloud",
+          "url": "https://console.cloud.google.com/",
+          "logo": "assets/logos/googlecloud.png"
+        },
+        {
+          "name": "xAI Console",
+          "url": "https://console.x.ai/",
+          "logo": "assets/logos/xAI.svg"
+        },
+        {
+          "name": "X Developer",
+          "url": "https://console.x.com/",
+          "logo": "assets/logos/X_developer.webp"
+        },
+        {
+          "name": "Tailscale",
+          "url": "https://login.tailscale.com/admin/machines",
+          "logo": "assets/logos/tailscale.avif"
+        },
+        {
+          "name": "ModelStudio",
+          "url": "https://modelstudio.console.alibabacloud.com/",
+          "logo": "assets/logos/modelstudio.svg"
+        }
+      ]
+    },
+    {
+      "name": "外语学习",
+      "items": [
+        {
+          "name": "百度翻译",
+          "url": "https://fanyi.baidu.com/",
+          "logo": "assets/logos/baidu.png"
+        },
+        {
+          "name": "单词本",
+          "url": "https://docs.google.com/spreadsheets/d/19JnOYMzr39maovVVY1MH8A72gUUxlVoI3N6g5iYSPF0/edit",
+          "logo": "assets/logos/google_drive.webp"
+        },
+        {
+          "name": "批改网",
+          "url": "http://qq.pigai.org/",
+          "logo": ""
+        },
+        {
+          "name": "Ondoku TTS",
+          "url": "https://ondoku3.com/en/",
+          "logo": ""
+        },
+        {
+          "name": "可可英语",
+          "url": "https://www.kekenet.com/",
+          "logo": "assets/logos/kekeenglish.jpg"
+        },
+        {
+          "name": "Forvo 西语",
+          "url": "https://zh.forvo.com/languages/es/",
+          "logo": ""
+        },
+        {
+          "name": "Mercadona",
+          "url": "https://tienda.mercadona.es/",
+          "logo": "assets/logos/mercadona.png"
+        },
+        {
+          "name": "Carrefour",
+          "url": "https://www.carrefour.es/supermercado/",
+          "logo": "assets/logos/carrefour.jpg"
+        },
+        {
+          "name": "西语助手",
+          "url": "https://www.esdict.cn/",
+          "logo": "assets/logos/xiyuzhushou.png"
+        }
+      ]
+    },
+    {
+      "name": "书籍知识",
+      "items": [
+        {
+          "name": "道德经",
+          "url": "https://ctext.org/dao-de-jing/zh",
+          "logo": ""
+        },
+        {
+          "name": "Google 软件工程",
+          "url": "https://qiangmzsx.github.io/Software-Engineering-at-Google/",
+          "logo": "assets/logos/github.png"
+        }
+      ]
+    },
+    {
+      "name": "收藏",
+      "items": [
+        {
+          "name": "Daily",
+          "url": "https://github.com/carloscn/daily",
+          "logo": "assets/logos/github.png"
+        },
+        {
+          "name": "LIFE",
+          "url": "https://github.com/carloscn/life",
+          "logo": "assets/logos/github.png"
+        }
+      ]
+    }
+  ]
+};
