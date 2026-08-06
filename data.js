@@ -1,4 +1,4 @@
-/** Public personal navigation data */
+/** Public personal navigation data (cache-bust 20260806c) */
 window.NAV_DATA = {
   "title": "Carlos' Nav",
   "groups": [
