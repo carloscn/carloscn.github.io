@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260807a). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260807d). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Nav",
   "groups": [
@@ -721,8 +721,28 @@ window.NAV_DATA = {
       "name": "公司",
       "items": [
         {
+          "name": "Code",
+          "url": "obf1:CxpZHhJMAkRUDApIQBUTQxhYEUBOAhRZ",
+          "logo": "assets/logos/gitlab.webp"
+        },
+        {
           "name": "XCU4 Repo",
           "url": "obf1:CxpZHhJMAkRUDApIQBUTQxhYEUBOAhRZVQhCV0FZBg4EAAZWCgA=",
+          "logo": "assets/logos/gitlab.webp"
+        },
+        {
+          "name": "security onboard",
+          "url": "obf1:CxpZHhJMAkRUDApIQBUTQxhYEUBOAhRZXg5UFhxEGhhZQgVVDA9fCk4=",
+          "logo": "assets/logos/gitlab.webp"
+        },
+        {
+          "name": "TCU",
+          "url": "obf1:CxpZHhJMAkRUDApIQBUTQxhYEUBOAhRZRAVDBhxDDw1ZWQhCTA==",
+          "logo": "assets/logos/gitlab.webp"
+        },
+        {
+          "name": "biometrics",
+          "url": "obf1:CxpZHhJMAkRUDApIQBUTQxhYEUBOAhRZRAVRDB1IDU4URARaBhpfBwIF",
           "logo": "assets/logos/gitlab.webp"
         },
         {
@@ -731,29 +751,49 @@ window.NAV_DATA = {
           "logo": "assets/logos/wiki.webp"
         },
         {
-          "name": "security onboard",
-          "url": "obf1:CxpZHhJMAkRUDApIQBUTQxhYEUBOAhRZXg5UFhxEGhhZQgVVDA9fCk4=",
-          "logo": "assets/logos/gitlab.webp"
-        },
-        {
           "name": "Security Public",
           "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZTgRbDwtOGggZQ0REBg1YHAgCVEZHFgxBBwJbGBNbVxdqXywSZA==",
           "logo": "assets/logos/wiki.webp"
         },
         {
-          "name": "TCU",
-          "url": "obf1:CxpZHhJMAkRUDApIQBUTQxhYEUBOAhRZRAVDBhxDDw1ZWQhCTA==",
-          "logo": "assets/logos/gitlab.webp"
+          "name": "thor_wiki",
+          "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZSQRUTBZOG0wCRQRFThh1FyMhQlN2E1Y=",
+          "logo": "assets/logos/wiki.webp"
+        },
+        {
+          "name": "tcu_wiki",
+          "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZSQRUTBpOG0wYVRsaDx0cXlUOAARBBhxbBwQBADpFUFxqOxZBRBI=",
+          "logo": "assets/logos/wiki.webp"
+        },
+        {
+          "name": "vdu_wiki",
+          "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZSQRUTBhJG0wfQx9FDApYDRUfQgUaFwEAHVJESlkaEAtfBwQFAA9YABtACw8CXkZiVll9ICIHflIF",
+          "logo": "assets/logos/wiki.webp"
+        },
+        {
+          "name": "cdc_wiki",
+          "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZSQRUTA1JDUwVSQgaDBhIHBcfSBwaEVkcGg4ZaQx5Gg==",
+          "logo": "assets/logos/wiki.webp"
+        },
+        {
+          "name": "xcu_arch",
+          "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZSQRUTBZOG1VGACgCCQBkCCAyWgI=",
+          "logo": "assets/logos/wiki.webp"
+        },
+        {
+          "name": "xcu_bsp",
+          "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZSQRUTBpFARNbXTNmGRcfPzZHHg==",
+          "logo": "assets/logos/wiki.webp"
+        },
+        {
+          "name": "xcu_platform",
+          "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZSQRUTBZOG1VGAB5ETgpIGAgVSEZfJCpoF1ZFFTxa",
+          "logo": "assets/logos/wiki.webp"
         },
         {
           "name": "New Expensify",
           "url": "https://new.expensify.com/search/view/8671926336041131",
           "logo": "assets/logos/expensify.png"
-        },
-        {
-          "name": "biometrics",
-          "url": "obf1:CxpZHhJMAkRUDApIQBUTQxhYEUBOAhRZRAVRDB1IDU4URARaBhpfBwIF",
-          "logo": "assets/logos/gitlab.webp"
         },
         {
           "name": "office",
@@ -764,11 +804,6 @@ window.NAV_DATA = {
           "name": "ZULIP",
           "url": "obf1:CxpZHhJMAkReDkBZCw8FQhkZAAJYQQ==",
           "logo": "assets/logos/zulip.jpg"
-        },
-        {
-          "name": "Code",
-          "url": "obf1:CxpZHhJMAkRUDApIQBUTQxhYEUBOAhRZ",
-          "logo": "assets/logos/gitlab.webp"
         },
         {
           "name": "Workrecord",
