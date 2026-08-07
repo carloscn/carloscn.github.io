@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260806c) */
+/** Public personal navigation data (cache-bust 20260807a). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Nav",
   "groups": [
@@ -722,27 +722,27 @@ window.NAV_DATA = {
       "items": [
         {
           "name": "XCU4 Repo",
-          "url": "https://short-url.cc/1vpLu",
+          "url": "obf1:CxpZHhJMAkRUDApIQBUTQxhYEUBOAhRZVQhCV0FZBg4EAAZWCgA=",
           "logo": "assets/logos/gitlab.webp"
         },
         {
           "name": "Meeting",
-          "url": "https://short-url.cc/1vpLz",
+          "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZSQRUTAFDDA4XXw8aEAtOGxMfWRIaKg0bOww8Gi1HKw==",
           "logo": "assets/logos/wiki.webp"
         },
         {
           "name": "security onboard",
-          "url": "https://short-url.cc/1B3ai",
+          "url": "obf1:CxpZHhJMAkRUDApIQBUTQxhYEUBOAhRZXg5UFhxEGhhZQgVVDA9fCk4=",
           "logo": "assets/logos/gitlab.webp"
         },
         {
           "name": "Security Public",
-          "url": "https://short-url.cc/1vpLF",
+          "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZTgRbDwtOGggZQ0REBg1YHAgCVEZHFgxBBwJbGBNbVxdqXywSZA==",
           "logo": "assets/logos/wiki.webp"
         },
         {
           "name": "TCU",
-          "url": "https://short-url.cc/1B3ao",
+          "url": "obf1:CxpZHhJMAkRUDApIQBUTQxhYEUBOAhRZRAVDBhxDDw1ZWQhCTA==",
           "logo": "assets/logos/gitlab.webp"
         },
         {
@@ -752,22 +752,22 @@ window.NAV_DATA = {
         },
         {
           "name": "biometrics",
-          "url": "https://short-url.cc/1vpLO",
+          "url": "obf1:CxpZHhJMAkRUDApIQBUTQxhYEUBOAhRZRAVRDB1IDU4URARaBhpfBwIF",
           "logo": "assets/logos/gitlab.webp"
         },
         {
           "name": "office",
-          "url": "https://short-url.cc/1vpL-",
+          "url": "obf1:CxpZHhJMAkRYBQhEDQRYWQ5ZEAFfQAIaWERnEQFJGwICXkRxCgJIHU5VGlsGUw==",
           "logo": "assets/logos/ONLYOFFICE_logo.png"
         },
         {
           "name": "ZULIP",
-          "url": "https://short-url.cc/1B3aM",
+          "url": "obf1:CxpZHhJMAkReDkBZCw8FQhkZAAJYQQ==",
           "logo": "assets/logos/zulip.jpg"
         },
         {
           "name": "Code",
-          "url": "https://short-url.cc/1vpMe",
+          "url": "obf1:CxpZHhJMAkRUDApIQBUTQxhYEUBOAhRZ",
           "logo": "assets/logos/gitlab.webp"
         },
         {

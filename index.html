@@ -214,9 +214,27 @@
     <main id="main"></main>
   </div>
 
-  <script src="data.js?v=20260806c"></script>
+  <script src="data.js?v=20260807a"></script>
   <script>
     (function () {
+      // Lightweight URL scramble (XOR+base64). Stops casual GitHub text search;
+      // not strong crypto — key is in this file on purpose for zero-friction open.
+      var OBF_KEY = "cn-nav-k7";
+      function resolveUrl(raw) {
+        if (!raw) return "#";
+        if (raw.indexOf("obf1:") !== 0) return raw;
+        try {
+          var bin = atob(raw.slice(5));
+          var out = "";
+          for (var i = 0; i < bin.length; i++) {
+            out += String.fromCharCode(bin.charCodeAt(i) ^ OBF_KEY.charCodeAt(i % OBF_KEY.length));
+          }
+          return out;
+        } catch (e) {
+          return "#";
+        }
+      }
+
       const data = window.NAV_DATA || { title: "Carlos' Nav", groups: [] };
       document.getElementById("siteTitle").textContent = data.title || "Carlos' Nav";
       document.title = data.title || "Carlos' Nav";
@@ -238,8 +256,9 @@
         (group.items || []).forEach(function (item) {
           const a = document.createElement("a");
           a.className = "tile";
-          a.href = item.url || "#";
-          const isHttp = /^https?:\/\//i.test(item.url || "");
+          const href = resolveUrl(item.url);
+          a.href = href;
+          const isHttp = /^https?:\/\//i.test(href);
           if (isHttp) {
             a.target = "_blank";
             a.rel = "noopener noreferrer";
