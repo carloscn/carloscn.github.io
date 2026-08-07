@@ -20,7 +20,7 @@
       --link: #000;
       --hover: #c00;
       --line: #cce8b3;
-      --width: min(990px, 96vw);
+      --width: min(1100px, 96vw);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -111,105 +111,289 @@
 
     .masthead-row {
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      grid-template-columns: 1fr 1fr;
       gap: 12px;
-      align-items: end;
+      align-items: stretch;
     }
 
-    /* search tabs + bar (hao268 .ns + .sch style) */
+    /* search tabs + bar — equal half with weather/clocks */
     .search-block {
       min-width: 0;
+      width: 100%;
       display: flex;
       flex-direction: column;
+      justify-content: flex-end;
     }
 
-    /* world clocks — bottom-aligned with search box */
-    .world-clocks {
+    /* weather + 3 clocks: four equal columns */
+    .info-panel {
       min-width: 0;
+      width: 100%;
       border: 1px solid var(--green);
       background: #fafff3;
       padding: 2px;
     }
 
-    .world-clocks-inner {
+    .info-panel-inner {
+      height: 100%;
       background: linear-gradient(180deg, #fefefb, #f5fceb);
-      padding: 6px 8px 8px;
+      padding: 5px 6px 6px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 4px;
+      align-items: stretch;
+    }
+
+    .weather-compact {
+      min-width: 0;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      gap: 6px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 2px;
+      overflow: hidden;
+      padding: 4px 4px 5px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--line);
+      border-radius: 3px;
     }
 
-    .world-clocks-title {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--green-dark);
+    .weather-city {
       display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      min-height: 24px;
-      line-height: 24px;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 0;
+      width: 100%;
+      min-width: 0;
     }
 
-    .world-clocks-title span {
-      font-weight: 400;
-      color: #999;
+    .weather-city strong {
+      color: var(--green-dark);
+      font-size: 14px;
+      font-weight: 700;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 0;
+    }
+
+    .weather-city button {
+      border: none;
+      background: transparent;
+      color: #3b5998;
+      font-size: 12px;
+      cursor: pointer;
+      padding: 0;
+      font-family: inherit;
+      flex-shrink: 0;
+    }
+
+    .weather-city button:hover {
+      color: var(--hover);
+    }
+
+    .weather-status {
+      font-size: 12px;
+      color: var(--muted);
+      min-height: 0;
+      line-height: 1.25;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .weather-status.error { color: #c00; }
+
+    .weather-now {
+      font-size: 13px;
+      line-height: 1.25;
+      color: #333;
+      min-width: 0;
+      width: 100%;
+    }
+
+    .weather-now .weather-primary {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .weather-now .temp {
+      font-size: 22px;
+      font-weight: 700;
+      color: #222;
+      line-height: 1.05;
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .weather-now .desc {
+      color: #444;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+
+    .weather-meta {
+      color: #666;
+      font-size: 12px;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .weather-days {
+      display: none; /* keep compact; 3-day detail omitted in header strip */
+    }
+
+    .city-panel {
+      display: none;
+      margin-top: 4px;
+      padding-top: 4px;
+      border-top: 1px solid var(--line);
+    }
+
+    .city-panel.open { display: block; }
+
+    .city-panel label {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .city-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+
+    .city-row input {
+      flex: 1;
+      min-width: 0;
+      height: 24px;
+      border: 1px solid #a2a2a2;
+      padding: 2px 5px;
+      font-size: 12px;
+      font-family: inherit;
+    }
+
+    .city-row button,
+    .city-actions button {
+      height: 24px;
+      border: 1px solid var(--green-dark);
+      background: var(--green);
+      color: #fff;
+      font-size: 11px;
+      padding: 0 8px;
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    .city-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+
+    .city-actions button.ghost {
+      background: #fff;
+      color: #333;
+      border-color: #bbb;
+    }
+
+    .city-results {
+      max-height: 100px;
+      overflow: auto;
       font-size: 11px;
     }
 
+    .city-results button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: none;
+      background: transparent;
+      padding: 4px 2px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 11px;
+      color: #205001;
+      border-bottom: 1px solid #eef6e0;
+    }
+
+    .city-results button:hover {
+      background: var(--green-row);
+      color: var(--hover);
+    }
+
+    /* three city clocks share the remaining 3 equal columns */
+    .world-clocks {
+      display: contents;
+    }
+
+    .world-clocks-title {
+      display: none; /* cities are self-labeled; strip is 4 equal cells */
+    }
+
     .clock-list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
-      /* match search-box outer height (padding 6*2 + input 32) */
-      min-height: 44px;
+      display: contents;
     }
 
     .clock-item {
+      min-width: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 2px;
+      gap: 3px;
       padding: 4px 4px 5px;
       background: rgba(255, 255, 255, 0.85);
       border: 1px solid var(--line);
       border-radius: 3px;
       text-align: center;
-      min-width: 0;
     }
 
     .clock-city {
-      font-size: 12px;
-      font-weight: 600;
-      color: #444;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--green-dark);
       line-height: 1.2;
-    }
-
-    .clock-city small {
-      display: block;
-      font-weight: 400;
-      color: #999;
-      font-size: 10px;
-      margin-top: 1px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    .clock-city small {
+      display: none;
     }
 
     .clock-time {
-      font-size: 18px;
+      font-size: 22px;
       font-weight: 700;
       font-variant-numeric: tabular-nums;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
       color: #1f2937;
       font-family: "Segoe UI", Consolas, "Courier New", monospace;
       white-space: nowrap;
-      margin-top: 2px;
+      margin-top: 0;
     }
 
     .clock-time .sec {
-      font-size: 11px;
+      font-size: 14px;
       font-weight: 600;
       color: #6b7280;
       margin-left: 1px;
@@ -335,10 +519,10 @@
 
 
 
-    /* hao268-style two columns */
+    /* main layout: left sidebar (hots + tools) + right nav links */
     .layout {
       display: grid;
-      grid-template-columns: 220px 1fr;
+      grid-template-columns: 240px minmax(0, 1fr);
       gap: 8px;
       align-items: start;
     }
@@ -355,182 +539,115 @@
       padding: 10px 10px 12px;
     }
 
-    .weather-city {
+    .side-tools h3,
+    .hot-board h3 {
+      font-size: 13px;
+      color: var(--green-dark);
+      margin-bottom: 6px;
+    }
+
+    .hot-board-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 6px;
-      margin-bottom: 8px;
-      padding-bottom: 6px;
-      border-bottom: 1px dashed var(--line);
+      margin-bottom: 6px;
     }
 
-    .weather-city strong {
-      color: var(--green-dark);
-      font-size: 15px;
+    .hot-board-head h3 {
+      margin-bottom: 0;
     }
 
-    .weather-city button {
-      border: none;
-      background: transparent;
-      color: #3b5998;
-      font-size: 12px;
-      cursor: pointer;
-      padding: 0;
-      font-family: inherit;
-    }
-
-    .weather-city button:hover {
-      color: var(--hover);
-    }
-
-    .weather-now {
-      font-size: 13px;
-      line-height: 1.7;
-      color: #333;
-      margin-bottom: 10px;
-    }
-
-    .weather-now .temp {
-      font-size: 28px;
-      font-weight: 700;
-      color: #222;
-      line-height: 1.2;
-      margin: 2px 0 4px;
-    }
-
-    .weather-now .desc {
-      color: #444;
-      font-size: 14px;
-    }
-
-    .weather-meta {
-      color: #555;
-      font-size: 12px;
-    }
-
-    .weather-days {
-      border-top: 1px solid var(--line);
-      padding-top: 8px;
-      display: grid;
-      gap: 4px;
-    }
-
-    .weather-day {
-      display: grid;
-      grid-template-columns: 36px 1fr auto;
+    .hot-board-head .hot-actions {
+      display: flex;
+      align-items: center;
       gap: 6px;
-      font-size: 12px;
-      color: #444;
+    }
+
+    .hot-board-head button,
+    .hot-board-head a.hot-more {
+      border: 1px solid #c5d9a8;
+      background: #fff;
+      color: #555;
+      font-size: 11px;
+      padding: 1px 6px;
+      height: 20px;
+      line-height: 16px;
+      cursor: pointer;
+      font-family: inherit;
+      border-radius: 2px;
+      text-decoration: none;
+      display: inline-flex;
       align-items: center;
     }
 
-    .weather-day .hi {
-      color: #c45c26;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .weather-day .lo {
-      color: #3b82c4;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .weather-status {
-      font-size: 12px;
-      color: var(--muted);
-      min-height: 1.5em;
-    }
-
-    .weather-status.error { color: #c00; }
-
-    /* city picker panel */
-    .city-panel {
-      display: none;
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px solid var(--line);
-    }
-
-    .city-panel.open { display: block; }
-
-    .city-panel label {
-      display: block;
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .city-row {
-      display: flex;
-      gap: 4px;
-      margin-bottom: 6px;
-    }
-
-    .city-row input {
-      flex: 1;
-      min-width: 0;
-      height: 28px;
-      border: 1px solid #a2a2a2;
-      padding: 2px 6px;
-      font-size: 13px;
-      font-family: inherit;
-    }
-
-    .city-row button,
-    .city-actions button {
-      height: 28px;
-      border: 1px solid var(--green-dark);
-      background: var(--green);
-      color: #fff;
-      font-size: 12px;
-      padding: 0 10px;
-      cursor: pointer;
-      font-family: inherit;
-      white-space: nowrap;
-    }
-
-    .city-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-bottom: 6px;
-    }
-
-    .city-actions button.ghost {
-      background: #fff;
-      color: #333;
-      border-color: #bbb;
-    }
-
-    .city-results {
-      max-height: 140px;
-      overflow: auto;
-      font-size: 12px;
-    }
-
-    .city-results button {
-      display: block;
-      width: 100%;
-      text-align: left;
-      border: none;
-      background: transparent;
-      padding: 5px 4px;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 12px;
-      color: #205001;
-      border-bottom: 1px solid #eef6e0;
-    }
-
-    .city-results button:hover {
-      background: var(--green-row);
+    .hot-board-head button:hover,
+    .hot-board-head a.hot-more:hover {
       color: var(--hover);
+      border-color: var(--green);
     }
 
-    .side-tools h3 {
-      font-size: 13px;
-      color: var(--green-dark);
-      margin-bottom: 6px;
+    .hot-board-status {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 4px 0 2px;
+    }
+
+    .hot-board-status.error { color: #c00; }
+
+    .hot-board-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-height: 280px;
+      overflow: auto;
+    }
+
+    .hot-board-list li {
+      display: grid;
+      grid-template-columns: 18px 1fr auto;
+      gap: 4px;
+      align-items: center;
+      min-height: 22px;
+      border-bottom: 1px dashed #e8f2d8;
+    }
+
+    .hot-board-list li:last-child {
+      border-bottom: none;
+    }
+
+    .hot-board-list .rank {
+      font-size: 12px;
+      font-weight: 700;
+      color: #999;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .hot-board-list li:nth-child(1) .rank { color: #e02e24; }
+    .hot-board-list li:nth-child(2) .rank { color: #f16000; }
+    .hot-board-list li:nth-child(3) .rank { color: #f1a200; }
+
+    .hot-board-list a {
+      color: #205001;
+      font-size: 12px;
+      line-height: 1.35;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 0;
+    }
+
+    .hot-board-list a:hover { color: var(--hover); }
+
+    .hot-board-list .heat {
+      font-size: 11px;
+      color: #aaa;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      max-width: 72px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .side-tools-grid {
@@ -665,6 +782,10 @@
       .hot-grid {
         grid-template-columns: repeat(6, 1fr);
       }
+
+      .info-panel-inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 720px) {
@@ -684,7 +805,9 @@
       .brand h1 { font-size: 18px; }
       .masthead-row {
         grid-template-columns: 1fr;
-        align-items: stretch;
+      }
+      .info-panel-inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
       .search-tabs li {
         min-width: 40px;
@@ -747,24 +870,53 @@
           </form>
         </div>
 
-        <aside class="world-clocks" aria-label="世界时间">
-          <div class="world-clocks-inner">
-            <div class="world-clocks-title">
-              世界时间
-              <span id="clockDateHint">—</span>
+        <aside class="info-panel" aria-label="天气与世界时间">
+          <div class="info-panel-inner">
+            <div class="weather-compact">
+              <div class="weather-city">
+                <strong id="weatherCity">—</strong>
+                <button type="button" id="btnChangeCity" title="修改城市">切换</button>
+              </div>
+              <div class="weather-status" id="weatherStatus">正在获取天气…</div>
+              <div class="weather-now" id="weatherNow" hidden>
+                <div class="weather-primary">
+                  <span class="temp" id="weatherTemp">--°</span>
+                  <span class="desc" id="weatherDesc">—</span>
+                </div>
+                <div class="weather-meta" id="weatherMeta"></div>
+              </div>
+              <div class="weather-days" id="weatherDays" hidden></div>
+              <div class="city-panel" id="cityPanel">
+                <label for="cityQuery">搜索城市（中/英）</label>
+                <div class="city-row">
+                  <input id="cityQuery" type="search" placeholder="如 北京 / Madrid" autocomplete="off" />
+                  <button type="button" id="btnCitySearch">搜索</button>
+                </div>
+                <div class="city-actions">
+                  <button type="button" class="ghost" id="btnGeo">定位</button>
+                  <button type="button" class="ghost" id="btnCityCancel">取消</button>
+                </div>
+                <div class="city-results" id="cityResults"></div>
+              </div>
             </div>
-            <div class="clock-list" id="worldClockList">
-              <div class="clock-item" data-tz="Europe/Madrid">
-                <div class="clock-city">巴塞罗那<small>Barcelona · CET/CEST</small></div>
-                <div class="clock-time">--:--<span class="sec">--</span></div>
+            <div class="world-clocks">
+              <div class="world-clocks-title">
+                世界时间
+                <span id="clockDateHint">—</span>
               </div>
-              <div class="clock-item" data-tz="Asia/Shanghai">
-                <div class="clock-city">北京<small>Beijing · CST</small></div>
-                <div class="clock-time">--:--<span class="sec">--</span></div>
-              </div>
-              <div class="clock-item" data-tz="America/Los_Angeles">
-                <div class="clock-city">洛杉矶<small>Los Angeles · PT</small></div>
-                <div class="clock-time">--:--<span class="sec">--</span></div>
+              <div class="clock-list" id="worldClockList">
+                <div class="clock-item" data-tz="Europe/Madrid">
+                  <div class="clock-city">马德里</div>
+                  <div class="clock-time">--:--<span class="sec">--</span></div>
+                </div>
+                <div class="clock-item" data-tz="Asia/Shanghai">
+                  <div class="clock-city">北京</div>
+                  <div class="clock-time">--:--<span class="sec">--</span></div>
+                </div>
+                <div class="clock-item" data-tz="America/Los_Angeles">
+                  <div class="clock-city">洛杉矶</div>
+                  <div class="clock-time">--:--<span class="sec">--</span></div>
+                </div>
               </div>
             </div>
           </div>
@@ -775,30 +927,29 @@
     <div class="layout">
       <aside class="col-left">
         <div class="side-box">
-          <div class="side-inner">
-            <div class="weather-city">
-              <strong id="weatherCity">—</strong>
-              <button type="button" id="btnChangeCity" title="修改城市">切换</button>
-            </div>
-            <div class="weather-status" id="weatherStatus">正在获取天气…</div>
-            <div class="weather-now" id="weatherNow" hidden>
-              <div class="temp" id="weatherTemp">--°</div>
-              <div class="desc" id="weatherDesc">—</div>
-              <div class="weather-meta" id="weatherMeta"></div>
-            </div>
-            <div class="weather-days" id="weatherDays" hidden></div>
-            <div class="city-panel" id="cityPanel">
-              <label for="cityQuery">搜索城市（中/英）</label>
-              <div class="city-row">
-                <input id="cityQuery" type="search" placeholder="如 北京 / Madrid / 上海" autocomplete="off" />
-                <button type="button" id="btnCitySearch">搜索</button>
+          <div class="side-inner hot-board" data-board="weibo">
+            <div class="hot-board-head">
+              <h3>微博热搜</h3>
+              <div class="hot-actions">
+                <button type="button" id="btnWeiboRefresh" title="刷新微博热搜">刷新</button>
+                <a class="hot-more" href="https://s.weibo.com/top/summary?cate=realtimehot" target="_blank" rel="noopener noreferrer">更多</a>
               </div>
-              <div class="city-actions">
-                <button type="button" class="ghost" id="btnGeo">定位当前位置</button>
-                <button type="button" class="ghost" id="btnCityCancel">取消</button>
-              </div>
-              <div class="city-results" id="cityResults"></div>
             </div>
+            <div class="hot-board-status" id="weiboHotStatus">正在加载热搜…</div>
+            <ol class="hot-board-list" id="weiboHotList" hidden></ol>
+          </div>
+        </div>
+        <div class="side-box">
+          <div class="side-inner hot-board" data-board="zhihu">
+            <div class="hot-board-head">
+              <h3>知乎热榜</h3>
+              <div class="hot-actions">
+                <button type="button" id="btnZhihuRefresh" title="刷新知乎热榜">刷新</button>
+                <a class="hot-more" href="https://www.zhihu.com/hot" target="_blank" rel="noopener noreferrer">更多</a>
+              </div>
+            </div>
+            <div class="hot-board-status" id="zhihuHotStatus">正在加载热榜…</div>
+            <ol class="hot-board-list" id="zhihuHotList" hidden></ol>
           </div>
         </div>
         <div class="side-box">
@@ -1074,7 +1225,7 @@
 
       /* ---------- World clocks (Barcelona / Beijing / Los Angeles) ---------- */
       var CLOCK_ZONES = [
-        { tz: "Europe/Madrid", label: "巴塞罗那" },
+        { tz: "Europe/Madrid", label: "马德里" },
         { tz: "Asia/Shanghai", label: "北京" },
         { tz: "America/Los_Angeles", label: "洛杉矶" }
       ];
@@ -1306,31 +1457,32 @@
         var desc = wmoText(code);
 
         el.city.textContent = city.name || "本地";
+        el.city.title = [city.name || "本地", city.admin || ""].filter(Boolean).join(" · ");
         el.temp.textContent = (temp != null ? Math.round(temp) : "--") + "°";
         el.desc.textContent = desc;
-        el.meta.innerHTML =
-          windDirText(wdir) + " " + (wind != null ? Math.round(wind) + " km/h" : "—") +
-          "<br>湿度 " + (hum != null ? hum + "%" : "—") +
-          (city.admin ? "<br>" + city.admin : "");
+        el.desc.title = desc;
 
-        el.days.innerHTML = "";
-        var dates = daily.time || [];
-        var maxN = Math.min(3, dates.length);
-        for (var i = 0; i < maxN; i++) {
-          var row = document.createElement("div");
-          row.className = "weather-day";
-          var tMax = daily.temperature_2m_max && daily.temperature_2m_max[i];
-          var tMin = daily.temperature_2m_min && daily.temperature_2m_min[i];
-          var dCode = daily.weather_code && daily.weather_code[i];
-          row.innerHTML =
-            "<span>" + dayLabel(dates[i], i) + "</span>" +
-            "<span>" + wmoText(dCode) + "</span>" +
-            "<span><span class=\"lo\">" + Math.round(tMin) + "°</span> ~ <span class=\"hi\">" + Math.round(tMax) + "°</span></span>";
-          el.days.appendChild(row);
+        // Keep meta ultra-short: wind + humidity only (admin goes to tooltip)
+        var windBit =
+          windDirText(wdir).replace("风", "") +
+          (wind != null ? Math.round(wind) + "km" : "");
+        var humBit = hum != null ? "湿" + hum + "%" : "";
+        var metaBits = [windBit, humBit].filter(Boolean);
+        el.meta.textContent = metaBits.join(" ");
+        el.meta.title = [
+          desc,
+          windDirText(wdir) + (wind != null ? " " + Math.round(wind) + " km/h" : ""),
+          hum != null ? "湿度 " + hum + "%" : "",
+          city.admin || ""
+        ].filter(Boolean).join(" · ");
+
+        // 3-day block kept in DOM but hidden in compact header layout
+        if (el.days) {
+          el.days.innerHTML = "";
+          el.days.hidden = true;
         }
 
         el.now.hidden = false;
-        el.days.hidden = false;
         setStatus("");
 
         var topBits = [
@@ -1340,7 +1492,11 @@
           windDirText(wdir)
         ].filter(Boolean);
         el.top.textContent = topBits.join(" · ");
-        el.top.title = topBits.join(" ");
+        el.top.title = [
+          topBits.join(" · "),
+          hum != null ? "湿度 " + hum + "%" : "",
+          city.admin || ""
+        ].filter(Boolean).join(" · ");
       }
 
       function fetchWeather(city) {
@@ -1495,6 +1651,275 @@
       } else {
         useGeolocation();
       }
+
+      /* ---------- Hot boards: Weibo / Zhihu ---------- */
+      var HOT_CACHE_MS = 5 * 60 * 1000;
+      var HOT_LIMIT = 20;
+
+      function createHotBoard(opts) {
+        var statusEl = document.getElementById(opts.statusId);
+        var listEl = document.getElementById(opts.listId);
+        var btnEl = document.getElementById(opts.btnId);
+        var cacheKey = opts.cacheKey;
+        var apis = opts.apis || [];
+        var fallbackUrl = opts.fallbackUrlBuilder;
+        var emptyMsg = opts.emptyMsg || "暂无数据";
+        var failMsg = opts.failMsg || "加载失败，请稍后刷新";
+        var loadingMsg = opts.loadingMsg || "正在加载…";
+        var refreshing = false;
+
+        function setStatus(msg, isError) {
+          if (!statusEl) return;
+          statusEl.hidden = !msg;
+          statusEl.textContent = msg || "";
+          statusEl.className = "hot-board-status" + (isError ? " error" : "");
+        }
+
+        function loadCache() {
+          try {
+            var raw = sessionStorage.getItem(cacheKey);
+            if (!raw) return null;
+            var obj = JSON.parse(raw);
+            if (!obj || !obj.ts || !Array.isArray(obj.items)) return null;
+            if (Date.now() - obj.ts > HOT_CACHE_MS) return null;
+            return obj.items;
+          } catch (e) {
+            return null;
+          }
+        }
+
+        function saveCache(items) {
+          try {
+            sessionStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), items: items }));
+          } catch (e) {}
+        }
+
+        function extractArray(payload) {
+          if (!payload) return null;
+          if (Array.isArray(payload)) return payload;
+          if (Array.isArray(payload.items)) return payload.items;
+          if (Array.isArray(payload.list)) return payload.list;
+          if (Array.isArray(payload.result)) return payload.result;
+          if (Array.isArray(payload.data)) return payload.data;
+          if (payload.data && Array.isArray(payload.data.list)) return payload.data.list;
+          if (payload.data && Array.isArray(payload.data.items)) return payload.data.items;
+          // allorigins / proxy may wrap as { contents: "..." }
+          if (typeof payload.contents === "string") {
+            try {
+              return extractArray(JSON.parse(payload.contents));
+            } catch (e) {
+              return null;
+            }
+          }
+          return null;
+        }
+
+        function pickHeat(it) {
+          var heat =
+            it.hot ||
+            it.hot_value ||
+            it.hot_value_desc ||
+            it.hotnum ||
+            it.hotValue ||
+            it.hot_score ||
+            it.score ||
+            it.num ||
+            (it.extra && (it.extra.info || it.extra.hot || it.extra.desc)) ||
+            "";
+          // avoid dumping long article text from hover fields
+          if (!heat && it.extra && it.extra.hover && String(it.extra.hover).length <= 16) {
+            heat = it.extra.hover;
+          }
+          if (typeof heat === "number") heat = String(heat);
+          heat = String(heat || "").replace(/\s+/g, " ").trim();
+          if (heat.length > 14) heat = heat.slice(0, 14);
+          return heat;
+        }
+
+        function normalizeItems(payload) {
+          var arr = extractArray(payload);
+          if (!arr) return [];
+
+          var out = [];
+          for (var i = 0; i < arr.length; i++) {
+            var it = arr[i] || {};
+            var title =
+              it.title ||
+              it.name ||
+              it.word ||
+              it.hotword ||
+              it.query ||
+              it.desc ||
+              "";
+            if (!title) continue;
+            var url =
+              it.url ||
+              it.link ||
+              it.mobileUrl ||
+              it.mobil_url ||
+              it.target ||
+              (fallbackUrl ? fallbackUrl(String(title), it) : "#");
+            out.push({
+              title: String(title),
+              url: String(url),
+              heat: pickHeat(it)
+            });
+            if (out.length >= HOT_LIMIT) break;
+          }
+          return out;
+        }
+
+        function render(items) {
+          if (!listEl) return;
+          listEl.innerHTML = "";
+          if (!items || !items.length) {
+            listEl.hidden = true;
+            setStatus(emptyMsg, true);
+            return;
+          }
+          items.forEach(function (item, idx) {
+            var li = document.createElement("li");
+            var rank = document.createElement("span");
+            rank.className = "rank";
+            rank.textContent = String(idx + 1);
+
+            var a = document.createElement("a");
+            a.href = item.url;
+            a.target = "_blank";
+            a.rel = "noopener noreferrer";
+            a.title = item.title;
+            a.textContent = item.title;
+
+            var heat = document.createElement("span");
+            heat.className = "heat";
+            heat.textContent = item.heat || "";
+
+            li.appendChild(rank);
+            li.appendChild(a);
+            li.appendChild(heat);
+            listEl.appendChild(li);
+          });
+          listEl.hidden = false;
+          setStatus("");
+        }
+
+        function parsePayload(json) {
+          // If items are present, accept even when code/msg is odd (some APIs mix fields).
+          var items = normalizeItems(json);
+          if (items.length) return items;
+
+          if (json && typeof json.code !== "undefined") {
+            if (json.code !== 200 && json.code !== 1 && json.code !== 0 && json.success !== true) {
+              throw new Error(json.msg || json.message || "bad code " + json.code);
+            }
+          }
+          if (json && json.status && json.status !== "success" && json.success !== true) {
+            throw new Error("bad status");
+          }
+          throw new Error("empty");
+        }
+
+        function fetchOne(url) {
+          return fetch(url, { cache: "no-store", mode: "cors", credentials: "omit" })
+            .then(function (r) {
+              if (!r.ok) throw new Error("HTTP " + r.status);
+              return r.json();
+            })
+            .then(parsePayload);
+        }
+
+        function fetchHot(force) {
+          if (refreshing) return;
+          if (!force) {
+            var cached = loadCache();
+            if (cached && cached.length) {
+              render(cached);
+              return;
+            }
+          }
+          refreshing = true;
+          setStatus(loadingMsg);
+          if (listEl) listEl.hidden = true;
+
+          // Try each source in order; first success wins
+          var chain = Promise.reject(new Error("start"));
+          apis.forEach(function (api) {
+            chain = chain.catch(function () {
+              return fetchOne(api);
+            });
+          });
+
+          chain
+            .then(function (items) {
+              saveCache(items);
+              render(items);
+            })
+            .catch(function (err) {
+              console.warn(opts.name || "hot board", err);
+              setStatus(failMsg, true);
+              if (listEl) listEl.hidden = true;
+            })
+            .then(function () {
+              refreshing = false;
+            });
+        }
+
+        if (btnEl) {
+          btnEl.addEventListener("click", function () {
+            try { sessionStorage.removeItem(cacheKey); } catch (e) {}
+            fetchHot(true);
+          });
+        }
+        fetchHot(false);
+        return { refresh: function () { fetchHot(true); } };
+      }
+
+      createHotBoard({
+        name: "weibo",
+        statusId: "weiboHotStatus",
+        listId: "weiboHotList",
+        btnId: "btnWeiboRefresh",
+        cacheKey: "cn-nav-weibo-hot-v2",
+        loadingMsg: "正在加载热搜…",
+        emptyMsg: "暂无热搜数据",
+        failMsg: "热搜加载失败，请稍后刷新",
+        apis: [
+          "https://60s.viki.moe/v2/weibo",
+          "https://60s-api.viki.moe/v2/weibo",
+          "https://hotapi.nntool.cc/weibo",
+          "https://v2.xxapi.cn/api/weibohot",
+          "https://uapis.cn/api/v1/misc/hotboard?type=weibo",
+          "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://newsnow.busiyi.world/api/s?id=weibo")
+        ],
+        fallbackUrlBuilder: function (title) {
+          return "https://s.weibo.com/weibo?q=" + encodeURIComponent(title);
+        }
+      });
+
+      createHotBoard({
+        name: "zhihu",
+        statusId: "zhihuHotStatus",
+        listId: "zhihuHotList",
+        btnId: "btnZhihuRefresh",
+        cacheKey: "cn-nav-zhihu-hot-v2",
+        loadingMsg: "正在加载热榜…",
+        emptyMsg: "暂无热榜数据",
+        failMsg: "热榜加载失败，请稍后刷新",
+        apis: [
+          // 60s open APIs — stable CORS, no key
+          "https://60s.viki.moe/v2/zhihu",
+          "https://60s-api.viki.moe/v2/zhihu",
+          "https://hotapi.nntool.cc/zhihu",
+          "https://uapis.cn/api/v1/misc/hotboard?type=zhihu",
+          // newsnow via CORS proxy (direct often lacks ACAO)
+          "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://newsnow.busiyi.world/api/s?id=zhihu")
+        ],
+        fallbackUrlBuilder: function (title, it) {
+          if (it && it.id) return "https://www.zhihu.com/question/" + it.id;
+          if (it && it.link) return it.link;
+          return "https://www.zhihu.com/search?type=content&q=" + encodeURIComponent(title);
+        }
+      });
     })();
   </script>
 </body>
