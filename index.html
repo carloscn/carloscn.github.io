@@ -378,7 +378,14 @@
     }
 
     .clock-city small {
-      display: none;
+      display: block;
+      font-weight: 400;
+      color: #999;
+      font-size: 11px;
+      margin-top: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .clock-time {
@@ -906,15 +913,15 @@
               </div>
               <div class="clock-list" id="worldClockList">
                 <div class="clock-item" data-tz="Europe/Madrid">
-                  <div class="clock-city">马德里</div>
+                  <div class="clock-city">马德里<small>CET/CEST</small></div>
                   <div class="clock-time">--:--<span class="sec">--</span></div>
                 </div>
                 <div class="clock-item" data-tz="Asia/Shanghai">
-                  <div class="clock-city">北京</div>
+                  <div class="clock-city">北京<small>CST</small></div>
                   <div class="clock-time">--:--<span class="sec">--</span></div>
                 </div>
                 <div class="clock-item" data-tz="America/Los_Angeles">
-                  <div class="clock-city">洛杉矶</div>
+                  <div class="clock-city">洛杉矶<small>PT</small></div>
                   <div class="clock-time">--:--<span class="sec">--</span></div>
                 </div>
               </div>
@@ -1654,7 +1661,7 @@
 
       /* ---------- Hot boards: Weibo / Zhihu ---------- */
       var HOT_CACHE_MS = 5 * 60 * 1000;
-      var HOT_LIMIT = 20;
+      var HOT_LIMIT_DEFAULT = 30; // sidebar shows top N only (API may return ~50)
 
       function createHotBoard(opts) {
         var statusEl = document.getElementById(opts.statusId);
@@ -1666,6 +1673,7 @@
         var emptyMsg = opts.emptyMsg || "暂无数据";
         var failMsg = opts.failMsg || "加载失败，请稍后刷新";
         var loadingMsg = opts.loadingMsg || "正在加载…";
+        var limit = opts.limit || HOT_LIMIT_DEFAULT;
         var refreshing = false;
 
         function setStatus(msg, isError) {
@@ -1764,9 +1772,9 @@
               url: String(url),
               heat: pickHeat(it)
             });
-            if (out.length >= HOT_LIMIT) break;
+            if (out.length >= limit) break;
           }
-          return out;
+          return out.slice(0, limit);
         }
 
         function render(items) {
@@ -1879,7 +1887,8 @@
         statusId: "weiboHotStatus",
         listId: "weiboHotList",
         btnId: "btnWeiboRefresh",
-        cacheKey: "cn-nav-weibo-hot-v2",
+        cacheKey: "cn-nav-weibo-hot-v4",
+        limit: 30,
         loadingMsg: "正在加载热搜…",
         emptyMsg: "暂无热搜数据",
         failMsg: "热搜加载失败，请稍后刷新",
@@ -1901,7 +1910,8 @@
         statusId: "zhihuHotStatus",
         listId: "zhihuHotList",
         btnId: "btnZhihuRefresh",
-        cacheKey: "cn-nav-zhihu-hot-v2",
+        cacheKey: "cn-nav-zhihu-hot-v4",
+        limit: 30,
         loadingMsg: "正在加载热榜…",
         emptyMsg: "暂无热榜数据",
         failMsg: "热榜加载失败，请稍后刷新",
