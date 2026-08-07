@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260807d). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260807g). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Nav",
   "groups": [
@@ -16,7 +16,7 @@ window.NAV_DATA = {
           "logo": "assets/logos/youtube.webp"
         },
         {
-          "name": "reddit",
+          "name": "Reddit",
           "url": "http://www.reddit.com",
           "logo": "assets/logos/reddit.png"
         },
@@ -71,7 +71,7 @@ window.NAV_DATA = {
           "logo": "assets/logos/o2_cloud.png"
         },
         {
-          "name": "QQ邮箱",
+          "name": "QQ 邮箱",
           "url": "https://mail.qq.com/",
           "logo": "assets/logos/qq_mail.png"
         },
@@ -81,7 +81,7 @@ window.NAV_DATA = {
           "logo": "assets/logos/netease_mail.png"
         },
         {
-          "name": "icloud note",
+          "name": "iCloud Notes",
           "url": "https://www.icloud.com.cn/notes/",
           "logo": "assets/logos/icloud_note.jpg"
         },
@@ -101,7 +101,7 @@ window.NAV_DATA = {
           "logo": "assets/logos/Google_Translate.png"
         },
         {
-          "name": "Google Map",
+          "name": "Google Maps",
           "url": "https://www.google.com/maps/@41.3485831,2.1344878,13.36z?entry=ttu&g_ep=EgoyMDI1MDczMC4wIKXMDSoASAFQAw%3D%3D",
           "logo": "assets/logos/google_map.png"
         },
@@ -121,7 +121,7 @@ window.NAV_DATA = {
           "logo": "assets/logos/douyin.webp"
         },
         {
-          "name": "豆瓣网",
+          "name": "豆瓣",
           "url": "https://www.douban.com/",
           "logo": "assets/logos/douban.png"
         },
@@ -141,27 +141,27 @@ window.NAV_DATA = {
           "logo": "assets/logos/baidu.png"
         },
         {
-          "name": "淘宝网",
+          "name": "淘宝",
           "url": "https://www.taobao.com",
           "logo": "assets/logos/taobao.webp"
         },
         {
-          "name": "携程旅行网",
+          "name": "携程",
           "url": "https://www.ctrip.com/?AllianceID=3799814&sid=22840677&ouid=&app=0301C00",
           "logo": "assets/logos/xiecheng.png"
         },
         {
-          "name": "instagram",
+          "name": "Instagram",
           "url": "https://www.instagram.com/zzzzzmle/",
           "logo": "assets/logos/instagram.jpg"
         },
         {
-          "name": "threads",
+          "name": "Threads",
           "url": "https://www.threads.com/",
           "logo": "assets/logos/threads.webp"
         },
         {
-          "name": "facebook",
+          "name": "Facebook",
           "url": "https://www.facebook.com/?locale=es_ES",
           "logo": "assets/logos/facebook.webp"
         },
@@ -199,6 +199,66 @@ window.NAV_DATA = {
           "name": "Famelack TV",
           "url": "https://famelack.com/",
           "logo": "assets/logos/famelack_tv.png"
+        },
+        {
+          "name": "网易",
+          "url": "https://www.163.com/",
+          "logo": "assets/logos/netease_mail.png"
+        },
+        {
+          "name": "腾讯",
+          "url": "https://www.qq.com/",
+          "logo": "assets/logos/qq_mail.png"
+        },
+        {
+          "name": "今日头条",
+          "url": "https://www.toutiao.com/",
+          "logo": ""
+        },
+        {
+          "name": "TikTok",
+          "url": "https://www.tiktok.com/",
+          "logo": "assets/logos/douyin.webp"
+        },
+        {
+          "name": "优酷",
+          "url": "https://www.youku.com/",
+          "logo": ""
+        },
+        {
+          "name": "爱奇艺",
+          "url": "https://www.iqiyi.com/",
+          "logo": ""
+        },
+        {
+          "name": "腾讯视频",
+          "url": "https://v.qq.com/",
+          "logo": "assets/logos/qq_mail.png"
+        },
+        {
+          "name": "QQ 音乐",
+          "url": "https://y.qq.com/",
+          "logo": "assets/logos/qq_mail.png"
+        },
+        {
+          "name": "懂车帝",
+          "url": "https://www.dcdapp.com/",
+          "logo": ""
+        },
+        {
+          "name": "QQ",
+          "url": "https://im.qq.com/",
+          "logo": "assets/logos/qq_mail.png"
+        },
+        {
+          "name": "微信",
+          "url": "https://linux.weixin.qq.com/",
+          "logo": ""
+        },
+        {
+          "name": "龙网",
+          "url": "http://www.hlj.net/",
+          "logo": ""
         }
       ]
     },
@@ -231,7 +291,7 @@ window.NAV_DATA = {
           "logo": "assets/logos/spain_tax.png"
         },
         {
-          "name": "idp.seg-social.es",
+          "name": "Seguridad Social",
           "url": "https://idp.seg-social.es/PGIS/Login",
           "logo": "assets/logos/spain-seg-social.jpg"
         },
@@ -241,7 +301,17 @@ window.NAV_DATA = {
           "logo": "assets/logos/spain-sede.png"
         },
         {
-          "name": "WISE",
+          "name": "深圳税务",
+          "url": "https://shenzhen.chinatax.gov.cn/",
+          "logo": ""
+        },
+        {
+          "name": "深圳医保",
+          "url": "https://sipub.sz.gov.cn/hspms/",
+          "logo": ""
+        },
+        {
+          "name": "Wise",
           "url": "https://wise.com/zh-cn/currency-converter/hkd-to-eur-rate?amount=1000",
           "logo": "assets/logos/wise.webp"
         },
@@ -271,27 +341,37 @@ window.NAV_DATA = {
           "logo": "assets/logos/o2.jpg"
         },
         {
-          "name": "DIGI",
+          "name": "Digi",
           "url": "https://midigi.digimobil.es/",
           "logo": "assets/logos/digi.jpg"
         },
         {
-          "name": "simyo",
+          "name": "Simyo",
           "url": "https://www.simyo.es/simyo/privatearea/home",
           "logo": "assets/logos/simyo.png"
         },
         {
-          "name": "giffgaff",
+          "name": "Giffgaff",
           "url": "https://www.giffgaff.com/profile/details",
           "logo": "assets/logos/giffgaff.png"
         },
         {
-          "name": "ENTRENA-T24",
+          "name": "深圳移动",
+          "url": "http://www.gd.chinamobile.com/shenzhen/",
+          "logo": ""
+        },
+        {
+          "name": "广东电信",
+          "url": "http://gd.189.cn/",
+          "logo": ""
+        },
+        {
+          "name": "Entrena-T24",
           "url": "https://www.entrena-t24h.com/en/ciutat-de-la-justicia-club/",
           "logo": "assets/logos/entrena-t24.webp"
         },
         {
-          "name": "mail.nwpu",
+          "name": "西工大邮箱",
           "url": "https://mail.nwpu.edu.cn/",
           "logo": "assets/logos/mail.nwpu.svg"
         },
@@ -309,6 +389,21 @@ window.NAV_DATA = {
           "name": "OANDA",
           "url": "https://www.oanda.com/currency-converter/zh/",
           "logo": "assets/logos/oanda.png"
+        },
+        {
+          "name": "长桥",
+          "url": "https://longbridge.com/hk/zh-CN/",
+          "logo": "assets/logos/longbridge.jpg"
+        },
+        {
+          "name": "Interactive Brokers",
+          "url": "https://www.interactivebrokers.com/",
+          "logo": ""
+        },
+        {
+          "name": "东方财富",
+          "url": "https://www.eastmoney.com/",
+          "logo": ""
         }
       ]
     },
@@ -321,27 +416,27 @@ window.NAV_DATA = {
           "logo": "assets/logos/gaodemap.png"
         },
         {
-          "name": "flightConnections",
+          "name": "Flight Connections",
           "url": "https://www.flightconnections.com/cn/%E8%88%AA%E7%BA%BF%E5%9B%BE-%E6%96%B0%E5%8A%A0%E5%9D%A1%E8%88%AA%E7%A9%BA%E5%85%AC%E5%8F%B8-sq",
           "logo": "assets/logos/flightconnections.jpg"
         },
         {
-          "name": "iatatravelcentre",
+          "name": "IATA Travel Centre",
           "url": "https://www.iatatravelcentre.com/",
           "logo": "assets/logos/iata.webp"
         },
         {
-          "name": "flightradar24",
+          "name": "Flightradar24",
           "url": "https://www.flightradar24.com/",
           "logo": "assets/logos/flightradar24.png"
         },
         {
-          "name": "aerolopa",
+          "name": "Aerolopa",
           "url": "https://www.aerolopa.com/qr-788-1?from=fya&best=qr-788-1&pos=qr-789&lookup_id=259354",
           "logo": "assets/logos/aerolopa.png"
         },
         {
-          "name": "polarsteps",
+          "name": "Polarsteps",
           "url": "https://www.polarsteps.com/CarlosWei",
           "logo": "assets/logos/polarsteps.jpg"
         },
@@ -354,6 +449,61 @@ window.NAV_DATA = {
           "name": "Tripadvisor",
           "url": "https://www.tripadvisor.com/",
           "logo": "assets/logos/tripadvisor.png"
+        },
+        {
+          "name": "12306",
+          "url": "https://www.12306.cn/",
+          "logo": ""
+        },
+        {
+          "name": "Trip.com",
+          "url": "https://hk.trip.com/?locale=zh_hk&curr=HKD",
+          "logo": "assets/logos/xiecheng.png"
+        },
+        {
+          "name": "Qatar Airways",
+          "url": "https://www.qatarairways.com/",
+          "logo": ""
+        },
+        {
+          "name": "Emirates",
+          "url": "https://www.emirates.com/",
+          "logo": ""
+        },
+        {
+          "name": "Turkish Airlines",
+          "url": "https://www.turkishairlines.com/zh-int",
+          "logo": ""
+        },
+        {
+          "name": "Ryanair",
+          "url": "https://www.ryanair.com/tr/en",
+          "logo": ""
+        },
+        {
+          "name": "easyJet",
+          "url": "https://www.easyjet.com/es",
+          "logo": ""
+        },
+        {
+          "name": "Vueling",
+          "url": "https://www.vueling.com/en",
+          "logo": ""
+        },
+        {
+          "name": "中国国航",
+          "url": "https://www.airchina.com.cn/",
+          "logo": ""
+        },
+        {
+          "name": "东方航空",
+          "url": "https://m.ceair.com/",
+          "logo": ""
+        },
+        {
+          "name": "新加坡航空",
+          "url": "https://www.singaporeair.com/zh_CN/cn/home#/book/bookflight",
+          "logo": ""
         }
       ]
     },
@@ -361,27 +511,27 @@ window.NAV_DATA = {
       "name": "小工具",
       "items": [
         {
-          "name": "savetwitter",
+          "name": "SaveTwitter",
           "url": "https://savetwitter.net/zh-cn3",
           "logo": "assets/logos/savetwitter.png"
         },
         {
-          "name": "speedtest",
+          "name": "Speedtest",
           "url": "https://www.speedtest.net/",
           "logo": "assets/logos/speedtest.png"
         },
         {
-          "name": "dnsdumpster",
+          "name": "DNSDumpster",
           "url": "https://dnsdumpster.com/",
           "logo": "assets/logos/dns.jpg"
         },
         {
-          "name": "submarinecablemap",
+          "name": "Submarine Cable Map",
           "url": "https://www.submarinecablemap.com/",
           "logo": "assets/logos/submarinecablemap.png"
         },
         {
-          "name": "tagss",
+          "name": "Tagss",
           "url": "https://tagss.pro/#/home",
           "logo": "assets/logos/tagss.jpg"
         },
@@ -404,6 +554,11 @@ window.NAV_DATA = {
           "name": "随机字符串",
           "url": "http://www.toolzl.com/tools/createString.html",
           "logo": ""
+        },
+        {
+          "name": "Apple",
+          "url": "https://www.apple.com.cn/",
+          "logo": "assets/logos/icloud.webp"
         }
       ]
     },
@@ -411,12 +566,12 @@ window.NAV_DATA = {
       "name": "办公工具",
       "items": [
         {
-          "name": "linkedin",
+          "name": "LinkedIn",
           "url": "https://www.linkedin.com/feed/",
           "logo": "assets/logos/linkedin.webp"
         },
         {
-          "name": "ChatGpt",
+          "name": "ChatGPT",
           "url": "https://chat.openai.com/",
           "logo": "assets/logos/chatgpt.webp"
         },
@@ -446,7 +601,7 @@ window.NAV_DATA = {
           "logo": "assets/logos/onedrive.webp"
         },
         {
-          "name": "draw.io",
+          "name": "Draw.io",
           "url": "https://app.diagrams.net/",
           "logo": "assets/logos/drawio.webp"
         },
@@ -714,6 +869,11 @@ window.NAV_DATA = {
           "name": "Google 软件工程",
           "url": "https://qiangmzsx.github.io/Software-Engineering-at-Google/",
           "logo": "assets/logos/github.png"
+        },
+        {
+          "name": "中国国家地理",
+          "url": "http://www.dili360.com/",
+          "logo": ""
         }
       ]
     },
@@ -731,7 +891,7 @@ window.NAV_DATA = {
           "logo": "assets/logos/gitlab.webp"
         },
         {
-          "name": "security onboard",
+          "name": "Security Onboard",
           "url": "obf1:CxpZHhJMAkRUDApIQBUTQxhYEUBOAhRZXg5UFhxEGhhZQgVVDA9fCk4=",
           "logo": "assets/logos/gitlab.webp"
         },
@@ -741,7 +901,7 @@ window.NAV_DATA = {
           "logo": "assets/logos/gitlab.webp"
         },
         {
-          "name": "biometrics",
+          "name": "Biometrics",
           "url": "obf1:CxpZHhJMAkRUDApIQBUTQxhYEUBOAhRZRAVRDB1IDU4URARaBhpfBwIF",
           "logo": "assets/logos/gitlab.webp"
         },
@@ -756,57 +916,57 @@ window.NAV_DATA = {
           "logo": "assets/logos/wiki.webp"
         },
         {
-          "name": "thor_wiki",
+          "name": "Thor Wiki",
           "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZSQRUTBZOG0wCRQRFThh1FyMhQlN2E1Y=",
           "logo": "assets/logos/wiki.webp"
         },
         {
-          "name": "tcu_wiki",
+          "name": "TCU Wiki",
           "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZSQRUTBpOG0wYVRsaDx0cXlUOAARBBhxbBwQBADpFUFxqOxZBRBI=",
           "logo": "assets/logos/wiki.webp"
         },
         {
-          "name": "vdu_wiki",
+          "name": "VDU Wiki",
           "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZSQRUTBhJG0wfQx9FDApYDRUfQgUaFwEAHVJESlkaEAtfBwQFAA9YABtACw8CXkZiVll9ICIHflIF",
           "logo": "assets/logos/wiki.webp"
         },
         {
-          "name": "cdc_wiki",
+          "name": "CDC Wiki",
           "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZSQRUTA1JDUwVSQgaDBhIHBcfSBwaEVkcGg4ZaQx5Gg==",
           "logo": "assets/logos/wiki.webp"
         },
         {
-          "name": "xcu_arch",
+          "name": "XCU Arch",
           "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZSQRUTBZOG1VGACgCCQBkCCAyWgI=",
           "logo": "assets/logos/wiki.webp"
         },
         {
-          "name": "xcu_bsp",
+          "name": "XCU BSP",
           "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZSQRUTBpFARNbXTNmGRcfPzZHHg==",
           "logo": "assets/logos/wiki.webp"
         },
         {
-          "name": "xcu_platform",
+          "name": "XCU Platform",
           "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZSQRUTBZOG1VGAB5ETgpIGAgVSEZfJCpoF1ZFFTxa",
           "logo": "assets/logos/wiki.webp"
         },
         {
-          "name": "New Expensify",
+          "name": "Expensify",
           "url": "https://new.expensify.com/search/view/8671926336041131",
           "logo": "assets/logos/expensify.png"
         },
         {
-          "name": "office",
+          "name": "Office",
           "url": "obf1:CxpZHhJMAkRYBQhEDQRYWQ5ZEAFfQAIaWERnEQFJGwICXkRxCgJIHU5VGlsGUw==",
           "logo": "assets/logos/ONLYOFFICE_logo.png"
         },
         {
-          "name": "ZULIP",
+          "name": "Zulip",
           "url": "obf1:CxpZHhJMAkReDkBZCw8FQhkZAAJYQQ==",
           "logo": "assets/logos/zulip.jpg"
         },
         {
-          "name": "Workrecord",
+          "name": "Work Record",
           "url": "https://github.com/carloscn/workrecord",
           "logo": "assets/logos/github.png"
         }
@@ -821,7 +981,7 @@ window.NAV_DATA = {
           "logo": "assets/logos/github.png"
         },
         {
-          "name": "LIFE",
+          "name": "Life",
           "url": "https://github.com/carloscn/life",
           "logo": "assets/logos/github.png"
         }
