@@ -15,6 +15,10 @@
             ? "dark" : "light";
         }
         document.documentElement.setAttribute("data-theme", t);
+        var p = localStorage.getItem("cn-nav-palette");
+        var ok = { default: 1, github: 1, reddit: 1, twitter: 1 };
+        if (!ok[p]) p = "default";
+        document.documentElement.setAttribute("data-palette", p);
       } catch (e) {}
     })();
   </script>
@@ -76,6 +80,199 @@
       --night: #93c5fd;
       --focus: rgba(34, 197, 94, 0.22);
       --engine-border: #166534;
+      color-scheme: dark;
+    }
+
+    /* ----- Color palettes (independent of light/dark) ----- */
+    /* GitHub Primer-ish: neutral canvas, green primary actions, blue links */
+    html[data-palette="github"] {
+      --green: #1f883d;
+      --green-dark: #1a7f37;
+      --green-soft: #dafbe1;
+      --body: #f6f8fa;
+      --bg-top: #ffffff;
+      --surface: #ffffff;
+      --surface-2: #f6f8fa;
+      --fill: #ffffff;
+      --text: #1f2328;
+      --muted: #59636e;
+      --cat: #1a7f37;
+      --link: #0969da;
+      --hover: #0550ae;
+      --line: #d1d9e0;
+      --line-soft: #e6eaef;
+      --chip: #1f2328;
+      --meta: #59636e;
+      --rank: #818b98;
+      --day: #9a6700;
+      --night: #0969da;
+      --focus: rgba(9, 105, 218, 0.2);
+      --engine-border: #54aeff;
+      color-scheme: light;
+    }
+    html[data-palette="github"][data-theme="dark"] {
+      --green: #238636;
+      --green-dark: #3fb950;
+      --green-soft: #12261e;
+      --body: #0d1117;
+      --bg-top: #010409;
+      --surface: #161b22;
+      --surface-2: #151b23;
+      --fill: #161b22;
+      --text: #f0f6fc;
+      --muted: #9198a1;
+      --cat: #3fb950;
+      --link: #4493f8;
+      --hover: #79c0ff;
+      --line: #3d444d;
+      --line-soft: #212830;
+      --chip: #f0f6fc;
+      --meta: #9198a1;
+      --rank: #6e7681;
+      --day: #d29922;
+      --night: #79c0ff;
+      --focus: rgba(31, 111, 235, 0.28);
+      --engine-border: #1f6feb;
+      color-scheme: dark;
+    }
+    /* GitHub: blue hyperlinks (Primer accent), green stays for primary UI */
+    html[data-palette="github"] .sort-links a,
+    html[data-palette="github"] .hot-board-list a,
+    html[data-palette="github"] .side-tools-grid a,
+    html[data-palette="github"] .side-tools-more a {
+      color: var(--link);
+    }
+    html[data-palette="github"] .sort-links a:hover,
+    html[data-palette="github"] .hot-board-list a:hover,
+    html[data-palette="github"] .side-tools-grid a:hover,
+    html[data-palette="github"] .side-tools-more a:hover,
+    html[data-palette="github"] .hot-grid a:hover {
+      color: var(--hover);
+      background: #ddf4ff;
+    }
+    html[data-palette="github"][data-theme="dark"] .sort-links a:hover,
+    html[data-palette="github"][data-theme="dark"] .hot-board-list a:hover,
+    html[data-palette="github"][data-theme="dark"] .side-tools-grid a:hover,
+    html[data-palette="github"][data-theme="dark"] .side-tools-more a:hover,
+    html[data-palette="github"][data-theme="dark"] .hot-grid a:hover {
+      background: #121d2f;
+    }
+    html[data-palette="github"] .search-tabs li.active,
+    html[data-palette="github"] .search-box button[type="submit"],
+    html[data-palette="github"] .city-row button,
+    html[data-palette="github"] .city-actions button:not(.ghost) {
+      background: #1f883d;
+      color: #fff;
+      border-color: rgba(31, 136, 61, 0.8);
+      box-shadow: none;
+    }
+    html[data-palette="github"][data-theme="dark"] .search-tabs li.active,
+    html[data-palette="github"][data-theme="dark"] .search-box button[type="submit"],
+    html[data-palette="github"][data-theme="dark"] .city-row button,
+    html[data-palette="github"][data-theme="dark"] .city-actions button:not(.ghost) {
+      background: #238636;
+      border-color: #238636;
+    }
+
+    html[data-palette="reddit"] {
+      --green: #ff4500;
+      --green-dark: #d93900;
+      --green-soft: #fff1ec;
+      --body: #dae0e6;
+      --bg-top: #edeff1;
+      --surface: #ffffff;
+      --surface-2: #f6f7f8;
+      --fill: #ffffff;
+      --text: #1c1c1c;
+      --muted: #7c7c7c;
+      --cat: #ff4500;
+      --link: #1c1c1c;
+      --hover: #0079d3;
+      --line: #ccc;
+      --line-soft: #eDEFF1;
+      --chip: #1a1a1b;
+      --meta: #7c7c7c;
+      --rank: #878a8c;
+      --day: #ff8717;
+      --night: #0079d3;
+      --focus: rgba(255, 69, 0, 0.16);
+      --engine-border: #ff8717;
+      color-scheme: light;
+    }
+    html[data-palette="reddit"][data-theme="dark"] {
+      --green: #ff4500;
+      --green-dark: #ff8717;
+      --green-soft: #3d1a10;
+      --body: #030303;
+      --bg-top: #0a0a0a;
+      --surface: #1a1a1b;
+      --surface-2: #272729;
+      --fill: #1a1a1b;
+      --text: #d7dadc;
+      --muted: #818384;
+      --cat: #ff8717;
+      --link: #d7dadc;
+      --hover: #72cdf6;
+      --line: #343536;
+      --line-soft: #272729;
+      --chip: #d7dadc;
+      --meta: #818384;
+      --rank: #6a6b6c;
+      --day: #ffb000;
+      --night: #72cdf6;
+      --focus: rgba(255, 69, 0, 0.22);
+      --engine-border: #ff4500;
+      color-scheme: dark;
+    }
+
+    html[data-palette="twitter"] {
+      --green: #1d9bf0;
+      --green-dark: #1a8cd8;
+      --green-soft: #e8f5fd;
+      --body: #f7f9f9;
+      --bg-top: #ffffff;
+      --surface: #ffffff;
+      --surface-2: #f7f9f9;
+      --fill: #ffffff;
+      --text: #0f1419;
+      --muted: #536471;
+      --cat: #1d9bf0;
+      --link: #0f1419;
+      --hover: #f4212e;
+      --line: #eff3f4;
+      --line-soft: #f7f9f9;
+      --chip: #0f1419;
+      --meta: #536471;
+      --rank: #8b98a5;
+      --day: #ff7a00;
+      --night: #1d9bf0;
+      --focus: rgba(29, 155, 240, 0.18);
+      --engine-border: #8ecdf8;
+      color-scheme: light;
+    }
+    html[data-palette="twitter"][data-theme="dark"] {
+      --green: #1d9bf0;
+      --green-dark: #1d9bf0;
+      --green-soft: #031525;
+      --body: #000000;
+      --bg-top: #000000;
+      --surface: #16181c;
+      --surface-2: #1d1f23;
+      --fill: #16181c;
+      --text: #e7e9ea;
+      --muted: #71767b;
+      --cat: #1d9bf0;
+      --link: #e7e9ea;
+      --hover: #f4212e;
+      --line: #2f3336;
+      --line-soft: #1d1f23;
+      --chip: #e7e9ea;
+      --meta: #71767b;
+      --rank: #6e767d;
+      --day: #ffd400;
+      --night: #1d9bf0;
+      --focus: rgba(29, 155, 240, 0.22);
+      --engine-border: #1d9bf0;
       color-scheme: dark;
     }
 
@@ -941,6 +1138,188 @@
       color: var(--green-dark);
     }
 
+    /* FX rates board (below 收藏 / category rows) */
+    .rates-box {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      margin-bottom: 10px;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .rates-inner {
+      padding: 10px 12px 12px;
+    }
+
+    .rates-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .rates-head h3 {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 750;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .rates-head h3::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      margin-right: 6px;
+      vertical-align: 1px;
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--green) 22%, transparent);
+    }
+
+    .rates-head .rates-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .rates-head button,
+    .rates-head a.rates-more {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 11px;
+      padding: 0 8px;
+      height: 24px;
+      line-height: 22px;
+      cursor: pointer;
+      font-family: inherit;
+      border-radius: 999px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .rates-head button:hover,
+    .rates-head a.rates-more:hover {
+      color: var(--green-dark);
+      border-color: color-mix(in srgb, var(--green) 40%, var(--line));
+      background: var(--green-soft);
+    }
+
+    .rates-status {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      min-height: 1.2em;
+    }
+
+    .rates-status.error { color: #dc2626; }
+
+    .rates-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .rate-card {
+      min-width: 0;
+      border: 1px solid var(--line-soft);
+      background: var(--fill);
+      border-radius: var(--radius-sm);
+      padding: 10px 10px 9px;
+      text-align: center;
+    }
+
+    .rate-card .pair {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .rate-card .pair small {
+      display: block;
+      margin-top: 2px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .rate-card .price {
+      font-size: 20px;
+      font-weight: 750;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      font-family: "Segoe UI", ui-monospace, Consolas, monospace;
+      line-height: 1.2;
+    }
+
+    .rate-card .price .unit {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-left: 2px;
+    }
+
+    .rate-card .delta {
+      margin-top: 3px;
+      font-size: 11px;
+      font-weight: 650;
+      font-variant-numeric: tabular-nums;
+      color: var(--muted);
+    }
+
+    .rate-card .delta.up { color: #dc2626; }
+    .rate-card .delta.down { color: #16a34a; }
+
+    .rate-spark {
+      display: block;
+      width: 100%;
+      height: 44px;
+      margin-top: 8px;
+      overflow: visible;
+    }
+
+    .rate-spark .spark-fill {
+      fill: color-mix(in srgb, var(--green) 14%, transparent);
+    }
+
+    .rate-spark .spark-line {
+      fill: none;
+      stroke: var(--green-dark);
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .rate-spark.up .spark-fill {
+      fill: color-mix(in srgb, #dc2626 12%, transparent);
+    }
+    .rate-spark.up .spark-line { stroke: #dc2626; }
+
+    .rate-spark.down .spark-fill {
+      fill: color-mix(in srgb, #16a34a 14%, transparent);
+    }
+    .rate-spark.down .spark-line { stroke: #16a34a; }
+
+    .rates-meta {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    @media (max-width: 720px) {
+      .rates-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .link-icon {
       width: 22px;
       height: 22px;
@@ -1037,7 +1416,8 @@
     }
 
 
-    .theme-toggle {
+    .theme-toggle,
+    .palette-select {
       border: 1px solid var(--line);
       background: var(--fill);
       color: var(--muted);
@@ -1051,7 +1431,14 @@
       white-space: nowrap;
     }
 
-    .theme-toggle:hover {
+    .palette-select {
+      max-width: 108px;
+      padding-right: 4px;
+      appearance: auto;
+    }
+
+    .theme-toggle:hover,
+    .palette-select:hover {
       color: var(--green-dark);
       border-color: var(--engine-border);
       background: var(--green-soft);
@@ -1074,6 +1461,12 @@
       </div>
       <div class="topbar-center" id="topDate">—</div>
       <div class="topbar-right">
+        <select class="palette-select" id="paletteSelect" title="切换色系" aria-label="色系">
+          <option value="default">默认绿</option>
+          <option value="github">GitHub</option>
+          <option value="reddit">Reddit</option>
+          <option value="twitter">Twitter</option>
+        </select>
         <button type="button" class="theme-toggle" id="btnTheme" title="切换浅色/深色">深色</button>
         <a href="#" id="btnChangeCityTop">切换城市</a>
         <a href="text.html" id="btnSwitchText" title="切换到纯文字版">纯文字版</a>
@@ -1322,8 +1715,11 @@
       updateTopDate();
       setInterval(updateTopDate, 60000);
 
-      /* ---------- Theme (light / dark) ---------- */
+      /* ---------- Theme (light / dark) + palette (GitHub / Reddit / Twitter) ---------- */
       var THEME_KEY = "cn-nav-theme";
+      var PALETTE_KEY = "cn-nav-palette";
+      var PALETTES = ["default", "github", "reddit", "twitter"];
+
       function currentTheme() {
         var t = document.documentElement.getAttribute("data-theme");
         return t === "dark" ? "dark" : "light";
@@ -1343,6 +1739,24 @@
         });
       }
 
+      function currentPalette() {
+        var p = document.documentElement.getAttribute("data-palette") || "default";
+        return PALETTES.indexOf(p) >= 0 ? p : "default";
+      }
+      function applyPalette(name) {
+        var next = PALETTES.indexOf(name) >= 0 ? name : "default";
+        document.documentElement.setAttribute("data-palette", next);
+        try { localStorage.setItem(PALETTE_KEY, next); } catch (e) {}
+        var sel = document.getElementById("paletteSelect");
+        if (sel && sel.value !== next) sel.value = next;
+      }
+      applyPalette(currentPalette());
+      var paletteSel = document.getElementById("paletteSelect");
+      if (paletteSel) {
+        paletteSel.addEventListener("change", function () {
+          applyPalette(paletteSel.value);
+        });
+      }
 
       /* ---------- Multi-tab search (hao268-style: web / image / video / …) ---------- */
       var SEARCH_STORE = "cn-nav-search-pref";
@@ -1637,6 +2051,428 @@
         row.appendChild(links);
         sortBox.appendChild(row);
       });
+
+      /* ---------- FX rates + 30d sparklines: USD/CNY, EUR/CNY, XAU/USD ---------- */
+      (function bootRates() {
+        var RATES_CACHE_KEY = "cn-nav-fx-rates-v2";
+        var RATES_CACHE_MS = 10 * 60 * 1000;
+
+        var box = document.createElement("section");
+        box.className = "rates-box";
+        box.setAttribute("aria-label", "汇率");
+        box.innerHTML =
+          '<div class="rates-inner">' +
+          '  <div class="rates-head">' +
+          '    <h3>汇率</h3>' +
+          '    <div class="rates-actions">' +
+          '      <button type="button" id="btnRatesRefresh" title="刷新汇率与曲线">刷新</button>' +
+          '      <a class="rates-more" href="https://www.xe.com/currencyconverter/" target="_blank" rel="noopener noreferrer">更多</a>' +
+          "    </div>" +
+          "  </div>" +
+          '  <div class="rates-status" id="ratesStatus">正在加载汇率…</div>' +
+          '  <div class="rates-grid" id="ratesGrid" hidden>' +
+          '    <div class="rate-card" data-key="usdCny">' +
+          '      <div class="pair">USD / CNY<small>美元 → 人民币 · 近30日</small></div>' +
+          '      <div class="price" id="rateUsdCny">—</div>' +
+          '      <div class="delta" id="deltaUsdCny"></div>' +
+          '      <svg class="rate-spark" id="sparkUsdCny" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"></svg>' +
+          "    </div>" +
+          '    <div class="rate-card" data-key="eurCny">' +
+          '      <div class="pair">EUR / CNY<small>欧元 → 人民币 · 近30日</small></div>' +
+          '      <div class="price" id="rateEurCny">—</div>' +
+          '      <div class="delta" id="deltaEurCny"></div>' +
+          '      <svg class="rate-spark" id="sparkEurCny" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"></svg>' +
+          "    </div>" +
+          '    <div class="rate-card" data-key="xauUsd">' +
+          '      <div class="pair">XAU / USD<small>黄金现货 · 近30日</small></div>' +
+          '      <div class="price" id="rateXauUsd">—</div>' +
+          '      <div class="delta" id="deltaXauUsd"></div>' +
+          '      <svg class="rate-spark" id="sparkXauUsd" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"></svg>' +
+          "    </div>" +
+          "  </div>" +
+          '  <div class="rates-meta" id="ratesMeta"></div>' +
+          "</div>";
+        main.appendChild(box);
+
+        var statusEl = document.getElementById("ratesStatus");
+        var gridEl = document.getElementById("ratesGrid");
+        var metaEl = document.getElementById("ratesMeta");
+        var elUsd = document.getElementById("rateUsdCny");
+        var elEur = document.getElementById("rateEurCny");
+        var elXau = document.getElementById("rateXauUsd");
+        var refreshing = false;
+
+        function setStatus(msg, isError) {
+          if (!statusEl) return;
+          statusEl.hidden = !msg;
+          statusEl.textContent = msg || "";
+          statusEl.className = "rates-status" + (isError ? " error" : "");
+        }
+
+        function fmtFx(n, digits) {
+          if (n == null || isNaN(n)) return "—";
+          var d = digits == null ? 4 : digits;
+          return Number(n).toLocaleString("en-US", {
+            minimumFractionDigits: d,
+            maximumFractionDigits: d
+          });
+        }
+
+        function fmtGold(n) {
+          if (n == null || isNaN(n)) return "—";
+          return (
+            Number(n).toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2
+            }) + '<span class="unit">USD</span>'
+          );
+        }
+
+        function isoDate(d) {
+          var y = d.getFullYear();
+          var m = String(d.getMonth() + 1).padStart(2, "0");
+          var day = String(d.getDate()).padStart(2, "0");
+          return y + "-" + m + "-" + day;
+        }
+
+        function loadCache() {
+          try {
+            var raw = sessionStorage.getItem(RATES_CACHE_KEY);
+            if (!raw) return null;
+            var obj = JSON.parse(raw);
+            if (!obj || !obj.ts || !obj.data) return null;
+            if (Date.now() - obj.ts > RATES_CACHE_MS) return null;
+            return obj.data;
+          } catch (e) {
+            return null;
+          }
+        }
+
+        function saveCache(data) {
+          try {
+            sessionStorage.setItem(
+              RATES_CACHE_KEY,
+              JSON.stringify({ ts: Date.now(), data: data })
+            );
+          } catch (e) {}
+        }
+
+        function seriesDelta(series) {
+          if (!series || series.length < 2) return null;
+          var a = series[0];
+          var b = series[series.length - 1];
+          if (!(a > 0) || !(b > 0)) return null;
+          return ((b - a) / a) * 100;
+        }
+
+        function paintSpark(svgId, series) {
+          var svg = document.getElementById(svgId);
+          if (!svg) return;
+          svg.innerHTML = "";
+          svg.classList.remove("up", "down");
+          if (!series || series.length < 2) return;
+
+          var w = 120;
+          var h = 40;
+          var pad = 2;
+          var min = Math.min.apply(null, series);
+          var max = Math.max.apply(null, series);
+          var span = max - min || 1;
+          var n = series.length;
+          var pts = [];
+          for (var i = 0; i < n; i++) {
+            var x = pad + (i / (n - 1)) * (w - pad * 2);
+            var y = pad + (1 - (series[i] - min) / span) * (h - pad * 2);
+            pts.push(x.toFixed(2) + "," + y.toFixed(2));
+          }
+          var line = pts.join(" ");
+          var area =
+            pad.toFixed(2) +
+            "," +
+            (h - pad).toFixed(2) +
+            " " +
+            line +
+            " " +
+            (w - pad).toFixed(2) +
+            "," +
+            (h - pad).toFixed(2);
+
+          var polyFill = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+          polyFill.setAttribute("class", "spark-fill");
+          polyFill.setAttribute("points", area);
+
+          var polyLine = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+          polyLine.setAttribute("class", "spark-line");
+          polyLine.setAttribute("points", line);
+
+          svg.appendChild(polyFill);
+          svg.appendChild(polyLine);
+
+          var d = seriesDelta(series);
+          if (d != null) {
+            if (d > 0.02) svg.classList.add("up");
+            else if (d < -0.02) svg.classList.add("down");
+          }
+        }
+
+        function paintDelta(elId, series, digits) {
+          var el = document.getElementById(elId);
+          if (!el) return;
+          el.className = "delta";
+          var d = seriesDelta(series);
+          if (d == null) {
+            el.textContent = "";
+            return;
+          }
+          var sign = d > 0 ? "+" : "";
+          el.textContent = "30日 " + sign + d.toFixed(digits == null ? 2 : digits) + "%";
+          if (d > 0.02) el.classList.add("up");
+          else if (d < -0.02) el.classList.add("down");
+        }
+
+        function renderRates(data) {
+          if (!data) return;
+          if (elUsd) {
+            elUsd.innerHTML =
+              fmtFx(data.usdCny, 4) + '<span class="unit">CNY</span>';
+          }
+          if (elEur) {
+            elEur.innerHTML =
+              fmtFx(data.eurCny, 4) + '<span class="unit">CNY</span>';
+          }
+          if (elXau) elXau.innerHTML = fmtGold(data.xauUsd);
+
+          paintSpark("sparkUsdCny", data.histUsdCny);
+          paintSpark("sparkEurCny", data.histEurCny);
+          paintSpark("sparkXauUsd", data.histXauUsd);
+          paintDelta("deltaUsdCny", data.histUsdCny, 2);
+          paintDelta("deltaEurCny", data.histEurCny, 2);
+          paintDelta("deltaXauUsd", data.histXauUsd, 2);
+
+          if (gridEl) gridEl.hidden = false;
+          setStatus("");
+          if (metaEl) {
+            var parts = [];
+            if (data.asOf) parts.push("数据 " + data.asOf);
+            parts.push("曲线约近30日");
+            parts.push("约每10分钟可刷新");
+            metaEl.textContent = parts.join(" · ");
+          }
+        }
+
+        function fetchJson(url) {
+          return fetch(url, { cache: "no-store", mode: "cors", credentials: "omit" }).then(
+            function (r) {
+              if (!r.ok) throw new Error("HTTP " + r.status);
+              return r.json();
+            }
+          );
+        }
+
+        function firstOk(urls, pick) {
+          var chain = Promise.reject(new Error("start"));
+          urls.forEach(function (u) {
+            chain = chain.catch(function () {
+              return fetchJson(u).then(function (j) {
+                var v = pick(j);
+                if (v == null || isNaN(v) || !(v > 0)) throw new Error("bad value");
+                return v;
+              });
+            });
+          });
+          return chain;
+        }
+
+        function frankfurterHistory(from, to) {
+          var end = new Date();
+          var start = new Date();
+          start.setDate(end.getDate() - 30);
+          var url =
+            "https://api.frankfurter.app/" +
+            isoDate(start) +
+            ".." +
+            isoDate(end) +
+            "?from=" +
+            encodeURIComponent(from) +
+            "&to=" +
+            encodeURIComponent(to);
+          return fetchJson(url).then(function (j) {
+            var rates = j.rates || {};
+            var dates = Object.keys(rates).sort();
+            var series = [];
+            for (var i = 0; i < dates.length; i++) {
+              var row = rates[dates[i]];
+              var v = row && row[to];
+              if (v != null && !isNaN(v)) series.push(Number(v));
+            }
+            if (series.length < 2) throw new Error("short history");
+            return series;
+          });
+        }
+
+        function fetchUsdCny() {
+          return firstOk(
+            [
+              "https://api.frankfurter.app/latest?from=USD&to=CNY",
+              "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json",
+              "https://latest.currency-api.pages.dev/v1/currencies/usd.json",
+              "https://open.er-api.com/v6/latest/USD"
+            ],
+            function (j) {
+              if (j.rates && j.rates.CNY != null) return Number(j.rates.CNY);
+              if (j.usd && j.usd.cny != null) return Number(j.usd.cny);
+              if (j.conversion_rates && j.conversion_rates.CNY != null) {
+                return Number(j.conversion_rates.CNY);
+              }
+              return null;
+            }
+          );
+        }
+
+        function fetchEurCny() {
+          return firstOk(
+            [
+              "https://api.frankfurter.app/latest?from=EUR&to=CNY",
+              "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json",
+              "https://latest.currency-api.pages.dev/v1/currencies/eur.json"
+            ],
+            function (j) {
+              if (j.rates && j.rates.CNY != null) return Number(j.rates.CNY);
+              if (j.eur && j.eur.cny != null) return Number(j.eur.cny);
+              return null;
+            }
+          );
+        }
+
+        function fetchXauUsd() {
+          return firstOk(
+            [
+              "https://api.gold-api.com/price/XAU",
+              "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/xau.json",
+              "https://latest.currency-api.pages.dev/v1/currencies/xau.json"
+            ],
+            function (j) {
+              if (j.price != null && (j.symbol === "XAU" || j.name === "Gold" || j.currency === "USD")) {
+                return Number(j.price);
+              }
+              if (j.xau && j.xau.usd != null) return Number(j.xau.usd);
+              return null;
+            }
+          );
+        }
+
+        function fetchXauHistory() {
+          // Sample ~15 points over ~30 days (fawaz dated CDN)
+          var end = new Date();
+          var jobs = [];
+          for (var i = 30; i >= 0; i -= 2) {
+            (function (offset) {
+              var d = new Date(end.getTime());
+              d.setDate(end.getDate() - offset);
+              var day = isoDate(d);
+              var urls = [
+                "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@" + day + "/v1/currencies/xau.json",
+                "https://latest.currency-api.pages.dev/v1/currencies/xau.json"
+              ];
+              // only use "latest" for the newest sample
+              if (offset !== 0) urls = [urls[0]];
+              jobs.push(
+                firstOk(urls, function (j) {
+                  if (j.xau && j.xau.usd != null) return Number(j.xau.usd);
+                  return null;
+                }).catch(function () {
+                  return null;
+                })
+              );
+            })(i);
+          }
+          return Promise.all(jobs).then(function (vals) {
+            var series = vals.filter(function (v) {
+              return v != null && v > 0;
+            });
+            if (series.length < 2) throw new Error("xau hist short");
+            return series;
+          });
+        }
+
+        function fetchRates(force) {
+          if (refreshing) return;
+          if (!force) {
+            var cached = loadCache();
+            if (cached) {
+              renderRates(cached);
+              return;
+            }
+          }
+          refreshing = true;
+          setStatus("正在加载汇率与曲线…");
+          if (gridEl) gridEl.hidden = true;
+
+          Promise.all([
+            fetchUsdCny(),
+            fetchEurCny(),
+            fetchXauUsd(),
+            frankfurterHistory("USD", "CNY").catch(function () {
+              return null;
+            }),
+            frankfurterHistory("EUR", "CNY").catch(function () {
+              return null;
+            }),
+            fetchXauHistory().catch(function () {
+              return null;
+            })
+          ])
+            .then(function (vals) {
+              var usd = vals[0];
+              var eur = vals[1];
+              var xau = vals[2];
+              var histUsd = vals[3] || [usd, usd];
+              var histEur = vals[4] || [eur, eur];
+              var histXau = vals[5] || [xau, xau];
+
+              // Ensure last point matches latest quote for a continuous line
+              if (histUsd[histUsd.length - 1] !== usd) histUsd = histUsd.concat([usd]);
+              if (histEur[histEur.length - 1] !== eur) histEur = histEur.concat([eur]);
+              if (histXau[histXau.length - 1] !== xau) histXau = histXau.concat([xau]);
+
+              var data = {
+                usdCny: usd,
+                eurCny: eur,
+                xauUsd: xau,
+                histUsdCny: histUsd,
+                histEurCny: histEur,
+                histXauUsd: histXau,
+                asOf: new Date().toLocaleString("zh-CN", {
+                  month: "2-digit",
+                  day: "2-digit",
+                  hour: "2-digit",
+                  minute: "2-digit"
+                })
+              };
+              saveCache(data);
+              renderRates(data);
+            })
+            .catch(function (err) {
+              console.warn("fx rates", err);
+              setStatus("汇率加载失败，请稍后刷新", true);
+              if (gridEl) gridEl.hidden = true;
+            })
+            .then(function () {
+              refreshing = false;
+            });
+        }
+
+        var btn = document.getElementById("btnRatesRefresh");
+        if (btn) {
+          btn.addEventListener("click", function () {
+            try {
+              sessionStorage.removeItem(RATES_CACHE_KEY);
+            } catch (e) {}
+            fetchRates(true);
+          });
+        }
+        fetchRates(false);
+      })();
 
       /* ---------- Weather (hao268-style left panel, text only, Open-Meteo) ---------- */
       var STORAGE_KEY = "cn-nav-weather-city";

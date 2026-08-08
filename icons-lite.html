@@ -15,6 +15,10 @@
             ? "dark" : "light";
         }
         document.documentElement.setAttribute("data-theme", t);
+        var p = localStorage.getItem("cn-nav-palette");
+        var ok = { default: 1, github: 1, reddit: 1, twitter: 1 };
+        if (!ok[p]) p = "default";
+        document.documentElement.setAttribute("data-palette", p);
       } catch (e) {}
     })();
   </script>
@@ -46,6 +50,161 @@
       --primary-soft: #1e293b;
       --icon-bg: #111827;
       --shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+      color-scheme: dark;
+    }
+
+    /* ----- Color palettes (independent of light/dark) ----- */
+    /* GitHub Primer-ish: neutral canvas, green primary actions, blue links */
+    html[data-palette="github"] {
+      --green: #1f883d;
+      --green-dark: #1a7f37;
+      --green-soft: #dafbe1;
+      --body: #f6f8fa;
+      --bg-top: #ffffff;
+      --surface: #ffffff;
+      --surface-2: #f6f8fa;
+      --fill: #ffffff;
+      --text: #1f2328;
+      --muted: #59636e;
+      --cat: #1a7f37;
+      --link: #0969da;
+      --hover: #0550ae;
+      --line: #d1d9e0;
+      --line-soft: #e6eaef;
+      --chip: #1f2328;
+      --meta: #59636e;
+      --rank: #818b98;
+      --day: #9a6700;
+      --night: #0969da;
+      --focus: rgba(9, 105, 218, 0.2);
+      --engine-border: #54aeff;
+      color-scheme: light;
+    }
+    html[data-palette="github"][data-theme="dark"] {
+      --green: #238636;
+      --green-dark: #3fb950;
+      --green-soft: #12261e;
+      --body: #0d1117;
+      --bg-top: #010409;
+      --surface: #161b22;
+      --surface-2: #151b23;
+      --fill: #161b22;
+      --text: #f0f6fc;
+      --muted: #9198a1;
+      --cat: #3fb950;
+      --link: #4493f8;
+      --hover: #79c0ff;
+      --line: #3d444d;
+      --line-soft: #212830;
+      --chip: #f0f6fc;
+      --meta: #9198a1;
+      --rank: #6e7681;
+      --day: #d29922;
+      --night: #79c0ff;
+      --focus: rgba(31, 111, 235, 0.28);
+      --engine-border: #1f6feb;
+      color-scheme: dark;
+    }
+
+    html[data-palette="reddit"] {
+      --green: #ff4500;
+      --green-dark: #d93900;
+      --green-soft: #fff1ec;
+      --body: #dae0e6;
+      --bg-top: #edeff1;
+      --surface: #ffffff;
+      --surface-2: #f6f7f8;
+      --fill: #ffffff;
+      --text: #1c1c1c;
+      --muted: #7c7c7c;
+      --cat: #ff4500;
+      --link: #1c1c1c;
+      --hover: #0079d3;
+      --line: #ccc;
+      --line-soft: #eDEFF1;
+      --chip: #1a1a1b;
+      --meta: #7c7c7c;
+      --rank: #878a8c;
+      --day: #ff8717;
+      --night: #0079d3;
+      --focus: rgba(255, 69, 0, 0.16);
+      --engine-border: #ff8717;
+      color-scheme: light;
+    }
+    html[data-palette="reddit"][data-theme="dark"] {
+      --green: #ff4500;
+      --green-dark: #ff8717;
+      --green-soft: #3d1a10;
+      --body: #030303;
+      --bg-top: #0a0a0a;
+      --surface: #1a1a1b;
+      --surface-2: #272729;
+      --fill: #1a1a1b;
+      --text: #d7dadc;
+      --muted: #818384;
+      --cat: #ff8717;
+      --link: #d7dadc;
+      --hover: #72cdf6;
+      --line: #343536;
+      --line-soft: #272729;
+      --chip: #d7dadc;
+      --meta: #818384;
+      --rank: #6a6b6c;
+      --day: #ffb000;
+      --night: #72cdf6;
+      --focus: rgba(255, 69, 0, 0.22);
+      --engine-border: #ff4500;
+      color-scheme: dark;
+    }
+
+    html[data-palette="twitter"] {
+      --green: #1d9bf0;
+      --green-dark: #1a8cd8;
+      --green-soft: #e8f5fd;
+      --body: #f7f9f9;
+      --bg-top: #ffffff;
+      --surface: #ffffff;
+      --surface-2: #f7f9f9;
+      --fill: #ffffff;
+      --text: #0f1419;
+      --muted: #536471;
+      --cat: #1d9bf0;
+      --link: #0f1419;
+      --hover: #f4212e;
+      --line: #eff3f4;
+      --line-soft: #f7f9f9;
+      --chip: #0f1419;
+      --meta: #536471;
+      --rank: #8b98a5;
+      --day: #ff7a00;
+      --night: #1d9bf0;
+      --focus: rgba(29, 155, 240, 0.18);
+      --engine-border: #8ecdf8;
+      color-scheme: light;
+    }
+    html[data-palette="twitter"][data-theme="dark"] {
+      --green: #1d9bf0;
+      --green-dark: #1d9bf0;
+      --green-soft: #031525;
+      --body: #000000;
+      --bg-top: #000000;
+      --surface: #16181c;
+      --surface-2: #1d1f23;
+      --fill: #16181c;
+      --text: #e7e9ea;
+      --muted: #71767b;
+      --cat: #1d9bf0;
+      --link: #e7e9ea;
+      --hover: #f4212e;
+      --line: #2f3336;
+      --line-soft: #1d1f23;
+      --chip: #e7e9ea;
+      --meta: #71767b;
+      --rank: #6e767d;
+      --day: #ffd400;
+      --night: #1d9bf0;
+      --focus: rgba(29, 155, 240, 0.22);
+      --engine-border: #1d9bf0;
       color-scheme: dark;
     }
 
@@ -249,22 +408,54 @@
     }
 
 
-    .theme-toggle {
-      font-size: 0.85rem;
-      color: var(--muted);
+    .theme-toggle,
+    .palette-select {
       border: 1px solid var(--line);
-      background: var(--card);
-      border-radius: 999px;
-      padding: 6px 14px;
-      box-shadow: var(--shadow);
+      background: var(--fill, var(--card));
+      color: var(--muted);
+      font-size: 11px;
+      padding: 0 8px;
+      height: 24px;
+      line-height: 22px;
       cursor: pointer;
       font-family: inherit;
+      border-radius: 8px;
+      white-space: nowrap;
     }
 
-    .theme-toggle:hover {
-      color: var(--primary);
-      border-color: color-mix(in srgb, var(--primary) 45%, var(--line));
-      background: var(--primary-soft);
+    .palette-select {
+      max-width: 108px;
+      padding-right: 4px;
+      appearance: auto;
+    }
+
+    .theme-toggle:hover,
+    .palette-select:hover {
+      color: var(--green-dark, var(--primary));
+      border-color: var(--engine-border, var(--primary));
+      background: var(--green-soft, var(--primary-soft));
+    }
+
+    /* Map shared palette tokens onto icons-lite variables */
+    html[data-palette="github"],
+    html[data-palette="reddit"],
+    html[data-palette="twitter"] {
+      --bg: var(--body);
+      --card: var(--surface);
+      --primary: var(--green);
+      --primary-soft: var(--green-soft);
+      --icon-bg: var(--fill);
+    }
+    /* GitHub lite: blue primary accent on tiles (closer to Primer accent links) */
+    html[data-palette="github"] {
+      --primary: #0969da;
+      --primary-soft: #ddf4ff;
+    }
+    html[data-palette="github"][data-theme="dark"] {
+      --primary: #4493f8;
+      --primary-soft: #121d2f;
+      --bg: #0d1117;
+      --card: #161b22;
     }
 
     @media (max-width: 640px) {
@@ -277,6 +468,12 @@
 <body>
   <div class="wrap">
     <div class="view-switch">
+      <select class="palette-select" id="paletteSelect" title="切换色系" aria-label="色系">
+        <option value="default">默认绿</option>
+        <option value="github">GitHub</option>
+        <option value="reddit">Reddit</option>
+        <option value="twitter">Twitter</option>
+      </select>
       <button type="button" class="theme-toggle" id="btnTheme" title="切换浅色/深色">深色</button>
       <a href="text.html" title="切换到纯文字版">纯文字版</a>
       <a href="index.html" title="切换到有图完整版">有图版</a>
@@ -322,7 +519,11 @@
       document.title = (data.title || "Carlos' Navigator") + " · 有图精简";
 
 
+      /* ---------- Theme (light / dark) + palette (GitHub / Reddit / Twitter) ---------- */
       var THEME_KEY = "cn-nav-theme";
+      var PALETTE_KEY = "cn-nav-palette";
+      var PALETTES = ["default", "github", "reddit", "twitter"];
+
       function currentTheme() {
         var t = document.documentElement.getAttribute("data-theme");
         return t === "dark" ? "dark" : "light";
@@ -341,6 +542,26 @@
           applyTheme(currentTheme() === "dark" ? "light" : "dark");
         });
       }
+
+      function currentPalette() {
+        var p = document.documentElement.getAttribute("data-palette") || "default";
+        return PALETTES.indexOf(p) >= 0 ? p : "default";
+      }
+      function applyPalette(name) {
+        var next = PALETTES.indexOf(name) >= 0 ? name : "default";
+        document.documentElement.setAttribute("data-palette", next);
+        try { localStorage.setItem(PALETTE_KEY, next); } catch (e) {}
+        var sel = document.getElementById("paletteSelect");
+        if (sel && sel.value !== next) sel.value = next;
+      }
+      applyPalette(currentPalette());
+      var paletteSel = document.getElementById("paletteSelect");
+      if (paletteSel) {
+        paletteSel.addEventListener("change", function () {
+          applyPalette(paletteSel.value);
+        });
+      }
+
 
       const main = document.getElementById("main");
 
