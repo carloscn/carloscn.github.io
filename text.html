@@ -1487,6 +1487,9 @@
             <button type="button" data-engine="google" class="active">Google</button>
             <button type="button" data-engine="baidu">百度</button>
             <button type="button" data-engine="bing">Bing</button>
+            <button type="button" data-engine="x">X</button>
+            <button type="button" data-engine="grok">Grok</button>
+            <button type="button" data-engine="chatgpt">ChatGPT</button>
           </div>
           <ul class="search-tabs" id="searchTabs" role="tablist">
             <li class="active" data-tab="web" role="tab" aria-selected="true">网 页</li>
@@ -1758,7 +1761,8 @@
         translate: "翻译",
         music: "音乐"
       };
-      var ENGINE_LABELS = { google: "Google", baidu: "百度", bing: "Bing" };
+      var ENGINE_LABELS = { google: "Google", baidu: "百度", bing: "Bing", x: "X", grok: "Grok", chatgpt: "ChatGPT" };
+      var CHAT_ENGINES = { grok: true, chatgpt: true };
 
       // Each entry: { action, param, extra?, method? } — query goes into `param`
       var SEARCH_MAP = {
@@ -1791,6 +1795,19 @@
           scholar: { action: "https://scholar.google.com/scholar", param: "q", extra: {} },
           translate: { action: "https://www.bing.com/translator", param: "text", extra: {} },
           music: { action: "https://www.bing.com/videos/search", param: "q", extra: {} }
+        },
+        x: {
+          web: { action: "https://x.com/search", param: "q", extra: { src: "typed_query" } },
+          image: { action: "https://x.com/search", param: "q", extra: { src: "typed_query", f: "media" } },
+          video: { action: "https://x.com/search", param: "q", extra: { src: "typed_query", f: "media" } },
+          news: { action: "https://x.com/search", param: "q", extra: { src: "typed_query", f: "live" } }
+        },
+        // Grok / ChatGPT: no sub-modes — every tab starts the same new conversation.
+        grok: {
+          web: { action: "https://grok.com/", param: "q", extra: {} }
+        },
+        chatgpt: {
+          web: { action: "https://chatgpt.com/", param: "q", extra: {} }
         }
       };
 
@@ -1821,10 +1838,17 @@
         searchForm.appendChild(inp);
       }
 
+      function getSearchConf(engine, tab) {
+        var byEngine = SEARCH_MAP[engine];
+        if (!byEngine) return SEARCH_MAP.google.web;
+        return byEngine[tab] || byEngine.web || SEARCH_MAP.google.web;
+      }
+
       function applySearchMode() {
         var engine = searchState.engine;
         var tab = searchState.tab;
-        var conf = (SEARCH_MAP[engine] && SEARCH_MAP[engine][tab]) || SEARCH_MAP.google.web;
+        var conf = getSearchConf(engine, tab);
+        searchTabs.style.display = CHAT_ENGINES[engine] ? "none" : "";
 
         // tab UI
         var tabs = searchTabs.querySelectorAll("li");
@@ -1860,7 +1884,9 @@
 
         var engLabel = ENGINE_LABELS[engine] || engine;
         var tabLabel = TAB_LABELS[tab] || tab;
-        searchInput.placeholder = engLabel + " " + tabLabel + "搜索…";
+        searchInput.placeholder = CHAT_ENGINES[engine]
+          ? "向 " + engLabel + " 提问，回车新建对话…"
+          : engLabel + " " + tabLabel + "搜索…";
         try {
           localStorage.setItem(SEARCH_STORE, JSON.stringify(searchState));
         } catch (e) {}
@@ -1869,7 +1895,7 @@
       searchForm.addEventListener("submit", function (e) {
         var engine = searchState.engine;
         var tab = searchState.tab;
-        var conf = (SEARCH_MAP[engine] && SEARCH_MAP[engine][tab]) || SEARCH_MAP.google.web;
+        var conf = getSearchConf(engine, tab);
         var q = (searchInput.value || "").trim();
         if (!q) {
           e.preventDefault();
