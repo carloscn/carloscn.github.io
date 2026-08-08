@@ -1647,7 +1647,7 @@
     </footer>
   </div>
 
-  <script src="data.js?v=20260808n"></script>
+  <script src="data.js?v=20260808o"></script>
   <script>
     (function () {
       // Lightweight URL scramble (XOR+base64). Stops casual GitHub text search;
@@ -2068,8 +2068,9 @@
 
       /* ---------- FX rates + 30d sparklines: USD/CNY, EUR/CNY, XAU/USD ---------- */
       (function bootRates() {
-        var RATES_CACHE_KEY = "cn-nav-fx-rates-v2";
+        var RATES_CACHE_KEY = "cn-nav-fx-rates-v3";
         var RATES_CACHE_MS = 10 * 60 * 1000;
+        var GRAMS_PER_TROY_OZ = 31.1034768;
 
         var box = document.createElement("section");
         box.className = "rates-box";
@@ -2097,11 +2098,11 @@
           '      <div class="delta" id="deltaEurCny"></div>' +
           '      <svg class="rate-spark" id="sparkEurCny" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"></svg>' +
           "    </div>" +
-          '    <div class="rate-card" data-key="xauUsd">' +
-          '      <div class="pair">XAU / USD<small>黄金现货 · 近30日</small></div>' +
-          '      <div class="price" id="rateXauUsd">—</div>' +
-          '      <div class="delta" id="deltaXauUsd"></div>' +
-          '      <svg class="rate-spark" id="sparkXauUsd" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"></svg>' +
+          '    <div class="rate-card" data-key="xauCny">' +
+          '      <div class="pair">黄金 CNY/克<small>现货金价 · 每克 · 近30日</small></div>' +
+          '      <div class="price" id="rateXauCny">—</div>' +
+          '      <div class="delta" id="deltaXauCny"></div>' +
+          '      <svg class="rate-spark" id="sparkXauCny" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"></svg>' +
           "    </div>" +
           "  </div>" +
           '  <div class="rates-meta" id="ratesMeta"></div>' +
@@ -2115,7 +2116,7 @@
         var metaEl = document.getElementById("ratesMeta");
         var elUsd = document.getElementById("rateUsdCny");
         var elEur = document.getElementById("rateEurCny");
-        var elXau = document.getElementById("rateXauUsd");
+        var elXau = document.getElementById("rateXauCny");
         var refreshing = false;
 
         function setStatus(msg, isError) {
@@ -2134,13 +2135,13 @@
           });
         }
 
-        function fmtGold(n) {
+        function fmtGoldCny(n) {
           if (n == null || isNaN(n)) return "—";
           return (
             Number(n).toLocaleString("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2
-            }) + '<span class="unit">USD</span>'
+            }) + '<span class="unit">CNY/g</span>'
           );
         }
 
@@ -2256,14 +2257,14 @@
             elEur.innerHTML =
               fmtFx(data.eurCny, 4) + '<span class="unit">CNY</span>';
           }
-          if (elXau) elXau.innerHTML = fmtGold(data.xauUsd);
+          if (elXau) elXau.innerHTML = fmtGoldCny(data.xauCnyGram);
 
           paintSpark("sparkUsdCny", data.histUsdCny);
           paintSpark("sparkEurCny", data.histEurCny);
-          paintSpark("sparkXauUsd", data.histXauUsd);
+          paintSpark("sparkXauCny", data.histXauCnyGram);
           paintDelta("deltaUsdCny", data.histUsdCny, 2);
           paintDelta("deltaEurCny", data.histEurCny, 2);
-          paintDelta("deltaXauUsd", data.histXauUsd, 2);
+          paintDelta("deltaXauCny", data.histXauCnyGram, 2);
 
           if (gridEl) gridEl.hidden = false;
           setStatus("");
@@ -2451,13 +2452,19 @@
               if (histEur[histEur.length - 1] !== eur) histEur = histEur.concat([eur]);
               if (histXau[histXau.length - 1] !== xau) histXau = histXau.concat([xau]);
 
+              // Gold price benchmarked to CNY/gram: spot XAU/USD × USD/CNY ÷ grams-per-troy-oz
+              var xauCnyGram = (xau * usd) / GRAMS_PER_TROY_OZ;
+              var histXauCnyGram = histXau.map(function (v) {
+                return (v * usd) / GRAMS_PER_TROY_OZ;
+              });
+
               var data = {
                 usdCny: usd,
                 eurCny: eur,
-                xauUsd: xau,
+                xauCnyGram: xauCnyGram,
                 histUsdCny: histUsd,
                 histEurCny: histEur,
-                histXauUsd: histXau,
+                histXauCnyGram: histXauCnyGram,
                 asOf: new Date().toLocaleString("zh-CN", {
                   month: "2-digit",
                   day: "2-digit",

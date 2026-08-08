@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260808n). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260808o). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -698,6 +698,11 @@ window.NAV_DATA = {
         {
           "name": "Claude",
           "url": "https://claude.ai/",
+          "logo": "assets/logos/claude_code.png"
+        },
+        {
+          "name": "Claude Code",
+          "url": "https://claude.ai/code",
           "logo": "assets/logos/claude_code.png"
         },
         {
