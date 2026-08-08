@@ -211,12 +211,15 @@ Prefer existing groups:
 | Group | Typical contents |
 |-------|------------------|
 | 首页 | Daily high-frequency tiles (first group; denser grid) |
-| 社交媒体 | Portals, social, video, music, consumer sites |
+| 社交媒体 | Social, media, portals, messaging (not shopping) |
+| 网上商城 | E-commerce, marketplaces, real-estate listing, brand stores |
 | OABA | Banks, brokers, tax/gov, telecom, personal admin |
-| 旅行 | Maps, airlines, booking, flight tools |
-| 小工具 | Utilities / one-off tools |
+| 旅行 | Maps, airlines, booking (e.g. 携程), flight tools |
+| 常用工具 | Utilities in the main category rows (distinct from left sidebar 小工具) |
+| 小工具 | Left sidebar quick links only (hardcoded in HTML, not `data.js` group name) |
 | 办公工具 | Productivity / AI / cloud office |
 | 技术 | Engineering docs and tech bookmarks |
+| 技术门户 | Vendor/OS portals (Ubuntu, TI, NXP, ST, NVIDIA, SEMI, …) |
 | 项目管理 | Work platforms / infra consoles |
 | 外语学习 | Language learning |
 | 书籍知识 | Books / long-form reading |

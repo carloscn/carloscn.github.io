@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260808a). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260808n). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -116,6 +116,46 @@ window.NAV_DATA = {
       "name": "社交媒体",
       "items": [
         {
+          "name": "X",
+          "url": "https://x.com/",
+          "logo": "assets/logos/x.jpg"
+        },
+        {
+          "name": "YouTube",
+          "url": "https://www.youtube.com/",
+          "logo": "assets/logos/youtube.webp"
+        },
+        {
+          "name": "Reddit",
+          "url": "http://www.reddit.com",
+          "logo": "assets/logos/reddit.png"
+        },
+        {
+          "name": "Bluesky",
+          "url": "https://bsky.app/",
+          "logo": "assets/logos/bluesky.jpg"
+        },
+        {
+          "name": "知乎",
+          "url": "https://www.zhihu.com/",
+          "logo": "assets/logos/zhihu.png"
+        },
+        {
+          "name": "小红书",
+          "url": "https://www.xiaohongshu.com/explore",
+          "logo": "assets/logos/XiaohongshuLOGO.png"
+        },
+        {
+          "name": "微博",
+          "url": "http://weibo.com/",
+          "logo": "assets/logos/weibo.png"
+        },
+        {
+          "name": "网易云音乐",
+          "url": "https://music.163.com/st/webplayer",
+          "logo": "assets/logos/netease_music.png"
+        },
+        {
           "name": "抖音",
           "url": "https://www.douyin.com/jingxuan?ug_source=doutui_cqt_dy_lydh_fj45jp",
           "logo": "assets/logos/douyin.webp"
@@ -131,24 +171,9 @@ window.NAV_DATA = {
           "logo": "assets/logos/bilibili.svg"
         },
         {
-          "name": "京东",
-          "url": "https://www.6-u.com/web/jd.html",
-          "logo": "assets/logos/jd.png"
-        },
-        {
           "name": "百度贴吧",
           "url": "https://tieba.baidu.com/",
           "logo": "assets/logos/baidu.png"
-        },
-        {
-          "name": "淘宝",
-          "url": "https://www.taobao.com",
-          "logo": "assets/logos/taobao.webp"
-        },
-        {
-          "name": "携程",
-          "url": "https://www.ctrip.com/?AllianceID=3799814&sid=22840677&ouid=&app=0301C00",
-          "logo": "assets/logos/xiecheng.png"
         },
         {
           "name": "Instagram",
@@ -189,11 +214,6 @@ window.NAV_DATA = {
           "name": "Tumblr",
           "url": "https://www.tumblr.com/dashboard",
           "logo": "assets/logos/tumblr.png"
-        },
-        {
-          "name": "贝壳找房",
-          "url": "https://map.ke.com/",
-          "logo": "assets/logos/beikezhaofang.png"
         },
         {
           "name": "Famelack TV",
@@ -241,17 +261,12 @@ window.NAV_DATA = {
           "logo": "assets/logos/qq_mail.png"
         },
         {
-          "name": "懂车帝",
-          "url": "https://www.dcdapp.com/",
-          "logo": ""
-        },
-        {
           "name": "QQ",
           "url": "https://im.qq.com/",
           "logo": "assets/logos/qq_mail.png"
         },
         {
-          "name": "微信",
+          "name": "微信 Linux",
           "url": "https://linux.weixin.qq.com/",
           "logo": ""
         },
@@ -411,6 +426,11 @@ window.NAV_DATA = {
       "name": "旅行",
       "items": [
         {
+          "name": "Google Maps",
+          "url": "https://www.google.com/maps/@41.3485831,2.1344878,13.36z?entry=ttu&g_ep=EgoyMDI1MDczMC4wIKXMDSoASAFQAw%3D%3D",
+          "logo": "assets/logos/google_map.png"
+        },
+        {
           "name": "高德地图",
           "url": "https://ditu.amap.com/",
           "logo": "assets/logos/gaodemap.png"
@@ -449,16 +469,6 @@ window.NAV_DATA = {
           "name": "Tripadvisor",
           "url": "https://www.tripadvisor.com/",
           "logo": "assets/logos/tripadvisor.png"
-        },
-        {
-          "name": "12306",
-          "url": "https://www.12306.cn/",
-          "logo": ""
-        },
-        {
-          "name": "Trip.com",
-          "url": "https://hk.trip.com/?locale=zh_hk&curr=HKD",
-          "logo": "assets/logos/xiecheng.png"
         },
         {
           "name": "Qatar Airways",
@@ -508,7 +518,57 @@ window.NAV_DATA = {
       ]
     },
     {
-      "name": "小工具",
+      "name": "网上商城",
+      "items": [
+        {
+          "name": "京东",
+          "url": "https://www.6-u.com/web/jd.html",
+          "logo": "assets/logos/jd.png"
+        },
+        {
+          "name": "淘宝",
+          "url": "https://www.taobao.com",
+          "logo": "assets/logos/taobao.webp"
+        },
+        {
+          "name": "6-U",
+          "url": "https://www.6-u.com/",
+          "logo": ""
+        },
+        {
+          "name": "贝壳找房",
+          "url": "https://map.ke.com/",
+          "logo": "assets/logos/beikezhaofang.png"
+        },
+        {
+          "name": "Apple",
+          "url": "https://www.apple.com.cn/",
+          "logo": "assets/logos/icloud.webp"
+        },
+        {
+          "name": "懂车帝",
+          "url": "https://www.dcdapp.com/",
+          "logo": ""
+        },
+        {
+          "name": "Trip.com",
+          "url": "https://hk.trip.com/?locale=zh_hk&curr=HKD",
+          "logo": "assets/logos/xiecheng.png"
+        },
+        {
+          "name": "携程",
+          "url": "https://www.ctrip.com/?AllianceID=3799814&sid=22840677&ouid=&app=0301C00",
+          "logo": "assets/logos/xiecheng.png"
+        },
+        {
+          "name": "12306",
+          "url": "https://www.12306.cn/",
+          "logo": ""
+        }
+      ]
+    },
+    {
+      "name": "常用工具",
       "items": [
         {
           "name": "SaveTwitter",
@@ -556,15 +616,70 @@ window.NAV_DATA = {
           "logo": ""
         },
         {
-          "name": "Apple",
-          "url": "https://www.apple.com.cn/",
-          "logo": "assets/logos/icloud.webp"
+          "name": "InfTab",
+          "url": "https://inftab.com/",
+          "logo": ""
+        },
+        {
+          "name": "MVIP Cloud",
+          "url": "https://www.mvipcloud.xyz/",
+          "logo": ""
         }
       ]
     },
     {
       "name": "办公工具",
       "items": [
+        {
+          "name": "Grok",
+          "url": "https://grok.com/?referrer=x",
+          "logo": "assets/logos/grok.webp"
+        },
+        {
+          "name": "Gmail",
+          "url": "https://www.gmail.com/",
+          "logo": "assets/logos/Gmail_icon_(2020).svg.webp"
+        },
+        {
+          "name": "Gemini",
+          "url": "https://gemini.google.com/",
+          "logo": "assets/logos/gemini.webp"
+        },
+        {
+          "name": "Google Drive",
+          "url": "https://drive.google.com/drive/my-drive",
+          "logo": "assets/logos/Google_Drive_icon_(2026).svg"
+        },
+        {
+          "name": "O2 Cloud",
+          "url": "https://cloud.o2online.es/#highlights",
+          "logo": "assets/logos/o2_cloud.png"
+        },
+        {
+          "name": "QQ 邮箱",
+          "url": "https://mail.qq.com/",
+          "logo": "assets/logos/qq_mail.png"
+        },
+        {
+          "name": "网易邮箱",
+          "url": "https://email.163.com/",
+          "logo": "assets/logos/netease_mail.png"
+        },
+        {
+          "name": "iCloud Notes",
+          "url": "https://www.icloud.com.cn/notes/",
+          "logo": "assets/logos/icloud_note.jpg"
+        },
+        {
+          "name": "Google Keep",
+          "url": "https://keep.google.com/#NOTE/1_dKq2de0cboYp0085AhBsBcQBPlNC5N-R5tUnZ3RNsR_34aOyFu6JyOMo3Ta4f38u5DQRSIu",
+          "logo": "assets/logos/google_keep.webp"
+        },
+        {
+          "name": "Google Photos",
+          "url": "https://photos.google.com/",
+          "logo": "assets/logos/google_photo.png"
+        },
         {
           "name": "LinkedIn",
           "url": "https://www.linkedin.com/feed/",
@@ -616,16 +731,6 @@ window.NAV_DATA = {
           "logo": "assets/logos/notebooklm.png"
         },
         {
-          "name": "Grammarly",
-          "url": "https://app.grammarly.com/",
-          "logo": "assets/logos/grammarly.svg"
-        },
-        {
-          "name": "QuillBot",
-          "url": "https://quillbot.com/",
-          "logo": "assets/logos/quillbot.png"
-        },
-        {
           "name": "ASCIIFlow",
           "url": "https://asciiflow.com/",
           "logo": "assets/logos/ASCIIFLOW.png"
@@ -639,17 +744,17 @@ window.NAV_DATA = {
           "name": "UPGantt",
           "url": "https://gantt.mindsup.com.cn/",
           "logo": "assets/logos/upgantt.png"
-        },
-        {
-          "name": "Cambridge Write",
-          "url": "https://writeandimprove.com/",
-          "logo": ""
         }
       ]
     },
     {
       "name": "技术",
       "items": [
+        {
+          "name": "GitHub",
+          "url": "https://github.com/",
+          "logo": "assets/logos/github.png"
+        },
         {
           "name": "SegmentFault",
           "url": "https://segmentfault.com/",
@@ -739,6 +844,56 @@ window.NAV_DATA = {
           "name": "S32G Tech GitBook",
           "url": "https://carloss-organization-4.gitbook.io/tech/",
           "logo": "assets/logos/github.png"
+        },
+        {
+          "name": "VS Code",
+          "url": "https://vscode.dev/",
+          "logo": ""
+        },
+        {
+          "name": "NVIDIA DriveOS Docs",
+          "url": "https://developer.nvidia.com/drive/documentation#section-driveos-7-2-5-linux-sdk",
+          "logo": ""
+        }
+      ]
+    },
+    {
+      "name": "技术门户",
+      "items": [
+        {
+          "name": "Ubuntu",
+          "url": "https://ubuntu.com/download",
+          "logo": "assets/logos/ubuntu.webp"
+        },
+        {
+          "name": "TI",
+          "url": "https://www.ti.com/",
+          "logo": "assets/logos/ti.png"
+        },
+        {
+          "name": "NXP",
+          "url": "https://www.nxp.com/",
+          "logo": "assets/logos/NXP.jpg"
+        },
+        {
+          "name": "ST",
+          "url": "https://www.st.com/content/st_com/en.html",
+          "logo": ""
+        },
+        {
+          "name": "NVIDIA",
+          "url": "https://www.nvidia.com/es-es/",
+          "logo": ""
+        },
+        {
+          "name": "SEMI",
+          "url": "https://www.semi.org.cn/site/semi/",
+          "logo": ""
+        },
+        {
+          "name": "SemiW",
+          "url": "https://www.semiw.com/",
+          "logo": ""
         }
       ]
     },
@@ -811,6 +966,11 @@ window.NAV_DATA = {
       "name": "外语学习",
       "items": [
         {
+          "name": "Google 翻译",
+          "url": "https://translate.google.com/?hl=zh-CN&sl=zh-CN&tl=es&op=translate",
+          "logo": "assets/logos/Google_Translate.png"
+        },
+        {
           "name": "百度翻译",
           "url": "https://fanyi.baidu.com/",
           "logo": "assets/logos/baidu.png"
@@ -854,6 +1014,31 @@ window.NAV_DATA = {
           "name": "西语助手",
           "url": "https://www.esdict.cn/",
           "logo": "assets/logos/xiyuzhushou.png"
+        },
+        {
+          "name": "Grammarly",
+          "url": "https://app.grammarly.com/",
+          "logo": "assets/logos/grammarly.svg"
+        },
+        {
+          "name": "QuillBot",
+          "url": "https://quillbot.com/",
+          "logo": "assets/logos/quillbot.png"
+        },
+        {
+          "name": "Spanish 仓库",
+          "url": "https://github.com/carloscn/spanish",
+          "logo": "assets/logos/github.png"
+        },
+        {
+          "name": "English 仓库",
+          "url": "https://github.com/carloscn/english",
+          "logo": "assets/logos/github.png"
+        },
+        {
+          "name": "Cambridge Write",
+          "url": "https://writeandimprove.com/",
+          "logo": ""
         }
       ]
     },
@@ -983,6 +1168,11 @@ window.NAV_DATA = {
         {
           "name": "Life",
           "url": "https://github.com/carloscn/life",
+          "logo": "assets/logos/github.png"
+        },
+        {
+          "name": "Blog",
+          "url": "https://github.com/carloscn/blog",
           "logo": "assets/logos/github.png"
         }
       ]

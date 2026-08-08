@@ -1065,8 +1065,8 @@
     }
 
     .hot-grid a .link-icon {
-      width: 22px;
-      height: 22px;
+      width: 32px;
+      height: 32px;
       margin: 0;
     }
 
@@ -1321,11 +1321,11 @@
     }
 
     .link-icon {
-      width: 22px;
-      height: 22px;
+      width: 32px;
+      height: 32px;
       object-fit: contain;
       flex-shrink: 0;
-      border-radius: 4px;
+      border-radius: 6px;
     }
 
     footer {
@@ -1627,6 +1627,9 @@
               <a href="https://www.tablesgenerator.com/" target="_blank" rel="noopener noreferrer">表格生成</a>
               <a href="https://convertio.co/zh/" target="_blank" rel="noopener noreferrer">格式转换</a>
               <a href="https://www.remove.bg/" target="_blank" rel="noopener noreferrer">抠图去背</a>
+              <a href="https://inftab.com/" target="_blank" rel="noopener noreferrer">InfTab</a>
+              <a href="https://www.6-u.com/" target="_blank" rel="noopener noreferrer">6-U</a>
+              <a href="https://www.mvipcloud.xyz/" target="_blank" rel="noopener noreferrer">MVIP Cloud</a>
             </div>
           </div>
         </div>
@@ -1640,7 +1643,7 @@
     </footer>
   </div>
 
-  <script src="data.js?v=20260808a"></script>
+  <script src="data.js?v=20260808n"></script>
   <script>
     (function () {
       // Lightweight URL scramble (XOR+base64). Stops casual GitHub text search;
@@ -1676,8 +1679,8 @@
           img.src = item.logo;
           img.alt = "";
           img.loading = "lazy";
-          img.width = 22;
-          img.height = 22;
+          img.width = 32;
+          img.height = 32;
           img.onerror = function () {
             if (img.parentNode) img.parentNode.removeChild(img);
           };
@@ -2054,7 +2057,7 @@
 
       /* ---------- FX rates + 30d sparklines: USD/CNY, EUR/CNY, XAU/USD ---------- */
       (function bootRates() {
-        var RATES_CACHE_KEY = "cn-nav-fx-rates-v2";
+        var RATES_CACHE_KEY = "cn-nav-fx-rates-v3";
         var RATES_CACHE_MS = 10 * 60 * 1000;
 
         var box = document.createElement("section");
@@ -2165,6 +2168,15 @@
           return ((b - a) / a) * 100;
         }
 
+        function isFlatSeries(series) {
+          if (!series || series.length < 2) return true;
+          var min = Math.min.apply(null, series);
+          var max = Math.max.apply(null, series);
+          if (!(min > 0)) return true;
+          // treat as flat if range < 0.05% of level (or identical points)
+          return (max - min) / min < 0.0005;
+        }
+
         function paintSpark(svgId, series) {
           var svg = document.getElementById(svgId);
           if (!svg) return;
@@ -2174,28 +2186,41 @@
 
           var w = 120;
           var h = 40;
-          var pad = 2;
+          var padX = 2;
+          var padY = 4;
           var min = Math.min.apply(null, series);
           var max = Math.max.apply(null, series);
-          var span = max - min || 1;
+          var span = max - min;
+          // Expand tiny ranges so small FX moves still show a visible curve
+          if (!(span > 0)) {
+            // true flat — draw midline
+            min = min * 0.999;
+            max = max * 1.001;
+            span = max - min;
+          } else {
+            var padAmt = Math.max(span * 0.12, Math.abs(min) * 0.0008);
+            min -= padAmt;
+            max += padAmt;
+            span = max - min;
+          }
           var n = series.length;
           var pts = [];
           for (var i = 0; i < n; i++) {
-            var x = pad + (i / (n - 1)) * (w - pad * 2);
-            var y = pad + (1 - (series[i] - min) / span) * (h - pad * 2);
+            var x = padX + (i / (n - 1)) * (w - padX * 2);
+            var y = padY + (1 - (series[i] - min) / span) * (h - padY * 2);
             pts.push(x.toFixed(2) + "," + y.toFixed(2));
           }
           var line = pts.join(" ");
           var area =
-            pad.toFixed(2) +
+            padX.toFixed(2) +
             "," +
-            (h - pad).toFixed(2) +
+            (h - padY).toFixed(2) +
             " " +
             line +
             " " +
-            (w - pad).toFixed(2) +
+            (w - padX).toFixed(2) +
             "," +
-            (h - pad).toFixed(2);
+            (h - padY).toFixed(2);
 
           var polyFill = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
           polyFill.setAttribute("class", "spark-fill");
@@ -2305,8 +2330,67 @@
               var v = row && row[to];
               if (v != null && !isNaN(v)) series.push(Number(v));
             }
-            if (series.length < 2) throw new Error("short history");
+            if (series.length < 2 || isFlatSeries(series)) throw new Error("short/flat history");
             return series;
+          });
+        }
+
+        // Daily samples via fawaz CDN (often reachable when Frankfurter is not)
+        function fawazFxHistory(base, quote) {
+          var end = new Date();
+          var jobs = [];
+          var baseKey = String(base || "").toLowerCase();
+          var quoteKey = String(quote || "").toLowerCase();
+          for (var i = 30; i >= 0; i -= 1) {
+            (function (offset) {
+              var d = new Date(end.getTime());
+              d.setDate(end.getDate() - offset);
+              var day = isoDate(d);
+              var urls = [
+                "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@" +
+                  day +
+                  "/v1/currencies/" +
+                  baseKey +
+                  ".json",
+                "https://" + day + ".currency-api.pages.dev/v1/currencies/" + baseKey + ".json"
+              ];
+              jobs.push(
+                firstOk(urls, function (j) {
+                  var bag = j[baseKey];
+                  if (bag && bag[quoteKey] != null) return Number(bag[quoteKey]);
+                  return null;
+                }).catch(function () {
+                  return null;
+                })
+              );
+            })(i);
+          }
+          return Promise.all(jobs).then(function (vals) {
+            var series = [];
+            var last = null;
+            for (var k = 0; k < vals.length; k++) {
+              var v = vals[k];
+              if (v == null || !(v > 0)) continue;
+              // keep plateaus only once in a row to reduce noise, but keep real moves
+              if (last != null && Math.abs(v - last) < 1e-8) continue;
+              series.push(v);
+              last = v;
+            }
+            // if we collapsed too hard, fall back to raw successful samples
+            if (series.length < 3) {
+              series = vals.filter(function (x) {
+                return x != null && x > 0;
+              });
+            }
+            if (series.length < 2 || isFlatSeries(series)) throw new Error("fawaz hist short/flat");
+            return series;
+          });
+        }
+
+        function fetchFxHistory(from, to) {
+          // Prefer fawaz daily samples (China-friendly CDN); Frankfurter as backup
+          return fawazFxHistory(from, to).catch(function () {
+            return frankfurterHistory(from, to);
           });
         }
 
@@ -2412,10 +2496,10 @@
             fetchUsdCny(),
             fetchEurCny(),
             fetchXauUsd(),
-            frankfurterHistory("USD", "CNY").catch(function () {
+            fetchFxHistory("USD", "CNY").catch(function () {
               return null;
             }),
-            frankfurterHistory("EUR", "CNY").catch(function () {
+            fetchFxHistory("EUR", "CNY").catch(function () {
               return null;
             }),
             fetchXauHistory().catch(function () {
@@ -2426,14 +2510,30 @@
               var usd = vals[0];
               var eur = vals[1];
               var xau = vals[2];
-              var histUsd = vals[3] || [usd, usd];
-              var histEur = vals[4] || [eur, eur];
-              var histXau = vals[5] || [xau, xau];
+              var histUsd = vals[3];
+              var histEur = vals[4];
+              var histXau = vals[5];
 
-              // Ensure last point matches latest quote for a continuous line
-              if (histUsd[histUsd.length - 1] !== usd) histUsd = histUsd.concat([usd]);
-              if (histEur[histEur.length - 1] !== eur) histEur = histEur.concat([eur]);
-              if (histXau[histXau.length - 1] !== xau) histXau = histXau.concat([xau]);
+              // Never keep a flat 2-point stub if we have a real latest quote only
+              if (!histUsd || isFlatSeries(histUsd)) histUsd = null;
+              if (!histEur || isFlatSeries(histEur)) histEur = null;
+              if (!histXau || isFlatSeries(histXau)) histXau = null;
+
+              if (histUsd) {
+                if (Math.abs(histUsd[histUsd.length - 1] - usd) > 1e-6) histUsd = histUsd.concat([usd]);
+              } else {
+                histUsd = [usd * 0.998, usd]; // tiny synthetic slope only as last resort
+              }
+              if (histEur) {
+                if (Math.abs(histEur[histEur.length - 1] - eur) > 1e-6) histEur = histEur.concat([eur]);
+              } else {
+                histEur = [eur * 0.998, eur];
+              }
+              if (histXau) {
+                if (Math.abs(histXau[histXau.length - 1] - xau) > 1e-6) histXau = histXau.concat([xau]);
+              } else {
+                histXau = [xau * 0.998, xau];
+              }
 
               var data = {
                 usdCny: usd,
