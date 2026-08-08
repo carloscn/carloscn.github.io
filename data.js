@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260808o). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260808p). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -1179,6 +1179,46 @@ window.NAV_DATA = {
           "name": "Blog",
           "url": "https://github.com/carloscn/blog",
           "logo": "assets/logos/github.png"
+        }
+      ]
+    },
+    {
+      "name": "Google Drive",
+      "items": [
+        {
+          "name": "Work 入口",
+          "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CX1QQZwB8ExxFPC8YdAlRKw1XKRAbdQJyBhodHgAnYhh9",
+          "logo": ""
+        },
+        {
+          "name": "金融管理-定存管理",
+          "url": "obf1:CxpZHhJMAkRTDA1eQAYZQgxbBkBOAQxZXhtFBg9JHQkTSB9ETAoCXxUsQwRtKT4bVgVFcgZ0CQZ1LyUkGQZjNCIbWDMSVA5OBFhpPAk4QhJ+GT8CCwUfWVRQCgoQVlJFG1gEVlsUTQYfSVYPUF0bXVJDGFI=",
+          "logo": ""
+        },
+        {
+          "name": "金融管理-收支表",
+          "url": "obf1:CxpZHhJMAkRTDA1eQAYZQgxbBkBOAQxZXhtFBg9JHQkTSB9ETAoCXyAzdSx2L1x+ORM4ez1eDFhiGTsOVBl5BCIZWC1HZBFcVFtYNxsZaV8DAgECCwUfWQ==",
+          "logo": ""
+        },
+        {
+          "name": "金融管理-银行账户信息",
+          "url": "obf1:CxpZHhJMAkRTDA1eQAYZQgxbBkBOAQxZXhtFBg9JHQkTSB9ETAoCXxI8SgZPUhleNj4yW1lGM1tdLRgFHSdmVTh+ND4jbgl2NipXHgwxTl1gLisCCwUfWVRCEB4QChMfWw5oDwdDBQ==",
+          "logo": ""
+        },
+        {
+          "name": "综合日历表",
+          "url": "obf1:CxpZHhJMAkRTDA1eQAYZQgxbBkBOAQxZXhtFBg9JHQkTSB9ETAoCXy8QbllQMBtdJSU/RgRRAQ11NCQSFTlVCQwaNDsuWB5BTAtJBxVJWBhHXgpfBxcTcgdeDQULARQfSVYGU1gUXFVBH1MBVF0eXFhBGF0DV10LHBUGQg0KFxxYC0cFSVZDERtI",
+          "logo": ""
+        },
+        {
+          "name": "西语单词",
+          "url": "obf1:CxpZHhJMAkRTDA1eQAYZQgxbBkBOAQxZXhtFBg9JHQkTSB9ETAoCX0wkTltwLjlMPBkRSTkBFDdYCxsgdwQaDjtXChsCTCVfNVweP1QcRhwFDycCCwUfWVRQCgoQW1hAFFkPW1wfTQYfSVYCWlgUXFlOH1k=",
+          "logo": ""
+        },
+        {
+          "name": "西语总文件夹",
+          "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXwclXAJkBiNaISMCWlNlAiVPGCpPSycCAj9vWgYEZS5AXBteHlwSXwJBBjFBBw8d",
+          "logo": ""
         }
       ]
     }
