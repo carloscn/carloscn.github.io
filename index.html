@@ -1611,7 +1611,7 @@
             <ol class="hot-board-list" id="zhihuHotList" hidden></ol>
           </div>
         </div>
-        <div class="side-box">
+        <div class="side-box" id="sideToolsBox">
           <div class="side-inner side-tools">
             <h3>小工具</h3>
             <div class="side-tools-grid">
@@ -2146,7 +2146,9 @@
           '  <div class="rates-meta" id="ratesMeta"></div>' +
           "</div>";
         var colLeft = document.querySelector(".col-left");
-        if (colLeft) colLeft.appendChild(box);
+        var sideToolsBox = document.getElementById("sideToolsBox");
+        if (colLeft && sideToolsBox) colLeft.insertBefore(box, sideToolsBox);
+        else if (colLeft) colLeft.appendChild(box);
         else main.insertBefore(box, sortBox || null);
 
         var statusEl = document.getElementById("ratesStatus");
