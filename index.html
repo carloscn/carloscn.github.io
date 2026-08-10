@@ -1620,7 +1620,7 @@
       </div>
       <div class="topbar-center" id="topDate">—</div>
       <div class="topbar-right">
-        <button type="button" class="theme-toggle jump-trigger" id="btnJump" title="快速跳转链接（Ctrl / Cmd + K）">跳转 <kbd>⌘K</kbd></button>
+        <button type="button" class="theme-toggle jump-trigger" id="btnJump" title="快速跳转链接（Ctrl + K）">跳转 <kbd>Ctrl K</kbd></button>
         <select class="palette-select" id="paletteSelect" title="切换色系" aria-label="色系">
           <option value="default">默认绿</option>
           <option value="github">GitHub</option>
@@ -2380,7 +2380,7 @@
         });
 
         document.addEventListener("keydown", function (e) {
-          var mod = e.metaKey || e.ctrlKey;
+          var mod = e.ctrlKey;
           if (mod && String(e.key).toLowerCase() === "k") {
             e.preventDefault();
             if (overlay.hidden) openJump();
