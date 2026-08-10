@@ -389,12 +389,27 @@
       line-height: 1.2;
     }
 
+    .brand h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .brand h1 a:hover {
+      color: var(--green-dark);
+    }
+
     .brand .tag {
       font-size: 12px;
       color: var(--muted);
       padding: 1px 0;
       border: none;
       background: transparent;
+      text-decoration: none;
+    }
+
+    .brand .tag:hover {
+      color: var(--green-dark);
+      text-decoration: underline;
     }
 
     .masthead-row {
@@ -1612,8 +1627,8 @@
 
     <header class="masthead">
       <div class="brand">
-        <h1 id="siteTitle">Carlos' Navigator</h1>
-        <span class="tag">纯文字主页 · 可切换有图版</span>
+        <h1><a id="siteTitle" href="https://carloscn.github.io/">Carlos' Navigator</a></h1>
+        <a class="tag" href="https://mltz.tech/" target="_blank" rel="noopener noreferrer" title="访问我的博客">访问我的博客</a>
       </div>
       <div class="masthead-row">
         <div class="search-block">

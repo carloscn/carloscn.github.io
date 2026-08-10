@@ -257,6 +257,15 @@
       line-height: 1.2;
     }
 
+    .brand h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .brand h1 a:hover {
+      color: var(--primary);
+    }
+
     .search-box {
       display: flex;
       align-items: center;
@@ -481,7 +490,7 @@
     <header>
       <div class="brand">
         <img src="assets/pic/headpic.jpg" alt="avatar" width="48" height="48" />
-        <h1 id="siteTitle">Carlos' Navigator</h1>
+        <h1><a id="siteTitle" href="https://carloscn.github.io/">Carlos' Navigator</a></h1>
       </div>
       <form class="search-box" id="searchForm" action="https://www.google.com/search" method="get" target="_blank" rel="noopener">
         <img class="search-logo" src="assets/logos/google.png" alt="Google" width="28" height="28" />
