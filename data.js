@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260808s). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260808t). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -1194,12 +1194,7 @@ window.NAV_DATA = {
           "name": "Blog",
           "url": "https://github.com/carloscn/blog",
           "logo": "assets/logos/github.png"
-        }
-      ]
-    },
-    {
-      "name": "Google Drive",
-      "items": [
+        },
         {
           "name": "Work 入口",
           "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CX1QQZwB8ExxFPC8YdAlRKw1XKRAbdQJyBhodHgAnYhh9",
@@ -1233,6 +1228,66 @@ window.NAV_DATA = {
         {
           "name": "西语总文件夹",
           "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXwclXAJkBiNaISMCWlNlAiVPGCpPSycCAj9vWgYEZS5AXBteHlwSXwJBBjFBBw8d",
+          "logo": ""
+        }
+      ]
+    },
+    {
+      "name": "Google Drive",
+      "items": [
+        {
+          "name": "01_Development",
+          "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CX1kHQghwBCVJBgAaFCRjUhhDLQ5bYxhBMiB6XjtGRjxGXBteHlwSXwJBBjFBBw8d",
+          "logo": ""
+        },
+        {
+          "name": "02_Finance",
+          "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CX1U9FQd7MT9VWgk6eFlDCS0ZXSIpXCxGLFhLXhkaXgd0XBteHlwSXwJBBjFBBw8d",
+          "logo": ""
+        },
+        {
+          "name": "03_Health",
+          "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXw0XHhl2UV9uGA8PdFpNOVleIyM6TglCLVwcBxEDZRtCXBteHlwSXwJBBjFBBw8d",
+          "logo": ""
+        },
+        {
+          "name": "04_Work",
+          "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CX1QQZwB8ExxFPC8YdAlRKw1XKRAbdQJyBhodHgAnYhh9XBteHlwSXwJBBjFBBw8d",
+          "logo": ""
+        },
+        {
+          "name": "05_Travelling",
+          "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXykFcix1BxlqXhkFRg9hWi1EWCQXZ15uCzheXjsSazx4XBteHlwSXwJBBjFBBw8d",
+          "logo": ""
+        },
+        {
+          "name": "06_Profile",
+          "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXydAGjpaCAwYWjsHW198VVtoPw4iVAdYKhwYXSURXz9oXBteHlwSXwJBBjFBBw8d",
+          "logo": ""
+        },
+        {
+          "name": "07_Immigration",
+          "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXyQ5QQgCAFh3PAUsSVlVFSYUP1AZSgxUCCIVQz4CaiwaXBteHlwSXwJBBjFBBw8d",
+          "logo": ""
+        },
+        {
+          "name": "08_Relationship",
+          "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXwocSyFdUA1jXyAdWBpjEDxmGDMxWRFAUy1fHlVPRgZZXBteHlwSXwJBBjFBBw8d",
+          "logo": ""
+        },
+        {
+          "name": "09_Network",
+          "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXwVOZwdWCFlYLSwDTAptKxdXJTsxQBF/ICphARsxfSpQXBteHlwSXwJBBjFBBw8d",
+          "logo": ""
+        },
+        {
+          "name": "10_Language",
+          "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXxcvGVhhIiB9VzE4SRhUMypGIUwfahhEOihnBAkYXyJgXBteHlwSXwJBBjFBBw8d",
+          "logo": ""
+        },
+        {
+          "name": "11_Management",
+          "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXwIQdT5/DARnXVkvHiEaBwB+BTgxGQxHOwkdBwkfTBFPXBteHlwSXwJBBjFBBw8d",
           "logo": ""
         }
       ]
