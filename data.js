@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260808r). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260808s). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -1053,6 +1053,11 @@ window.NAV_DATA = {
         {
           "name": "Duolingo",
           "url": "https://www.duolingo.com/learn",
+          "logo": ""
+        },
+        {
+          "name": "Duoninja",
+          "url": "https://www.duoninja.com/learn",
           "logo": ""
         }
       ]
