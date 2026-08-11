@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260808t). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260808u). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -254,6 +254,11 @@ window.NAV_DATA = {
           "name": "腾讯视频",
           "url": "https://v.qq.com/",
           "logo": "assets/logos/qq_mail.png"
+        },
+        {
+          "name": "逸帆网络电视",
+          "url": "https://www.yifan.tv/",
+          "logo": ""
         },
         {
           "name": "QQ 音乐",
