@@ -986,11 +986,6 @@ window.NAV_DATA = {
           "logo": "assets/logos/baidu.png"
         },
         {
-          "name": "单词本",
-          "url": "https://docs.google.com/spreadsheets/d/19JnOYMzr39maovVVY1MH8A72gUUxlVoI3N6g5iYSPF0/edit",
-          "logo": "assets/logos/google_drive.webp"
-        },
-        {
           "name": "批改网",
           "url": "http://qq.pigai.org/",
           "logo": ""
