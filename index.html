@@ -7,19 +7,23 @@
   <link rel="icon" href="assets/pic/headpic.jpg" type="image/jpeg" />
   <script>
     (function () {
-      try {
-        var key = "cn-nav-theme";
-        var t = localStorage.getItem(key);
-        if (t !== "light" && t !== "dark") {
+      var key = "cn-nav-theme";
+      var t = null;
+      try { t = localStorage.getItem(key); } catch (e) {}
+      if (t !== "light" && t !== "dark") {
+        try {
           t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
             ? "dark" : "light";
+        } catch (e) {
+          t = "light";
         }
-        document.documentElement.setAttribute("data-theme", t);
-        var p = localStorage.getItem("cn-nav-palette");
-        var ok = { default: 1, github: 1, reddit: 1, twitter: 1 };
-        if (!ok[p]) p = "default";
-        document.documentElement.setAttribute("data-palette", p);
-      } catch (e) {}
+      }
+      try { document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+      var p = null;
+      try { p = localStorage.getItem("cn-nav-palette"); } catch (e) {}
+      var ok = { default: 1, github: 1, reddit: 1, twitter: 1 };
+      if (!ok[p]) p = "default";
+      try { document.documentElement.setAttribute("data-palette", p); } catch (e) {}
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1824,7 +1828,7 @@
     </div>
   </div>
 
-  <script src="data.js?v=20260808w"></script>
+  <script src="data.js?v=20260808x"></script>
   <script>
     (function () {
       // Lightweight URL scramble (XOR+base64). Stops casual GitHub text search;
