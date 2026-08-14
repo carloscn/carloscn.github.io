@@ -1726,19 +1726,6 @@
             <ol class="hot-board-list" id="weiboHotList" hidden></ol>
           </div>
         </div>
-        <div class="side-box">
-          <div class="side-inner hot-board" data-board="zhihu">
-            <div class="hot-board-head">
-              <h3>知乎热榜</h3>
-              <div class="hot-actions">
-                <button type="button" id="btnZhihuRefresh" title="刷新知乎热榜">刷新</button>
-                <a class="hot-more" href="https://www.zhihu.com/hot" target="_blank" rel="noopener noreferrer">更多</a>
-              </div>
-            </div>
-            <div class="hot-board-status" id="zhihuHotStatus">正在加载热榜…</div>
-            <ol class="hot-board-list" id="zhihuHotList" hidden></ol>
-          </div>
-        </div>
         <div class="side-box" id="sideToolsBox">
           <div class="side-inner side-tools">
             <h3>小工具</h3>
@@ -1813,7 +1800,7 @@
     </div>
   </div>
 
-  <script src="data.js?v=20260808v"></script>
+  <script src="data.js?v=20260808w"></script>
   <script>
     (function () {
       // Lightweight URL scramble (XOR+base64). Stops casual GitHub text search;
@@ -3131,7 +3118,7 @@
         useGeolocation();
       }
 
-      /* ---------- Hot boards: Weibo / Zhihu ---------- */
+      /* ---------- Hot boards: Weibo ---------- */
       var HOT_CACHE_MS = 5 * 60 * 1000;
       var HOT_LIMIT_DEFAULT = 30; // sidebar shows top N only (API may return ~50)
 
@@ -3377,31 +3364,6 @@
         }
       });
 
-      createHotBoard({
-        name: "zhihu",
-        statusId: "zhihuHotStatus",
-        listId: "zhihuHotList",
-        btnId: "btnZhihuRefresh",
-        cacheKey: "cn-nav-zhihu-hot-v4",
-        limit: 30,
-        loadingMsg: "正在加载热榜…",
-        emptyMsg: "暂无热榜数据",
-        failMsg: "热榜加载失败，请稍后刷新",
-        apis: [
-          // 60s open APIs — stable CORS, no key
-          "https://60s.viki.moe/v2/zhihu",
-          "https://60s-api.viki.moe/v2/zhihu",
-          "https://hotapi.nntool.cc/zhihu",
-          "https://uapis.cn/api/v1/misc/hotboard?type=zhihu",
-          // newsnow via CORS proxy (direct often lacks ACAO)
-          "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://newsnow.busiyi.world/api/s?id=zhihu")
-        ],
-        fallbackUrlBuilder: function (title, it) {
-          if (it && it.id) return "https://www.zhihu.com/question/" + it.id;
-          if (it && it.link) return it.link;
-          return "https://www.zhihu.com/search?type=content&q=" + encodeURIComponent(title);
-        }
-      });
     })();
   </script>
 </body>

@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260808v). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260808w). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -27,7 +27,7 @@ window.NAV_DATA = {
         },
         {
           "name": "知乎",
-          "url": "https://www.zhihu.com/",
+          "url": "https://www.zhihu.com/people/zzzzzzml/asks",
           "logo": "assets/logos/zhihu.png"
         },
         {
@@ -137,7 +137,7 @@ window.NAV_DATA = {
         },
         {
           "name": "知乎",
-          "url": "https://www.zhihu.com/",
+          "url": "https://www.zhihu.com/people/zzzzzzml/asks",
           "logo": "assets/logos/zhihu.png"
         },
         {
