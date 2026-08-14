@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260808u). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260808v). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -1228,6 +1228,11 @@ window.NAV_DATA = {
         {
           "name": "西语总文件夹",
           "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXwclXAJkBiNaISMCWlNlAiVPGCpPSycCAj9vWgYEZS5AXBteHlwSXwJBBjFBBw8d",
+          "logo": ""
+        },
+        {
+          "name": "国泰航空",
+          "url": "https://www.cathaypacific.com/cx/zh_HK.html",
           "logo": ""
         }
       ]
