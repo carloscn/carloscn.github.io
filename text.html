@@ -1471,7 +1471,7 @@
       background: var(--surface);
     }
 
-    /* ---------- Quick jump (Ctrl/Cmd+K) ---------- */
+    /* ---------- Quick jump (press /) ---------- */
     .jump-overlay {
       position: fixed;
       inset: 0;
@@ -1611,7 +1611,7 @@
       </div>
       <div class="topbar-center" id="topDate">—</div>
       <div class="topbar-right">
-        <button type="button" class="theme-toggle jump-trigger" id="btnJump" title="快速跳转链接（Ctrl + K）">跳转 <kbd>Ctrl K</kbd></button>
+        <button type="button" class="theme-toggle jump-trigger" id="btnJump" title="快速跳转链接（按 / 键）">跳转 <kbd>/</kbd></button>
         <select class="palette-select" id="paletteSelect" title="切换色系" aria-label="色系">
           <option value="default">默认绿</option>
           <option value="github">GitHub</option>
@@ -2232,7 +2232,7 @@
         sortBox.appendChild(row);
       });
 
-      /* ---------- Quick jump: search all nav links (Ctrl/Cmd+K) ---------- */
+      /* ---------- Quick jump: search all nav links (press /) ---------- */
       (function bootJump() {
         var overlay = document.getElementById("jumpOverlay");
         var input = document.getElementById("jumpInput");
@@ -2355,12 +2355,22 @@
         });
 
         document.addEventListener("keydown", function (e) {
-          var mod = e.ctrlKey;
-          if (mod && String(e.key).toLowerCase() === "k") {
-            e.preventDefault();
-            if (overlay.hidden) openJump();
-            else closeJump();
-            return;
+          if (
+            e.key === "/" &&
+            !e.ctrlKey &&
+            !e.metaKey &&
+            !e.altKey &&
+            overlay.hidden
+          ) {
+            var t = e.target;
+            var tag = t && t.tagName;
+            var isEditable =
+              tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || (t && t.isContentEditable);
+            if (!isEditable) {
+              e.preventDefault();
+              openJump();
+              return;
+            }
           }
           if (overlay.hidden) return;
           if (e.key === "Escape") {
