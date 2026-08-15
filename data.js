@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260808z). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260809a). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -638,6 +638,11 @@ window.NAV_DATA = {
         {
           "name": "YR.NO",
           "url": "https://www.yr.no/en/forecast/daily-table/2-3128760/Spain/Catalonia/Barcelona/Barcelona",
+          "logo": ""
+        },
+        {
+          "name": "Badalona 海滩实况",
+          "url": "https://platges.bdnmedia.cat/",
           "logo": ""
         }
       ]
