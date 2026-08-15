@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260808x). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260808z). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -634,6 +634,11 @@ window.NAV_DATA = {
           "name": "MVIP Cloud",
           "url": "https://www.mvipcloud.xyz/",
           "logo": ""
+        },
+        {
+          "name": "YR.NO",
+          "url": "https://www.yr.no/en/forecast/daily-table/2-3128760/Spain/Catalonia/Barcelona/Barcelona",
+          "logo": ""
         }
       ]
     },
@@ -981,8 +986,33 @@ window.NAV_DATA = {
       "name": "外语学习",
       "items": [
         {
-          "name": "Google 翻译",
+          "name": "中转西",
           "url": "https://translate.google.com/?hl=zh-CN&sl=zh-CN&tl=es&op=translate",
+          "logo": "assets/logos/Google_Translate.png"
+        },
+        {
+          "name": "西转中",
+          "url": "https://translate.google.com/?hl=zh-CN&sl=es&tl=zh-CN&op=translate",
+          "logo": "assets/logos/Google_Translate.png"
+        },
+        {
+          "name": "中转英",
+          "url": "https://translate.google.com/?hl=zh-CN&sl=zh-CN&tl=en&op=translate",
+          "logo": "assets/logos/Google_Translate.png"
+        },
+        {
+          "name": "英转中",
+          "url": "https://translate.google.com/?hl=zh-CN&sl=en&tl=zh-CN&op=translate",
+          "logo": "assets/logos/Google_Translate.png"
+        },
+        {
+          "name": "西转英",
+          "url": "https://translate.google.com/?hl=zh-CN&sl=es&tl=en&op=translate",
+          "logo": "assets/logos/Google_Translate.png"
+        },
+        {
+          "name": "英转西",
+          "url": "https://translate.google.com/?hl=zh-CN&sl=en&tl=es&op=translate",
           "logo": "assets/logos/Google_Translate.png"
         },
         {
