@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260809a). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260809b). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -354,6 +354,11 @@ window.NAV_DATA = {
           "name": "Salut",
           "url": "https://lamevasalut.gencat.cat/group/cps/home",
           "logo": "assets/logos/spain_salut.png"
+        },
+        {
+          "name": "Barcelona 市政府",
+          "url": "https://www.barcelona.cat/es",
+          "logo": ""
         },
         {
           "name": "O2",
