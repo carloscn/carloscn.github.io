@@ -8,6 +8,16 @@
   <script>
     (function () {
       var key = "cn-nav-theme";
+      // One-time cleanup: an older build persisted the system-derived theme on
+      // every load, which silently pinned it and stopped it from ever
+      // following the OS setting again. Clear that stale value once so it
+      // goes back to tracking the system until the user picks explicitly.
+      try {
+        if (localStorage.getItem("cn-nav-theme-automigrated-v1") !== "1") {
+          localStorage.removeItem(key);
+          localStorage.setItem("cn-nav-theme-automigrated-v1", "1");
+        }
+      } catch (e) {}
       var t = null;
       try { t = localStorage.getItem(key); } catch (e) {}
       if (t !== "light" && t !== "dark") {
@@ -1872,18 +1882,23 @@
         var t = document.documentElement.getAttribute("data-theme");
         return t === "dark" ? "dark" : "light";
       }
-      function applyTheme(theme) {
+      // persist=true only on an explicit user click — the initial render may be
+      // showing a system-derived theme, and saving that would pin it forever,
+      // even after the OS setting changes on a later visit.
+      function applyTheme(theme, persist) {
         var next = theme === "dark" ? "dark" : "light";
         document.documentElement.setAttribute("data-theme", next);
-        try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+        if (persist) {
+          try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+        }
         var btn = document.getElementById("btnTheme");
         if (btn) btn.textContent = next === "dark" ? "浅色" : "深色";
       }
-      applyTheme(currentTheme());
+      applyTheme(currentTheme(), false);
       var themeBtn = document.getElementById("btnTheme");
       if (themeBtn) {
         themeBtn.addEventListener("click", function () {
-          applyTheme(currentTheme() === "dark" ? "light" : "dark");
+          applyTheme(currentTheme() === "dark" ? "light" : "dark", true);
         });
       }
 
