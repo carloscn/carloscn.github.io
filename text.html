@@ -388,10 +388,18 @@
     }
 
     .brand {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .brand-title {
       display: flex;
       align-items: baseline;
       gap: 10px;
-      margin-bottom: 12px;
+      min-width: 0;
     }
 
     .brand h1 {
@@ -461,6 +469,63 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 0;
       align-items: stretch;
+    }
+
+    /* Pending-case card — sits beside the brand title, in the column that
+       lines up with the weather card below it. Uses the same card look as
+       .info-panel and fills space that would otherwise sit empty next to
+       the title, so it never touches the weather/clocks module at all. */
+    .case-strip {
+      grid-column: 2;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px 14px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 8px 14px;
+    }
+
+    .case-strip-head {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .case-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #f59e0b;
+      box-shadow: 0 0 0 3px color-mix(in srgb, #f59e0b 22%, transparent);
+    }
+
+    .case-strip-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px 14px;
+      min-width: 0;
+    }
+
+    .case-strip-link {
+      font-size: 13px;
+      font-weight: 650;
+      color: var(--text);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .case-strip-link:hover {
+      color: var(--hover);
+      text-decoration: underline;
     }
 
     .weather-compact {
@@ -1420,6 +1485,13 @@
       }
 
       .brand h1 { font-size: 1.4rem; }
+      .brand {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .case-strip {
+        grid-column: 1;
+      }
       .masthead-row {
         grid-template-columns: 1fr;
         gap: 8px;
@@ -1641,8 +1713,20 @@
 
     <header class="masthead">
       <div class="brand">
-        <h1><a id="siteTitle" href="https://carloscn.github.io/">Carlos' Navigator</a></h1>
-        <a class="tag" href="https://mltz.tech/" target="_blank" rel="noopener noreferrer" title="访问我的博客">访问我的博客</a>
+        <div class="brand-title">
+          <h1><a id="siteTitle" href="https://carloscn.github.io/">Carlos' Navigator</a></h1>
+          <a class="tag" href="https://mltz.tech/" target="_blank" rel="noopener noreferrer" title="访问我的博客">访问我的博客</a>
+        </div>
+        <aside class="case-strip" aria-label="当前挂着的 case">
+          <div class="case-strip-head">
+            <span class="case-dot" aria-hidden="true"></span>
+            当前挂着的 Case
+          </div>
+          <div class="case-strip-list">
+            <a class="case-strip-link" href="https://www.wizzair.com/zh-cn/profile/claims" target="_blank" rel="noopener noreferrer">Wizz 航空索赔 · 查看进度</a>
+            <a class="case-strip-link" href="https://ts.isc.org.cn/#/search/myComplaints" target="_blank" rel="noopener noreferrer">知乎账号被封投诉 · 查看进度</a>
+          </div>
+        </aside>
       </div>
       <div class="masthead-row">
         <div class="search-block">
