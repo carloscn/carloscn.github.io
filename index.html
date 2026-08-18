@@ -2371,18 +2371,44 @@
         var triggerBtn = document.getElementById("btnJump");
         if (!overlay || !input || !resultsEl) return;
 
+        // Bilingual synonym groups so e.g. searching "spanish" also matches
+        // names written as "西语" and vice versa — names stay as authored,
+        // only the search index gets the extra matchable terms.
+        var SEARCH_ALIASES = [
+          ["西语", "spanish", "español", "espanol"],
+          ["英语", "english", "英文"],
+          ["法语", "french", "français", "francais"],
+          ["日语", "japanese", "日文"],
+          ["德语", "german", "deutsch"],
+          ["翻译", "translate", "translation"]
+        ];
+        function buildAlias(name) {
+          var lower = name.toLowerCase();
+          var alias = "";
+          SEARCH_ALIASES.forEach(function (syns) {
+            var hit = syns.some(function (kw) { return lower.indexOf(kw) !== -1; });
+            if (hit) alias += " " + syns.join(" ");
+          });
+          return alias;
+        }
+
         var jumpIndex = [];
         groups.forEach(function (group) {
           (group.items || []).forEach(function (item) {
             if (!item || !item.name) return;
-            jumpIndex.push({ name: item.name, url: item.url, group: group.name || "" });
+            jumpIndex.push({
+              name: item.name,
+              url: item.url,
+              group: group.name || "",
+              alias: buildAlias(item.name)
+            });
           });
         });
         // 小工具 links are hardcoded in HTML (not part of data.js), index them separately.
         document.querySelectorAll(".side-tools-grid a, .side-tools-more a").forEach(function (a) {
           var name = (a.textContent || "").trim();
           if (!name) return;
-          jumpIndex.push({ name: name, url: a.getAttribute("href"), group: "小工具" });
+          jumpIndex.push({ name: name, url: a.getAttribute("href"), group: "小工具", alias: buildAlias(name) });
         });
 
         var activeIndex = -1;
@@ -2415,8 +2441,11 @@
             var it = jumpIndex[i];
             var name = it.name.toLowerCase();
             var group = it.group.toLowerCase();
+            var alias = it.alias || "";
             if (name.indexOf(q) === 0) starts.push(it);
-            else if (name.indexOf(q) !== -1 || group.indexOf(q) !== -1) contains.push(it);
+            else if (name.indexOf(q) !== -1 || group.indexOf(q) !== -1 || alias.indexOf(q) !== -1) {
+              contains.push(it);
+            }
           }
           return starts.concat(contains).slice(0, 30);
         }
