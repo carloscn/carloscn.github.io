@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260817b). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260817f). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -649,6 +649,21 @@ window.NAV_DATA = {
           "name": "Badalona 海滩实况",
           "url": "https://platges.bdnmedia.cat/",
           "logo": ""
+        },
+        {
+          "name": "Windguru",
+          "url": "https://www.windguru.cz/48887",
+          "logo": ""
+        },
+        {
+          "name": "El Prat 海滩预报",
+          "url": "https://www.meteo.cat/prediccio/platges/el-prat-de-llobregat-del-prat",
+          "logo": ""
+        },
+        {
+          "name": "MCT 路况",
+          "url": "https://mct.gencat.cat/",
+          "logo": ""
         }
       ]
     },
@@ -818,6 +833,11 @@ window.NAV_DATA = {
         {
           "name": "NXP S32K",
           "url": "https://community.nxp.com/t5/S32K/bd-p/S32K",
+          "logo": "assets/logos/NXP.jpg"
+        },
+        {
+          "name": "NXP S32系列下载",
+          "url": "https://www.nxp.com/design/design-center/software/automotive-software-and-tools/s32-design-studio-ide/s32-design-studio-for-s32-platform:S32DS-S32PLATFORM#downloads",
           "logo": "assets/logos/NXP.jpg"
         },
         {
