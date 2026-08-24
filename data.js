@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260817f). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260817g). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -76,9 +76,9 @@ window.NAV_DATA = {
           "logo": "assets/logos/qq_mail.png"
         },
         {
-          "name": "网易邮箱",
-          "url": "https://email.163.com/",
-          "logo": "assets/logos/netease_mail.png"
+          "name": "YR",
+          "url": "https://www.yr.no/en/forecast/graph/2-3128760/Spain/Catalonia/Barcelona/Barcelona",
+          "logo": "assets/logos/yr.webp"
         },
         {
           "name": "iCloud Notes",
