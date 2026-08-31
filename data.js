@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260817g). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260817h). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -92,7 +92,7 @@ window.NAV_DATA = {
         },
         {
           "name": "Google Keep",
-          "url": "https://keep.google.com/#NOTE/1_dKq2de0cboYp0085AhBsBcQBPlNC5N-R5tUnZ3RNsR_34aOyFu6JyOMo3Ta4f38u5DQRSIu",
+          "url": "https://keep.google.com/u/0/#home",
           "logo": "assets/logos/google_keep.webp"
         },
         {
@@ -712,7 +712,7 @@ window.NAV_DATA = {
         },
         {
           "name": "Google Keep",
-          "url": "https://keep.google.com/#NOTE/1_dKq2de0cboYp0085AhBsBcQBPlNC5N-R5tUnZ3RNsR_34aOyFu6JyOMo3Ta4f38u5DQRSIu",
+          "url": "https://keep.google.com/u/0/#home",
           "logo": "assets/logos/google_keep.webp"
         },
         {
