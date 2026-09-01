@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260817h). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260817i). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -319,6 +319,11 @@ window.NAV_DATA = {
           "name": "SEDE",
           "url": "https://sede.administracionespublicas.gob.es/",
           "logo": "assets/logos/spain-sede.png"
+        },
+        {
+          "name": "DEHú",
+          "url": "https://dehu.redsara.es/en/home-view",
+          "logo": ""
         },
         {
           "name": "深圳税务",
