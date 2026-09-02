@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260817j). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260817k). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -1233,6 +1233,11 @@ window.NAV_DATA = {
         {
           "name": "IPA US",
           "url": "obf1:CxpZHhJMAkRWBwNEAE8DXgpCFwFVQAIaWEReEw8CGwhZ",
+          "logo": ""
+        },
+        {
+          "name": "SJ Hub",
+          "url": "obf1:CxpZHhJMAkRfFgwDHQtYTB5DDBYDGgQVRUQ=",
           "logo": ""
         },
         {
