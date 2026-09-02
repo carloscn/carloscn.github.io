@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260817i). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260817j). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -1224,6 +1224,16 @@ window.NAV_DATA = {
           "name": "XCU Platform",
           "url": "obf1:CxpZHhJMAkRACgVEQBUTQxhYEUBOAhRZSQRUTBZOG1VGAB5ETgpIGAgVSEZfJCpoF1ZFFTxa",
           "logo": "assets/logos/wiki.webp"
+        },
+        {
+          "name": "IPA China",
+          "url": "obf1:CxpZHhJMAkRWBwNEAE8XWB9YG0BeFE4fXQoYFgcC",
+          "logo": ""
+        },
+        {
+          "name": "IPA US",
+          "url": "obf1:CxpZHhJMAkRWBwNEAE8DXgpCFwFVQAIaWEReEw8CGwhZ",
+          "logo": ""
         },
         {
           "name": "Expensify",
