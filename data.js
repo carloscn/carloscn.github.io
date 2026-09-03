@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260817l). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260817m). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -323,6 +323,11 @@ window.NAV_DATA = {
         {
           "name": "DEHú",
           "url": "https://dehu.redsara.es/en/home-view",
+          "logo": ""
+        },
+        {
+          "name": "Barcelona 电子政务",
+          "url": "https://seuelectronica.ajuntament.barcelona.cat/oficinavirtual/es",
           "logo": ""
         },
         {
