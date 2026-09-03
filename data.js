@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260817k). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260817l). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -312,7 +312,7 @@ window.NAV_DATA = {
         },
         {
           "name": "Seguridad Social",
-          "url": "https://idp.seg-social.es/PGIS/Login",
+          "url": "https://portal.seg-social.gob.es/wps/portal/importass/importass/inicio",
           "logo": "assets/logos/spain-seg-social.jpg"
         },
         {
