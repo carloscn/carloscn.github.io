@@ -1138,7 +1138,6 @@
       background: var(--surface);
       margin-bottom: 14px;
       border-radius: var(--radius);
-      overflow: hidden;
       box-shadow: var(--shadow-card);
     }
 
@@ -1224,7 +1223,7 @@
     .hot-folder-menu {
       position: absolute;
       top: calc(100% + 4px);
-      right: 0;
+      left: 0;
       z-index: 50;
       min-width: 160px;
       background: var(--surface);
@@ -1252,6 +1251,17 @@
     .hot-folder-menu a:hover {
       background: var(--green-soft);
       color: var(--green-dark);
+    }
+
+    .hot-folder-menu hr {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 2px 0;
+    }
+
+    .hot-folder-menu--scroll {
+      max-height: 320px;
+      overflow-y: auto;
     }
 
     /* category rows — modern card list instead of striped table */
@@ -1990,7 +2000,7 @@
     </div>
   </div>
 
-  <script src="data.js?v=20260905b"></script>
+  <script src="data.js?v=20260905c"></script>
   <script>
     (function () {
       // Lightweight URL scramble (XOR+base64). Stops casual GitHub text search;
@@ -2088,8 +2098,13 @@
 
         var menu = document.createElement("div");
         menu.className = "hot-folder-menu";
+        if (item.children.length > 5) menu.classList.add("hot-folder-menu--scroll");
         menu.hidden = true;
         item.children.forEach(function (child) {
+          if (child.divider) {
+            menu.appendChild(document.createElement("hr"));
+            return;
+          }
           var a = document.createElement("a");
           var href = resolveUrl(child.url);
           a.href = href;
@@ -2110,6 +2125,13 @@
           if (!wasOpen) {
             menu.hidden = false;
             btn.setAttribute("aria-expanded", "true");
+            menu.style.left = "0";
+            menu.style.right = "auto";
+            var r = menu.getBoundingClientRect();
+            if (r.right > window.innerWidth - 8) {
+              menu.style.left = "auto";
+              menu.style.right = "0";
+            }
           }
         });
 

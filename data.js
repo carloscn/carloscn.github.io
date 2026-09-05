@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260905b). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260905c). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -75,7 +75,22 @@ window.NAV_DATA = {
         {
           "name": "Google Drive",
           "url": "https://drive.google.com/drive/my-drive",
-          "logo": "assets/logos/Google_Drive_icon_(2026).svg"
+          "logo": "assets/logos/Google_Drive_icon_(2026).svg",
+          "children": [
+            {"name": "Google Drive", "url": "https://drive.google.com/drive/my-drive"},
+            {"divider": true},
+            {"name": "01_Development", "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CX1kHQghwBCVJBgAaFCRjUhhDLQ5bYxhBMiB6XjtGRjxGXBteHlwSXwJBBjFBBw8d"},
+            {"name": "02_Finance", "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CX1U9FQd7MT9VWgk6eFlDCS0ZXSIpXCxGLFhLXhkaXgd0XBteHlwSXwJBBjFBBw8d"},
+            {"name": "03_Health", "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXw0XHhl2UV9uGA8PdFpNOVleIyM6TglCLVwcBxEDZRtCXBteHlwSXwJBBjFBBw8d"},
+            {"name": "04_Work", "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CX1QQZwB8ExxFPC8YdAlRKw1XKRAbdQJyBhodHgAnYhh9XBteHlwSXwJBBjFBBw8d"},
+            {"name": "05_Travelling", "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXykFcix1BxlqXhkFRg9hWi1EWCQXZ15uCzheXjsSazx4XBteHlwSXwJBBjFBBw8d"},
+            {"name": "06_Profile", "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXydAGjpaCAwYWjsHW198VVtoPw4iVAdYKhwYXSURXz9oXBteHlwSXwJBBjFBBw8d"},
+            {"name": "07_Immigration", "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXyQ5QQgCAFh3PAUsSVlVFSYUP1AZSgxUCCIVQz4CaiwaXBteHlwSXwJBBjFBBw8d"},
+            {"name": "08_Relationship", "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXwocSyFdUA1jXyAdWBpjEDxmGDMxWRFAUy1fHlVPRgZZXBteHlwSXwJBBjFBBw8d"},
+            {"name": "09_Network", "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXwVOZwdWCFlYLSwDTAptKxdXJTsxQBF/ICphARsxfSpQXBteHlwSXwJBBjFBBw8d"},
+            {"name": "10_Language", "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXxcvGVhhIiB9VzE4SRhUMypGIUwfahhEOihnBAkYXyJgXBteHlwSXwJBBjFBBw8d"},
+            {"name": "11_Management", "url": "obf1:CxpZHhJMAkRTEQdbC08RQgRQDwsDDQ4bAg9FChhIQQcZQQ9SER0CXwIQdT5/DARnXVkvHiEaBwB+BTgxGQxHOwkdBwkfTBFPXBteHlwSXwJBBjFBBw8d"}
+          ]
         },
         {
           "name": "O2 Cloud",
@@ -100,7 +115,17 @@ window.NAV_DATA = {
         {
           "name": "GitHub",
           "url": "https://github.com/",
-          "logo": "assets/logos/github.png"
+          "logo": "assets/logos/github.png",
+          "children": [
+            {"name": "GitHub 首页", "url": "https://github.com/"},
+            {"divider": true},
+            {"name": "Spanish 仓库", "url": "https://github.com/carloscn/spanish"},
+            {"name": "English 仓库", "url": "https://github.com/carloscn/english"},
+            {"name": "Daily", "url": "https://github.com/carloscn/daily"},
+            {"name": "Life", "url": "https://github.com/carloscn/life"},
+            {"name": "Blog", "url": "https://github.com/carloscn/blog"},
+            {"name": "Work Record", "url": "https://github.com/carloscn/workrecord"}
+          ]
         },
         {
           "name": "Google Keep",
