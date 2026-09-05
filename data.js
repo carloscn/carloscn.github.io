@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260817m). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260905a). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -26,9 +26,9 @@ window.NAV_DATA = {
           "logo": "assets/logos/bluesky.jpg"
         },
         {
-          "name": "知乎",
-          "url": "https://www.zhihu.com/",
-          "logo": "assets/logos/zhihu.png"
+          "name": "Threads",
+          "url": "https://www.threads.com/",
+          "logo": "assets/logos/threads.webp"
         },
         {
           "name": "小红书",
