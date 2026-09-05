@@ -1170,6 +1170,71 @@
       box-shadow: var(--shadow-card);
     }
 
+    /* iOS-folder-style tile: one grid slot that pops open a couple of choices
+       (e.g. domestic vs overseas login for the same app) instead of a single
+       hardcoded link. Text-only, matching this page's no-logo convention. */
+    .hot-folder {
+      position: relative;
+    }
+
+    .hot-folder-btn {
+      width: 100%;
+      padding: 7px 4px;
+      font-size: 13px;
+      line-height: 1.35;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border-radius: var(--radius-sm);
+      color: var(--chip);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform var(--ease), background var(--ease), color var(--ease), box-shadow var(--ease);
+    }
+
+    .hot-folder-btn:hover,
+    .hot-folder-btn[aria-expanded="true"] {
+      background: var(--green-soft);
+      color: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .hot-folder-menu {
+      position: absolute;
+      top: calc(100% + 4px);
+      right: 0;
+      z-index: 50;
+      min-width: 160px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-card-hover);
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .hot-folder-menu[hidden] { display: none; }
+
+    .hot-folder-menu a {
+      display: block;
+      padding: 6px 8px;
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-size: 12px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .hot-folder-menu a:hover {
+      background: var(--green-soft);
+      color: var(--green-dark);
+    }
+
     /* category rows — modern card list instead of striped table */
     .sort-box {
       display: flex;
@@ -1898,7 +1963,7 @@
     </div>
   </div>
 
-  <script src="data.js?v=20260905a"></script>
+  <script src="data.js?v=20260905b"></script>
   <script>
     (function () {
       // Lightweight URL scramble (XOR+base64). Stops casual GitHub text search;
@@ -1930,6 +1995,65 @@
           a.rel = "noopener noreferrer";
         }
         return a;
+      }
+
+      function closeAllFolders() {
+        document.querySelectorAll(".hot-folder-menu").forEach(function (menu) {
+          menu.hidden = true;
+          var btn = menu.previousElementSibling;
+          if (btn) btn.setAttribute("aria-expanded", "false");
+        });
+      }
+      document.addEventListener("click", closeAllFolders);
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeAllFolders();
+      });
+
+      // iOS-folder-style tile: same grid slot as makeLink(), but tapping it
+      // opens a small text menu instead of navigating straight away — for
+      // apps that split into two logins/domains (e.g. 小红书 vs RedNote).
+      function makeFolderTile(item) {
+        var wrap = document.createElement("div");
+        wrap.className = "hot-folder";
+
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "hot-folder-btn";
+        btn.setAttribute("aria-haspopup", "true");
+        btn.setAttribute("aria-expanded", "false");
+        btn.title = item.name || "";
+        btn.textContent = item.name || "";
+        wrap.appendChild(btn);
+
+        var menu = document.createElement("div");
+        menu.className = "hot-folder-menu";
+        menu.hidden = true;
+        item.children.forEach(function (child) {
+          var a = document.createElement("a");
+          var href = resolveUrl(child.url);
+          a.href = href;
+          a.textContent = child.name || href;
+          a.title = child.name || "";
+          if (/^https?:\/\//i.test(href)) {
+            a.target = "_blank";
+            a.rel = "noopener noreferrer";
+          }
+          a.addEventListener("click", closeAllFolders);
+          menu.appendChild(a);
+        });
+        wrap.appendChild(menu);
+
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          var wasOpen = !menu.hidden;
+          closeAllFolders();
+          if (!wasOpen) {
+            menu.hidden = false;
+            btn.setAttribute("aria-expanded", "true");
+          }
+        });
+
+        return wrap;
       }
 
       var data = window.NAV_DATA || { title: "Carlos' Navigator", groups: [] };
@@ -2289,7 +2413,10 @@
           var grid = document.createElement("div");
           grid.className = "hot-grid";
           items.forEach(function (item) {
-            grid.appendChild(makeLink(item));
+            var tile = item.children && item.children.length
+              ? makeFolderTile(item)
+              : makeLink(item);
+            grid.appendChild(tile);
           });
           hot.appendChild(grid);
           main.appendChild(hot);
@@ -2357,6 +2484,21 @@
         groups.forEach(function (group) {
           (group.items || []).forEach(function (item) {
             if (!item || !item.name) return;
+            // Folder-style items (e.g. 小红书/RedNote) index each choice
+            // separately instead of the ambiguous default url.
+            if (item.children && item.children.length) {
+              item.children.forEach(function (child) {
+                if (!child || !child.name) return;
+                var childName = item.name + " " + child.name;
+                jumpIndex.push({
+                  name: childName,
+                  url: child.url,
+                  group: group.name || "",
+                  alias: buildAlias(childName)
+                });
+              });
+              return;
+            }
             jumpIndex.push({
               name: item.name,
               url: item.url,

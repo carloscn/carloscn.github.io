@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260905a). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260905b). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -33,7 +33,19 @@ window.NAV_DATA = {
         {
           "name": "小红书",
           "url": "https://www.xiaohongshu.com/explore",
-          "logo": "assets/logos/XiaohongshuLOGO.png"
+          "logo": "assets/logos/XiaohongshuLOGO.png",
+          "children": [
+            {
+              "name": "小红书（国内）",
+              "url": "https://www.xiaohongshu.com/explore",
+              "logo": "assets/logos/XiaohongshuLOGO.png"
+            },
+            {
+              "name": "RedNote（海外）",
+              "url": "https://www.rednote.com/",
+              "logo": ""
+            }
+          ]
         },
         {
           "name": "微博",
