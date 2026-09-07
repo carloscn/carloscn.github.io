@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260905c). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260907a). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -508,6 +508,16 @@ window.NAV_DATA = {
           "logo": "assets/logos/flightradar24.png"
         },
         {
+          "name": "MarineTraffic",
+          "url": "https://www.marinetraffic.com/en/ais/home/centerx:3.5/centery:41.2/zoom:8",
+          "logo": ""
+        },
+        {
+          "name": "Virtual Vacation",
+          "url": "https://virtualvacation.us/maps",
+          "logo": ""
+        },
+        {
           "name": "Aerolopa",
           "url": "https://www.aerolopa.com/qr-788-1?from=fya&best=qr-788-1&pos=qr-789&lookup_id=259354",
           "logo": "assets/logos/aerolopa.png"
@@ -710,6 +720,31 @@ window.NAV_DATA = {
         {
           "name": "MCT 路况",
           "url": "https://mct.gencat.cat/",
+          "logo": ""
+        },
+        {
+          "name": "Zoom Earth",
+          "url": "https://zoom.earth/places/spain/vacarisses/#map=humidity/model=icon/date=2026-09-07,07:40,+2",
+          "logo": ""
+        },
+        {
+          "name": "Windy",
+          "url": "https://www.windy.com/?41.296,2.735,8",
+          "logo": ""
+        },
+        {
+          "name": "USGS 地震地图",
+          "url": "https://earthquake.usgs.gov/earthquakes/map/?currentFeatureId=us7000teu1&extent=-45.8288,376.34766&extent=66.37276,589.39453",
+          "logo": ""
+        },
+        {
+          "name": "The True Size",
+          "url": "https://thetruesize.com/#?borders=1~!MTY3MjMzNDA.NjYxMDcyNA*MzUwNDYxNjM(ODExNjQ3NQ~!CN*Njk5MzE1Mw.MTMyMzAyMjE)NA~!JP*MTA3NzM2Mjc.MTU2ODU4NTM)NQ",
+          "logo": ""
+        },
+        {
+          "name": "ACME Mapper",
+          "url": "https://acme.com/mapper3/",
           "logo": ""
         }
       ]
@@ -1190,6 +1225,11 @@ window.NAV_DATA = {
         {
           "name": "中国国家地理",
           "url": "http://www.dili360.com/",
+          "logo": ""
+        },
+        {
+          "name": "Old Maps Online",
+          "url": "https://www.oldmapsonline.org/zh/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD#position=2.6912/32.46/107.65&year=594",
           "logo": ""
         }
       ]
