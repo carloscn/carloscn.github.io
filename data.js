@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260907a). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260910a). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -1064,8 +1064,13 @@ window.NAV_DATA = {
         },
         {
           "name": "Hetzner",
-          "url": "https://console.hetzner.com/",
+          "url": "https://console.hetzner.com/projects/13690416/dashboard",
           "logo": "assets/logos/hetzner.png"
+        },
+        {
+          "name": "Clouding",
+          "url": "https://portal.clouding.io/dsb/vmm/vmlist",
+          "logo": ""
         },
         {
           "name": "Google Cloud",
