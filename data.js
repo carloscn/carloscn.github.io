@@ -746,6 +746,11 @@ window.NAV_DATA = {
           "name": "ACME Mapper",
           "url": "https://acme.com/mapper3/",
           "logo": ""
+        },
+        {
+          "name": "WLOC 定位",
+          "url": "https://wloc-pages.pages.dev/",
+          "logo": ""
         }
       ]
     },
