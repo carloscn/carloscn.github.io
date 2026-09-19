@@ -636,6 +636,11 @@ window.NAV_DATA = {
           "name": "12306",
           "url": "https://www.12306.cn/",
           "logo": ""
+        },
+        {
+          "name": "Amazon.es",
+          "url": "https://www.amazon.es/",
+          "logo": ""
         }
       ]
     },
