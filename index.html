@@ -2828,6 +2828,12 @@
           '      <div class="delta" id="deltaEurCny"></div>' +
           '      <svg class="rate-spark" id="sparkEurCny" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"></svg>' +
           "    </div>" +
+          '    <div class="rate-card" data-key="eurUsd">' +
+          '      <div class="pair">EUR / USD<small>欧元 → 美元 · 近30日</small></div>' +
+          '      <div class="price" id="rateEurUsd">—</div>' +
+          '      <div class="delta" id="deltaEurUsd"></div>' +
+          '      <svg class="rate-spark" id="sparkEurUsd" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"></svg>' +
+          "    </div>" +
           '    <div class="rate-card" data-key="xauCny">' +
           '      <div class="pair">黄金 CNY/克<small>现货金价 · 每克 · 近30日</small></div>' +
           '      <div class="price" id="rateXauCny">—</div>' +
@@ -2849,6 +2855,7 @@
         var elUsd = document.getElementById("rateUsdCny");
         var elEur = document.getElementById("rateEurCny");
         var elXau = document.getElementById("rateXauCny");
+        var elEurUsd = document.getElementById("rateEurUsd");
         var refreshing = false;
 
         function setStatus(msg, isError) {
@@ -3012,12 +3019,18 @@
               fmtFx(data.eurCny, 4) + '<span class="unit">CNY</span>';
           }
           if (elXau) elXau.innerHTML = fmtGoldCny(data.xauCnyGram);
+          if (elEurUsd) {
+            elEurUsd.innerHTML =
+              fmtFx(data.eurUsd, 4) + '<span class="unit">USD</span>';
+          }
 
           paintSpark("sparkUsdCny", data.histUsdCny);
           paintSpark("sparkEurCny", data.histEurCny);
+          paintSpark("sparkEurUsd", data.histEurUsd);
           paintSpark("sparkXauCny", data.histXauCnyGram);
           paintDelta("deltaUsdCny", data.histUsdCny, 2);
           paintDelta("deltaEurCny", data.histEurCny, 2);
+          paintDelta("deltaEurUsd", data.histEurUsd, 2);
           paintDelta("deltaXauCny", data.histXauCnyGram, 2);
 
           if (gridEl) gridEl.hidden = false;
@@ -3174,6 +3187,21 @@
           );
         }
 
+        function fetchEurUsd() {
+          return firstOk(
+            [
+              "https://api.frankfurter.app/latest?from=EUR&to=USD",
+              "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json",
+              "https://latest.currency-api.pages.dev/v1/currencies/eur.json"
+            ],
+            function (j) {
+              if (j.rates && j.rates.USD != null) return Number(j.rates.USD);
+              if (j.eur && j.eur.usd != null) return Number(j.eur.usd);
+              return null;
+            }
+          );
+        }
+
         function fetchXauUsd() {
           return firstOk(
             [
@@ -3242,10 +3270,14 @@
             fetchUsdCny(),
             fetchEurCny(),
             fetchXauUsd(),
+            fetchEurUsd(),
             fetchFxHistory("USD", "CNY").catch(function () {
               return null;
             }),
             fetchFxHistory("EUR", "CNY").catch(function () {
+              return null;
+            }),
+            fetchFxHistory("EUR", "USD").catch(function () {
               return null;
             }),
             fetchXauHistory().catch(function () {
@@ -3256,13 +3288,16 @@
               var usd = vals[0];
               var eur = vals[1];
               var xau = vals[2];
-              var histUsd = vals[3];
-              var histEur = vals[4];
-              var histXau = vals[5];
+              var eurUsd = vals[3];
+              var histUsd = vals[4];
+              var histEur = vals[5];
+              var histEurUsd = vals[6];
+              var histXau = vals[7];
 
               // Never keep a flat 2-point stub if we have a real latest quote only
               if (!histUsd || isFlatSeries(histUsd)) histUsd = null;
               if (!histEur || isFlatSeries(histEur)) histEur = null;
+              if (!histEurUsd || isFlatSeries(histEurUsd)) histEurUsd = null;
               if (!histXau || isFlatSeries(histXau)) histXau = null;
 
               if (histUsd) {
@@ -3274,6 +3309,11 @@
                 if (Math.abs(histEur[histEur.length - 1] - eur) > 1e-6) histEur = histEur.concat([eur]);
               } else {
                 histEur = [eur * 0.998, eur];
+              }
+              if (histEurUsd) {
+                if (Math.abs(histEurUsd[histEurUsd.length - 1] - eurUsd) > 1e-6) histEurUsd = histEurUsd.concat([eurUsd]);
+              } else {
+                histEurUsd = [eurUsd * 0.998, eurUsd];
               }
               if (histXau) {
                 if (Math.abs(histXau[histXau.length - 1] - xau) > 1e-6) histXau = histXau.concat([xau]);
@@ -3290,9 +3330,11 @@
               var data = {
                 usdCny: usd,
                 eurCny: eur,
+                eurUsd: eurUsd,
                 xauCnyGram: xauCnyGram,
                 histUsdCny: histUsd,
                 histEurCny: histEur,
+                histEurUsd: histEurUsd,
                 histXauCnyGram: histXauCnyGram,
                 asOf: new Date().toLocaleString("zh-CN", {
                   month: "2-digit",

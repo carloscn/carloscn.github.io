@@ -2768,6 +2768,12 @@
           '      <div class="delta" id="deltaEurCny"></div>' +
           '      <svg class="rate-spark" id="sparkEurCny" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"></svg>' +
           "    </div>" +
+          '    <div class="rate-card" data-key="eurUsd">' +
+          '      <div class="pair">EUR / USD<small>欧元 → 美元 · 近30日</small></div>' +
+          '      <div class="price" id="rateEurUsd">—</div>' +
+          '      <div class="delta" id="deltaEurUsd"></div>' +
+          '      <svg class="rate-spark" id="sparkEurUsd" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"></svg>' +
+          "    </div>" +
           '    <div class="rate-card" data-key="xauCny">' +
           '      <div class="pair">黄金 CNY/克<small>现货金价 · 每克 · 近30日</small></div>' +
           '      <div class="price" id="rateXauCny">—</div>' +
@@ -2789,6 +2795,7 @@
         var elUsd = document.getElementById("rateUsdCny");
         var elEur = document.getElementById("rateEurCny");
         var elXau = document.getElementById("rateXauCny");
+        var elEurUsd = document.getElementById("rateEurUsd");
         var refreshing = false;
 
         function setStatus(msg, isError) {
@@ -2930,12 +2937,18 @@
               fmtFx(data.eurCny, 4) + '<span class="unit">CNY</span>';
           }
           if (elXau) elXau.innerHTML = fmtGoldCny(data.xauCnyGram);
+          if (elEurUsd) {
+            elEurUsd.innerHTML =
+              fmtFx(data.eurUsd, 4) + '<span class="unit">USD</span>';
+          }
 
           paintSpark("sparkUsdCny", data.histUsdCny);
           paintSpark("sparkEurCny", data.histEurCny);
+          paintSpark("sparkEurUsd", data.histEurUsd);
           paintSpark("sparkXauCny", data.histXauCnyGram);
           paintDelta("deltaUsdCny", data.histUsdCny, 2);
           paintDelta("deltaEurCny", data.histEurCny, 2);
+          paintDelta("deltaEurUsd", data.histEurUsd, 2);
           paintDelta("deltaXauCny", data.histXauCnyGram, 2);
 
           if (gridEl) gridEl.hidden = false;
@@ -3033,6 +3046,21 @@
           );
         }
 
+        function fetchEurUsd() {
+          return firstOk(
+            [
+              "https://api.frankfurter.app/latest?from=EUR&to=USD",
+              "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json",
+              "https://latest.currency-api.pages.dev/v1/currencies/eur.json"
+            ],
+            function (j) {
+              if (j.rates && j.rates.USD != null) return Number(j.rates.USD);
+              if (j.eur && j.eur.usd != null) return Number(j.eur.usd);
+              return null;
+            }
+          );
+        }
+
         function fetchXauUsd() {
           return firstOk(
             [
@@ -3101,10 +3129,14 @@
             fetchUsdCny(),
             fetchEurCny(),
             fetchXauUsd(),
+            fetchEurUsd(),
             frankfurterHistory("USD", "CNY").catch(function () {
               return null;
             }),
             frankfurterHistory("EUR", "CNY").catch(function () {
+              return null;
+            }),
+            frankfurterHistory("EUR", "USD").catch(function () {
               return null;
             }),
             fetchXauHistory().catch(function () {
@@ -3115,13 +3147,16 @@
               var usd = vals[0];
               var eur = vals[1];
               var xau = vals[2];
-              var histUsd = vals[3] || [usd, usd];
-              var histEur = vals[4] || [eur, eur];
-              var histXau = vals[5] || [xau, xau];
+              var eurUsd = vals[3];
+              var histUsd = vals[4] || [usd, usd];
+              var histEur = vals[5] || [eur, eur];
+              var histEurUsd = vals[6] || [eurUsd, eurUsd];
+              var histXau = vals[7] || [xau, xau];
 
               // Ensure last point matches latest quote for a continuous line
               if (histUsd[histUsd.length - 1] !== usd) histUsd = histUsd.concat([usd]);
               if (histEur[histEur.length - 1] !== eur) histEur = histEur.concat([eur]);
+              if (histEurUsd[histEurUsd.length - 1] !== eurUsd) histEurUsd = histEurUsd.concat([eurUsd]);
               if (histXau[histXau.length - 1] !== xau) histXau = histXau.concat([xau]);
 
               // Gold price benchmarked to CNY/gram: spot XAU/USD × USD/CNY ÷ grams-per-troy-oz
@@ -3133,9 +3168,11 @@
               var data = {
                 usdCny: usd,
                 eurCny: eur,
+                eurUsd: eurUsd,
                 xauCnyGram: xauCnyGram,
                 histUsdCny: histUsd,
                 histEurCny: histEur,
+                histEurUsd: histEurUsd,
                 histXauCnyGram: histXauCnyGram,
                 asOf: new Date().toLocaleString("zh-CN", {
                   month: "2-digit",
