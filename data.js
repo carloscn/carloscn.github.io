@@ -996,6 +996,11 @@ window.NAV_DATA = {
           "name": "NVIDIA DriveOS Docs",
           "url": "https://developer.nvidia.com/drive/documentation#section-driveos-7-2-5-linux-sdk",
           "logo": ""
+        },
+        {
+          "name": "创芯科技 CAN",
+          "url": "https://www.zhcxgd.com/",
+          "logo": ""
         }
       ]
     },
