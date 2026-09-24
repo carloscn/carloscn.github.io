@@ -1084,7 +1084,7 @@ window.NAV_DATA = {
         },
         {
           "name": "Google Cloud",
-          "url": "https://console.cloud.google.com/",
+          "url": "https://console.cloud.google.com/welcome?project=langlsrw",
           "logo": "assets/logos/googlecloud.png"
         },
         {
