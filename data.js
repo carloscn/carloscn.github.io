@@ -1221,6 +1221,11 @@ window.NAV_DATA = {
           "name": "Duoninja",
           "url": "https://www.duoninja.com/learn",
           "logo": ""
+        },
+        {
+          "name": "Lang MLTZ",
+          "url": "https://lang.mltz.tech/",
+          "logo": ""
         }
       ]
     },
