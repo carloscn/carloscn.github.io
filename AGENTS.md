@@ -87,6 +87,7 @@ CSS tokens on the full pages live in `:root` / `html[data-theme="dark"]` (e.g. `
 | `data.js` | Public navigation data | Yes |
 | `assets/logos/*` | Item logos | Yes |
 | `assets/pic/headpic.jpg` | Avatar / favicon | Yes |
+| `assets/pinyin.js` | Generated pinyin table (GB2312 + site chars, via pypinyin) for `/` jump search — `jd` / `jingdong` → 京东; loaded by `index.html` + `text.html` | Yes |
 | `AGENTS.md` | This guide | Yes |
 | `data.company.local.js` | Optional local plaintext company links (`window.NAV_COMPANY`) | **No** (`.gitignore`) |
 | `*.infinity`, `link*.json` | Local backups | **No** (`.gitignore`) |

@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260910a). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260928a). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [

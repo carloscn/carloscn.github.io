@@ -2036,7 +2036,8 @@
     </div>
   </div>
 
-  <script src="data.js?v=20260910a"></script>
+  <script src="data.js?v=20260928a"></script>
+  <script src="assets/pinyin.js?v=20260928a"></script>
   <script>
     (function () {
       // Lightweight URL scramble (XOR+base64). Stops casual GitHub text search;
@@ -2565,6 +2566,77 @@
           return alias;
         }
 
+        var pyChar = null;
+        function pinyinTable() {
+          if (pyChar) return pyChar;
+          pyChar = {};
+          [window.PINYIN_MAIN, window.PINYIN_EXTRA].forEach(function (packed) {
+            if (!packed) return;
+            packed.split("|").forEach(function (seg) {
+              var p = seg.indexOf(":");
+              var syl = seg.slice(0, p);
+              var cs = seg.slice(p + 1);
+              for (var k = 0; k < cs.length; k++) {
+                (pyChar[cs[k]] || (pyChar[cs[k]] = [])).push(syl);
+              }
+            });
+          });
+          return pyChar;
+        }
+
+        // Full-pinyin + initials variants (polyphones expand, capped). fmap/imap
+        // record the source char index per letter so hits can highlight 汉字.
+        function buildPinyin(name) {
+          if (!/[一-鿿]/.test(name)) return null;
+          var table = pinyinTable();
+          var variants = [{ full: "", fmap: [], ini: "", imap: [] }];
+          for (var i = 0; i < name.length; i++) {
+            var c = name.charAt(i);
+            var opts = table[c];
+            if (!opts) {
+              if (!/[a-z0-9]/i.test(c)) continue;
+              opts = [c.toLowerCase()];
+            }
+            var next = [];
+            for (var v = 0; v < variants.length; v++) {
+              for (var o = 0; o < opts.length && next.length < 16; o++) {
+                var cur = variants[v];
+                var syl = opts[o];
+                var fmap = cur.fmap.slice();
+                for (var s = 0; s < syl.length; s++) fmap.push(i);
+                next.push({
+                  full: cur.full + syl,
+                  fmap: fmap,
+                  ini: cur.ini + syl.charAt(0),
+                  imap: cur.imap.concat([i])
+                });
+              }
+            }
+            variants = next;
+          }
+          return variants;
+        }
+
+        function pinyinHit(py, qp) {
+          if (!py) return null;
+          var best = null;
+          for (var i = 0; i < py.length; i++) {
+            var pairs = [[py[i].ini, py[i].imap], [py[i].full, py[i].fmap]];
+            for (var j = 0; j < pairs.length; j++) {
+              var str = pairs[j][0];
+              var map = pairs[j][1];
+              var at = str.indexOf(qp);
+              // only accept hits that begin on a syllable/char boundary ("hang" ≠ c-hang)
+              while (at > 0 && map[at] === map[at - 1]) at = str.indexOf(qp, at + 1);
+              if (at === -1) continue;
+              var hit = { start: at, from: map[at], to: map[at + qp.length - 1] };
+              if (at === 0) return hit;
+              if (!best) best = hit;
+            }
+          }
+          return best;
+        }
+
         var jumpIndex = [];
         groups.forEach(function (group) {
           (group.items || []).forEach(function (item) {
@@ -2579,7 +2651,8 @@
                   name: childName,
                   url: child.url,
                   group: group.name || "",
-                  alias: buildAlias(childName)
+                  alias: buildAlias(childName),
+                  py: buildPinyin(childName)
                 });
               });
               return;
@@ -2588,7 +2661,8 @@
               name: item.name,
               url: item.url,
               group: group.name || "",
-              alias: buildAlias(item.name)
+              alias: buildAlias(item.name),
+              py: buildPinyin(item.name)
             });
           });
         });
@@ -2596,7 +2670,7 @@
         document.querySelectorAll(".side-tools-grid a, .side-tools-more a").forEach(function (a) {
           var name = (a.textContent || "").trim();
           if (!name) return;
-          jumpIndex.push({ name: name, url: a.getAttribute("href"), group: "小工具", alias: buildAlias(name) });
+          jumpIndex.push({ name: name, url: a.getAttribute("href"), group: "小工具", alias: buildAlias(name), py: buildPinyin(name) });
         });
 
         var activeIndex = -1;
@@ -2607,35 +2681,55 @@
           });
         }
 
-        function highlight(text, query) {
+        function markRange(text, from, to) {
+          return (
+            escapeHtml(text.slice(0, from)) +
+            "<mark>" +
+            escapeHtml(text.slice(from, to)) +
+            "</mark>" +
+            escapeHtml(text.slice(to))
+          );
+        }
+
+        function highlight(text, query, hit) {
+          if (hit) return markRange(text, hit.from, hit.to + 1);
           if (!query) return escapeHtml(text);
           var idx = text.toLowerCase().indexOf(query.toLowerCase());
           if (idx === -1) return escapeHtml(text);
-          return (
-            escapeHtml(text.slice(0, idx)) +
-            "<mark>" +
-            escapeHtml(text.slice(idx, idx + query.length)) +
-            "</mark>" +
-            escapeHtml(text.slice(idx + query.length))
-          );
+          return markRange(text, idx, idx + query.length);
         }
 
         function search(query) {
           var q = query.trim().toLowerCase();
-          if (!q) return jumpIndex.slice(0, 8);
+          if (!q) {
+            return jumpIndex.slice(0, 8).map(function (it) { return { it: it }; });
+          }
+          var qp = q.replace(/\s+/g, "");
+          if (!/^[a-z0-9]+$/.test(qp)) qp = "";
           var starts = [];
+          var pyStarts = [];
           var contains = [];
           for (var i = 0; i < jumpIndex.length; i++) {
             var it = jumpIndex[i];
             var name = it.name.toLowerCase();
             var group = it.group.toLowerCase();
             var alias = it.alias || "";
-            if (name.indexOf(q) === 0) starts.push(it);
-            else if (name.indexOf(q) !== -1 || group.indexOf(q) !== -1 || alias.indexOf(q) !== -1) {
-              contains.push(it);
+            if (name.indexOf(q) === 0) {
+              starts.push({ it: it });
+              continue;
+            }
+            if (name.indexOf(q) !== -1) {
+              contains.push({ it: it });
+              continue;
+            }
+            var hit = qp ? pinyinHit(it.py, qp) : null;
+            if (hit) {
+              (hit.start === 0 ? pyStarts : contains).push({ it: it, hit: hit });
+            } else if (group.indexOf(q) !== -1 || alias.indexOf(q) !== -1) {
+              contains.push({ it: it });
             }
           }
-          return starts.concat(contains).slice(0, 30);
+          return starts.concat(pyStarts, contains).slice(0, 30);
         }
 
         function setActive(i) {
@@ -2662,7 +2756,8 @@
             return;
           }
           emptyEl.hidden = true;
-          matches.forEach(function (item) {
+          matches.forEach(function (m) {
+            var item = m.it;
             var a = document.createElement("a");
             a.className = "jump-item";
             var href = resolveUrl(item.url);
@@ -2672,7 +2767,7 @@
               a.rel = "noopener noreferrer";
             }
             a.innerHTML =
-              '<span class="jump-item-name">' + highlight(item.name, q) + "</span>" +
+              '<span class="jump-item-name">' + highlight(item.name, q, m.hit) + "</span>" +
               '<span class="jump-item-group">' + escapeHtml(item.group) + "</span>";
             a.addEventListener("click", closeJump);
             resultsEl.appendChild(a);
