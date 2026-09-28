@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260928a). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20260928b). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -594,18 +594,13 @@ window.NAV_DATA = {
       "items": [
         {
           "name": "京东",
-          "url": "https://www.6-u.com/web/jd.html",
+          "url": "https://www.jd.com/?a=1790598110128",
           "logo": "assets/logos/jd.png"
         },
         {
           "name": "淘宝",
           "url": "https://www.taobao.com",
           "logo": "assets/logos/taobao.webp"
-        },
-        {
-          "name": "6-U",
-          "url": "https://www.6-u.com/",
-          "logo": ""
         },
         {
           "name": "贝壳找房",
@@ -629,7 +624,7 @@ window.NAV_DATA = {
         },
         {
           "name": "携程",
-          "url": "https://www.ctrip.com/?AllianceID=3799814&sid=22840677&ouid=&app=0301C00",
+          "url": "https://www.ctrip.com/",
           "logo": "assets/logos/xiecheng.png"
         },
         {
@@ -695,11 +690,6 @@ window.NAV_DATA = {
         {
           "name": "InfTab",
           "url": "https://inftab.com/",
-          "logo": ""
-        },
-        {
-          "name": "MVIP Cloud",
-          "url": "https://www.mvipcloud.xyz/",
           "logo": ""
         },
         {
