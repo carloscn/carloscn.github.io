@@ -6,6 +6,27 @@
   <title>Carlos' Navigator</title>
   <link rel="icon" href="assets/pic/headpic.jpg" type="image/jpeg" />
   <script>
+    // PC / phone routing. Phones go to mobile.html, everything else stays here.
+    // ?view=desktop|mobile|auto pins the choice for this browser tab.
+    (function () {
+      var view = null;
+      var m = /[?&]view=(desktop|mobile|auto)/.exec(location.search);
+      try {
+        if (m) { if (m[1] === "auto") sessionStorage.removeItem("cn-nav-view"); else sessionStorage.setItem("cn-nav-view", m[1]); }
+        view = sessionStorage.getItem("cn-nav-view");
+      } catch (e) {}
+      if (m && m[1] !== "auto") view = m[1];
+      if (!view) {
+        var mobileUA = (navigator.userAgentData && typeof navigator.userAgentData.mobile === "boolean")
+          ? navigator.userAgentData.mobile
+          : /Android.+Mobile|iPhone|iPod|Windows Phone|BlackBerry|Opera Mini/i.test(navigator.userAgent);
+        var small = Math.min(screen.width || 0, screen.height || 0) <= 600;
+        view = (mobileUA && small) ? "mobile" : "desktop";
+      }
+      if (view === "mobile") location.replace("mobile.html");
+    })();
+  </script>
+  <script>
     (function () {
       var key = "cn-nav-theme";
       // One-time cleanup: an older build persisted the system-derived theme on
@@ -1719,6 +1740,8 @@
       appearance: auto;
     }
 
+    .view-select { max-width: 124px; }
+
     .theme-toggle:hover,
     .palette-select:hover {
       color: var(--green-dark);
@@ -1885,8 +1908,12 @@
         </select>
         <button type="button" class="theme-toggle" id="btnTheme" title="切换浅色/深色">深色</button>
         <a href="#" id="btnChangeCityTop">切换城市</a>
-        <a href="text.html" id="btnSwitchText" title="切换到纯文字版">纯文字版</a>
-        <a href="icons-lite.html" id="btnSwitchLite" title="切换到有图精简版">有图精简版</a>
+        <select class="palette-select view-select" id="viewSelect" title="切换视图" aria-label="切换视图">
+          <option value="index.html" selected>有图版</option>
+          <option value="text.html">纯文字版</option>
+          <option value="icons-lite.html">有图精简版</option>
+          <option value="mobile.html?view=mobile">手机版</option>
+        </select>
       </div>
     </div>
 
@@ -2333,6 +2360,15 @@
         if (sel && sel.value !== next) sel.value = next;
       }
       applyPalette(currentPalette());
+      var viewSel = document.getElementById("viewSelect");
+      if (viewSel) {
+        viewSel.addEventListener("change", function () {
+          if (viewSel.value) location.href = viewSel.value;
+        });
+        // coming back via the browser back button: show the page we are on
+        window.addEventListener("pageshow", function () { viewSel.value = "index.html"; });
+      }
+
       var paletteSel = document.getElementById("paletteSelect");
       if (paletteSel) {
         paletteSel.addEventListener("change", function () {

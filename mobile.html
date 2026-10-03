@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Carlos' Navigator</title>
+  <link rel="icon" href="assets/pic/headpic.jpg" type="image/jpeg" />
+  <script>
+    (function () {
+      var key = "cn-nav-theme";
+      var t = null;
+      try { t = localStorage.getItem(key); } catch (e) {}
+      if (t !== "light" && t !== "dark") {
+        try {
+          t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark" : "light";
+        } catch (e) {
+          t = "light";
+        }
+      }
+      try { document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+      var p = null;
+      try { p = localStorage.getItem("cn-nav-palette"); } catch (e) {}
+      var ok = { default: 1, github: 1, reddit: 1, twitter: 1 };
+      if (!ok[p]) p = "default";
+      try { document.documentElement.setAttribute("data-palette", p); } catch (e) {}
+      // PC / phone routing. ?view=desktop|mobile|auto pins the choice for this
+      // browser tab; with no pin, phones stay here and everything else goes to index.html.
+      var view = null;
+      var m = /[?&]view=(desktop|mobile|auto)/.exec(location.search);
+      try {
+        if (m) { if (m[1] === "auto") sessionStorage.removeItem("cn-nav-view"); else sessionStorage.setItem("cn-nav-view", m[1]); }
+        view = sessionStorage.getItem("cn-nav-view");
+      } catch (e) {}
+      if (m && m[1] !== "auto") view = m[1];
+      if (!view) {
+        var ua = navigator.userAgent;
+        var mobileUA = (navigator.userAgentData && typeof navigator.userAgentData.mobile === "boolean")
+          ? navigator.userAgentData.mobile
+          : /Android.+Mobile|iPhone|iPod|Windows Phone|BlackBerry|Opera Mini/i.test(ua);
+        var small = Math.min(screen.width || 0, screen.height || 0) <= 600;
+        view = (mobileUA && small) ? "mobile" : "desktop";
+      }
+      if (view === "desktop") { location.replace("index.html"); return; }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green: #16a34a;
+      --green-dark: #15803d;
+      --green-soft: #f0fdf4;
+      --body: #f7f8f7;
+      --bg-top: #fafbfa;
+      --surface: #ffffff;
+      --surface-2: #fafafa;
+      --fill: #ffffff;
+      --text: #1a1a1a;
+      --muted: #6b7280;
+      --cat: #15803d;
+      --link: #1f2937;
+      --hover: #dc2626;
+      --line: #e5e7eb;
+      --line-soft: #f0f1f3;
+      --chip: #374151;
+      --meta: #4b5563;
+      --rank: #9ca3af;
+      --day: #c2410c;
+      --night: #2563eb;
+      --focus: rgba(22, 163, 74, 0.15);
+      --engine-border: #86efac;
+      --radius: 14px;
+      --radius-sm: 9px;
+      --width: min(1100px, 96vw);
+      --ease: 0.15s ease;
+      --shadow-card: 0 1px 2px rgba(15, 23, 20, 0.04), 0 6px 16px -8px rgba(15, 23, 20, 0.10);
+      --shadow-card-hover: 0 2px 4px rgba(15, 23, 20, 0.06), 0 10px 24px -8px rgba(15, 23, 20, 0.16);
+      color-scheme: light;
+    }
+
+    html[data-theme="dark"] {
+      --green: #22c55e;
+      --green-dark: #4ade80;
+      --green-soft: #14532d;
+      --body: #0c100e;
+      --bg-top: #101512;
+      --surface: #161b18;
+      --surface-2: #1c221e;
+      --fill: #1a201c;
+      --text: #e7ebe8;
+      --muted: #94a3b8;
+      --cat: #86efac;
+      --link: #e2e8f0;
+      --hover: #f87171;
+      --line: #2a322c;
+      --line-soft: #222824;
+      --chip: #cbd5e1;
+      --meta: #94a3b8;
+      --rank: #64748b;
+      --day: #fdba74;
+      --night: #93c5fd;
+      --focus: rgba(34, 197, 94, 0.22);
+      --engine-border: #166534;
+      --shadow-card: 0 1px 0 rgba(0, 0, 0, 0.2), 0 6px 16px -8px rgba(0, 0, 0, 0.45);
+      --shadow-card-hover: 0 1px 0 rgba(0, 0, 0, 0.25), 0 10px 24px -8px rgba(0, 0, 0, 0.6);
+      color-scheme: dark;
+    }
+
+    /* ----- Color palettes (independent of light/dark) ----- */
+    /* GitHub Primer-ish: neutral canvas, green primary actions, blue links */
+    html[data-palette="github"] {
+      --green: #1f883d;
+      --green-dark: #1a7f37;
+      --green-soft: #dafbe1;
+      --body: #f6f8fa;
+      --bg-top: #ffffff;
+      --surface: #ffffff;
+      --surface-2: #f6f8fa;
+      --fill: #ffffff;
+      --text: #1f2328;
+      --muted: #59636e;
+      --cat: #1a7f37;
+      --link: #0969da;
+      --hover: #0550ae;
+      --line: #d1d9e0;
+      --line-soft: #e6eaef;
+      --chip: #1f2328;
+      --meta: #59636e;
+      --rank: #818b98;
+      --day: #9a6700;
+      --night: #0969da;
+      --focus: rgba(9, 105, 218, 0.2);
+      --engine-border: #54aeff;
+      color-scheme: light;
+    }
+    html[data-palette="github"][data-theme="dark"] {
+      --green: #238636;
+      --green-dark: #3fb950;
+      --green-soft: #12261e;
+      --body: #0d1117;
+      --bg-top: #010409;
+      --surface: #161b22;
+      --surface-2: #151b23;
+      --fill: #161b22;
+      --text: #f0f6fc;
+      --muted: #9198a1;
+      --cat: #3fb950;
+      --link: #4493f8;
+      --hover: #79c0ff;
+      --line: #3d444d;
+      --line-soft: #212830;
+      --chip: #f0f6fc;
+      --meta: #9198a1;
+      --rank: #6e7681;
+      --day: #d29922;
+      --night: #79c0ff;
+      --focus: rgba(31, 111, 235, 0.28);
+      --engine-border: #1f6feb;
+      color-scheme: dark;
+    }
+    /* GitHub: blue hyperlinks (Primer accent), green stays for primary UI */
+    html[data-palette="github"] .sort-links a,
+    html[data-palette="github"] .hot-board-list a,
+    html[data-palette="github"] .side-tools-grid a,
+    html[data-palette="github"] .side-tools-more a {
+      color: var(--link);
+    }
+    html[data-palette="github"] .sort-links a:hover,
+    html[data-palette="github"] .hot-board-list a:hover,
+    html[data-palette="github"] .side-tools-grid a:hover,
+    html[data-palette="github"] .side-tools-more a:hover,
+    html[data-palette="github"] .hot-grid a:hover {
+      color: var(--hover);
+      background: #ddf4ff;
+    }
+    html[data-palette="github"][data-theme="dark"] .sort-links a:hover,
+    html[data-palette="github"][data-theme="dark"] .hot-board-list a:hover,
+    html[data-palette="github"][data-theme="dark"] .side-tools-grid a:hover,
+    html[data-palette="github"][data-theme="dark"] .side-tools-more a:hover,
+    html[data-palette="github"][data-theme="dark"] .hot-grid a:hover {
+      background: #121d2f;
+    }
+    html[data-palette="github"] .search-box button[type="submit"],
+    html[data-palette="github"] .city-row button,
+    html[data-palette="github"] .city-actions button:not(.ghost) {
+      background: #1f883d;
+      color: #fff;
+      border-color: rgba(31, 136, 61, 0.8);
+      box-shadow: none;
+    }
+    html[data-palette="github"][data-theme="dark"] .search-box button[type="submit"],
+    html[data-palette="github"][data-theme="dark"] .city-row button,
+    html[data-palette="github"][data-theme="dark"] .city-actions button:not(.ghost) {
+      background: #238636;
+      border-color: #238636;
+    }
+
+    html[data-palette="reddit"] {
+      --green: #ff4500;
+      --green-dark: #d93900;
+      --green-soft: #fff1ec;
+      --body: #dae0e6;
+      --bg-top: #edeff1;
+      --surface: #ffffff;
+      --surface-2: #f6f7f8;
+      --fill: #ffffff;
+      --text: #1c1c1c;
+      --muted: #7c7c7c;
+      --cat: #ff4500;
+      --link: #1c1c1c;
+      --hover: #0079d3;
+      --line: #ccc;
+      --line-soft: #eDEFF1;
+      --chip: #1a1a1b;
+      --meta: #7c7c7c;
+      --rank: #878a8c;
+      --day: #ff8717;
+      --night: #0079d3;
+      --focus: rgba(255, 69, 0, 0.16);
+      --engine-border: #ff8717;
+      color-scheme: light;
+    }
+    html[data-palette="reddit"][data-theme="dark"] {
+      --green: #ff4500;
+      --green-dark: #ff8717;
+      --green-soft: #3d1a10;
+      --body: #030303;
+      --bg-top: #0a0a0a;
+      --surface: #1a1a1b;
+      --surface-2: #272729;
+      --fill: #1a1a1b;
+      --text: #d7dadc;
+      --muted: #818384;
+      --cat: #ff8717;
+      --link: #d7dadc;
+      --hover: #72cdf6;
+      --line: #343536;
+      --line-soft: #272729;
+      --chip: #d7dadc;
+      --meta: #818384;
+      --rank: #6a6b6c;
+      --day: #ffb000;
+      --night: #72cdf6;
+      --focus: rgba(255, 69, 0, 0.22);
+      --engine-border: #ff4500;
+      color-scheme: dark;
+    }
+
+    html[data-palette="twitter"] {
+      --green: #1d9bf0;
+      --green-dark: #1a8cd8;
+      --green-soft: #e8f5fd;
+      --body: #f7f9f9;
+      --bg-top: #ffffff;
+      --surface: #ffffff;
+      --surface-2: #f7f9f9;
+      --fill: #ffffff;
+      --text: #0f1419;
+      --muted: #536471;
+      --cat: #1d9bf0;
+      --link: #0f1419;
+      --hover: #f4212e;
+      --line: #eff3f4;
+      --line-soft: #f7f9f9;
+      --chip: #0f1419;
+      --meta: #536471;
+      --rank: #8b98a5;
+      --day: #ff7a00;
+      --night: #1d9bf0;
+      --focus: rgba(29, 155, 240, 0.18);
+      --engine-border: #8ecdf8;
+      color-scheme: light;
+    }
+    html[data-palette="twitter"][data-theme="dark"] {
+      --green: #1d9bf0;
+      --green-dark: #1d9bf0;
+      --green-soft: #031525;
+      --body: #000000;
+      --bg-top: #000000;
+      --surface: #16181c;
+      --surface-2: #1d1f23;
+      --fill: #16181c;
+      --text: #e7e9ea;
+      --muted: #71767b;
+      --cat: #1d9bf0;
+      --link: #e7e9ea;
+      --hover: #f4212e;
+      --line: #2f3336;
+      --line-soft: #1d1f23;
+      --chip: #e7e9ea;
+      --meta: #71767b;
+      --rank: #6e767d;
+      --day: #ffd400;
+      --night: #1d9bf0;
+      --focus: rgba(29, 155, 240, 0.22);
+      --engine-border: #1d9bf0;
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    html { -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font: 15px/1.5 "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      background: linear-gradient(180deg, var(--bg-top) 0%, var(--body) 100%);
+    }
+
+    a:link, a:visited { color: var(--link); text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    .m {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: calc(12px + env(safe-area-inset-top)) 12px calc(28px + env(safe-area-inset-bottom));
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-card);
+    }
+
+    /* header */
+    .m-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .m-head h1 {
+      font-family: "JetBrains Mono", ui-monospace, Consolas, "Courier New", monospace;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .m-head h1 a { color: var(--text); }
+
+    .m-btn {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 13px;
+      height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+    }
+
+    /* search */
+    .m-search { padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+
+    .m-search form {
+      display: flex;
+      border: 1px solid var(--line);
+      background: var(--fill);
+      border-radius: var(--radius);
+      padding: 3px;
+    }
+
+    .m-search form:focus-within { border-color: var(--green); box-shadow: 0 0 0 2px var(--focus); }
+
+    .m-search input {
+      flex: 1;
+      min-width: 0;
+      height: 40px;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 16px; /* >=16px stops iOS from zooming on focus */
+      padding: 0 10px;
+    }
+
+    .m-search form button {
+      border: none;
+      background: var(--green);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 650;
+      padding: 0 18px;
+      border-radius: var(--radius-sm);
+    }
+
+    .m-engines { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .m-engines button {
+      border: 1px solid var(--line);
+      background: var(--fill);
+      color: var(--muted);
+      font-size: 13px;
+      height: 30px;
+      padding: 0 12px;
+      border-radius: 999px;
+    }
+
+    .m-engines button.active {
+      border-color: var(--engine-border);
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-weight: 650;
+    }
+
+    /* weather + Madrid time */
+    .m-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+
+    .m-info > * { padding: 10px 8px; text-align: center; min-width: 0; }
+    .m-info > * + * { border-left: 1px solid var(--line-soft); }
+
+    .m-info .k { font-size: 12px; color: var(--green-dark); font-weight: 650; }
+    .m-info .v { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.25; }
+    .m-info .s { font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    #mWeather { background: transparent; border: none; border-radius: 0; color: inherit; font: inherit; }
+    #mClock .v { color: var(--night); }
+    #mClock.is-day .v { color: var(--day); }
+
+    /* quick grid */
+    .m-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      padding: 8px;
+    }
+
+    .m-grid a, .m-grid .tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      padding: 9px 2px 7px;
+      min-width: 0;
+      border: none;
+      background: transparent;
+      border-radius: var(--radius-sm);
+      color: var(--chip);
+      font-size: 12px;
+      line-height: 1.25;
+    }
+
+    .m-grid a:active, .m-grid .tile:active { background: var(--green-soft); }
+
+    .m-grid img { width: 40px; height: 40px; object-fit: contain; border-radius: 9px; }
+
+    .m-grid .ph {
+      width: 40px;
+      height: 40px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .m-grid .lab {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .m-sheet {
+      margin: 0 8px 8px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      background: var(--surface-2);
+      border-radius: var(--radius-sm);
+    }
+
+    .m-sheet[hidden] { display: none; }
+
+    .m-sheet .t { font-size: 12px; color: var(--muted); padding: 2px 8px 6px; }
+
+    .m-sheet a {
+      display: block;
+      padding: 10px 8px;
+      font-size: 15px;
+      color: var(--text);
+      border-top: 1px solid var(--line-soft);
+    }
+
+    .m-sheet hr { border: none; border-top: 1px solid var(--line); margin: 4px 0; }
+
+    /* all categories */
+    .m-all-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 14px;
+      font-size: 15px;
+      font-weight: 650;
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+
+    .m-all-btn .arr { color: var(--muted); transition: transform 0.15s ease; }
+    .m-all-btn[aria-expanded="true"] .arr { transform: rotate(90deg); }
+
+    #mAll[hidden] { display: none; }
+    #mAll { display: flex; flex-direction: column; gap: 8px; }
+
+    .m-find {
+      width: 100%;
+      height: 42px;
+      border: 1px solid var(--line);
+      background: var(--fill);
+      color: var(--text);
+      font-size: 16px;
+      padding: 0 12px;
+      border-radius: var(--radius);
+      outline: none;
+    }
+
+    .m-find:focus { border-color: var(--green); box-shadow: 0 0 0 2px var(--focus); }
+
+    .m-cat summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      font-size: 15px;
+      font-weight: 650;
+      color: var(--cat);
+      cursor: pointer;
+    }
+
+    .m-cat summary::-webkit-details-marker { display: none; }
+    .m-cat summary .n { font-size: 12px; font-weight: 500; color: var(--muted); }
+    .m-cat[open] summary { border-bottom: 1px solid var(--line-soft); }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 12px 12px; }
+
+    .chips a {
+      padding: 6px 12px;
+      font-size: 14px;
+      color: var(--chip);
+      border: 1px solid var(--line-soft);
+      background: var(--surface-2);
+      border-radius: 999px;
+    }
+
+    .chips a:active { background: var(--green-soft); }
+    .chips .g { width: 100%; font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    .m-empty { font-size: 14px; color: var(--muted); padding: 12px 14px; }
+
+    .m-foot {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--muted);
+      padding-top: 4px;
+    }
+
+    .m-foot a { color: var(--muted); padding: 4px 2px; }
+
+    @media (max-width: 340px) {
+      .m-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <main class="m">
+    <header class="m-head">
+      <h1><a id="mTitle" href="mobile.html">Carlos' Navigator</a></h1>
+      <button type="button" class="m-btn" id="btnTheme" title="切换浅色/深色">深色</button>
+    </header>
+
+    <section class="card m-search" aria-label="搜索">
+      <form id="mForm" action="https://www.google.com/search" method="get" target="_blank" rel="noopener">
+        <input type="search" id="mInput" name="q" placeholder="Google 搜索…" autocomplete="off" enterkeyhint="search" />
+        <button type="submit">搜索</button>
+      </form>
+      <div class="m-engines" id="mEngines" aria-label="搜索引擎">
+        <button type="button" data-engine="google" class="active">Google</button>
+        <button type="button" data-engine="baidu">百度</button>
+        <button type="button" data-engine="bing">Bing</button>
+        <button type="button" data-engine="x">X</button>
+        <button type="button" data-engine="grok">Grok</button>
+        <button type="button" data-engine="chatgpt">ChatGPT</button>
+      </div>
+    </section>
+
+    <section class="card" aria-label="常用">
+      <div class="m-grid" id="mGrid"></div>
+      <div class="m-sheet" id="mSheet" hidden></div>
+    </section>
+
+    <section class="card m-info" aria-label="天气与马德里时间">
+      <button type="button" id="mWeather" title="点击定位并更新天气">
+        <div class="k" id="mWCity">天气</div>
+        <div class="v" id="mWTemp">--°</div>
+        <div class="s" id="mWDesc">加载中…</div>
+      </button>
+      <div id="mClock">
+        <div class="k">马德里</div>
+        <div class="v" id="mClockTime">--:--</div>
+        <div class="s" id="mClockSub">CET/CEST</div>
+      </div>
+    </section>
+
+    <button type="button" class="m-all-btn" id="mAllBtn" aria-expanded="false" aria-controls="mAll">
+      <span>全部分类</span><span class="arr" aria-hidden="true">›</span>
+    </button>
+    <div id="mAll" hidden>
+      <input type="search" class="m-find" id="mFind" placeholder="找链接：名称或拼音，如 jd" autocomplete="off" />
+      <div id="mCats"></div>
+      <div class="card" id="mResults" hidden></div>
+    </div>
+
+    <footer class="m-foot">
+      <a href="index.html?view=desktop">电脑版</a>
+      <a href="text.html">纯文字版</a>
+      <a href="icons-lite.html">精简图标版</a>
+    </footer>
+  </main>
+
+  <script src="data.js?v=20260928b"></script>
+  <script src="assets/pinyin.js?v=20260928a"></script>
+  <script>
+    (function () {
+      var OBF_KEY = "cn-nav-k7";
+      function resolveUrl(raw) {
+        if (!raw) return "#";
+        if (raw.indexOf("obf1:") !== 0) return raw;
+        try {
+          var bin = atob(raw.slice(5));
+          var out = "";
+          for (var i = 0; i < bin.length; i++) {
+            out += String.fromCharCode(bin.charCodeAt(i) ^ OBF_KEY.charCodeAt(i % OBF_KEY.length));
+          }
+          return out;
+        } catch (e) {
+          return "#";
+        }
+      }
+
+      function $(id) { return document.getElementById(id); }
+
+      function openable(a, href) {
+        if (/^https?:\/\//i.test(href)) {
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+        }
+      }
+
+      function makeA(name, rawUrl) {
+        var a = document.createElement("a");
+        var href = resolveUrl(rawUrl);
+        a.href = href;
+        a.textContent = name || href;
+        openable(a, href);
+        return a;
+      }
+
+      var data = window.NAV_DATA || { title: "Carlos' Navigator", groups: [] };
+      var groups = data.groups || [];
+      $("mTitle").textContent = data.title || "Carlos' Navigator";
+
+      /* ---------- Theme ---------- */
+      var THEME_KEY = "cn-nav-theme";
+      function currentTheme() {
+        return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+      }
+      function applyTheme(theme, persist) {
+        var next = theme === "dark" ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", next);
+        if (persist) {
+          try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+        }
+        $("btnTheme").textContent = next === "dark" ? "浅色" : "深色";
+      }
+      applyTheme(currentTheme(), false);
+      $("btnTheme").addEventListener("click", function () {
+        applyTheme(currentTheme() === "dark" ? "light" : "dark", true);
+      });
+
+      /* ---------- Search ---------- */
+      var ENGINES = {
+        google: { label: "Google", action: "https://www.google.com/search", param: "q", extra: {} },
+        baidu: { label: "百度", action: "https://www.baidu.com/s", param: "wd", extra: {} },
+        bing: { label: "Bing", action: "https://www.bing.com/search", param: "q", extra: {} },
+        x: { label: "X", action: "https://x.com/search", param: "q", extra: { src: "typed_query" } },
+        grok: { label: "Grok", action: "https://grok.com/", param: "q", extra: {}, chat: true },
+        chatgpt: { label: "ChatGPT", action: "https://chatgpt.com/", param: "q", extra: {}, chat: true }
+      };
+      var ENGINE_KEY = "cn-nav-mobile-engine";
+      var engine = "google";
+      try {
+        var savedEngine = localStorage.getItem(ENGINE_KEY);
+        if (savedEngine && ENGINES[savedEngine]) engine = savedEngine;
+      } catch (e) {}
+
+      var form = $("mForm");
+      var input = $("mInput");
+
+      function applyEngine() {
+        var conf = ENGINES[engine];
+        var btns = $("mEngines").querySelectorAll("button");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].classList.toggle("active", btns[i].getAttribute("data-engine") === engine);
+        }
+        var old = form.querySelectorAll("input[type=hidden]");
+        for (var j = 0; j < old.length; j++) old[j].remove();
+        form.action = conf.action;
+        input.name = conf.param;
+        Object.keys(conf.extra).forEach(function (k) {
+          var h = document.createElement("input");
+          h.type = "hidden";
+          h.name = k;
+          h.value = conf.extra[k];
+          form.appendChild(h);
+        });
+        input.placeholder = conf.chat ? "向 " + conf.label + " 提问…" : conf.label + " 搜索…";
+        try { localStorage.setItem(ENGINE_KEY, engine); } catch (e) {}
+      }
+      applyEngine();
+      $("mEngines").addEventListener("click", function (e) {
+        var b = e.target.closest("button[data-engine]");
+        if (!b) return;
+        engine = b.getAttribute("data-engine");
+        applyEngine();
+        input.focus();
+      });
+      form.addEventListener("submit", function (e) {
+        if (!(input.value || "").trim()) {
+          e.preventDefault();
+          input.focus();
+        }
+      });
+
+      /* ---------- Weather (Open-Meteo, same saved city as the desktop page) ---------- */
+      var CITY_KEY = "cn-nav-weather-city";
+      var DEFAULT_CITY = { name: "北京", lat: 39.9042, lon: 116.4074 };
+      var WMO = {
+        0: "晴", 1: "大致晴", 2: "多云", 3: "阴", 45: "雾", 48: "冻雾",
+        51: "小毛毛雨", 53: "毛毛雨", 55: "大毛毛雨", 56: "冻毛毛雨", 57: "冻毛毛雨",
+        61: "小雨", 63: "中雨", 65: "大雨", 66: "冻雨", 67: "冻雨",
+        71: "小雪", 73: "中雪", 75: "大雪", 77: "雪粒",
+        80: "小阵雨", 81: "阵雨", 82: "强阵雨", 85: "阵雪", 86: "强阵雪",
+        95: "雷阵雨", 96: "雷阵雨伴冰雹", 99: "强雷雨冰雹"
+      };
+
+      function loadCity() {
+        try {
+          var obj = JSON.parse(localStorage.getItem(CITY_KEY) || "null");
+          if (obj && typeof obj.lat === "number" && typeof obj.lon === "number") return obj;
+        } catch (e) {}
+        return DEFAULT_CITY;
+      }
+
+      function fetchWeather(city) {
+        $("mWCity").textContent = city.name || "天气";
+        $("mWDesc").textContent = "加载中…";
+        var url = "https://api.open-meteo.com/v1/forecast?latitude=" + encodeURIComponent(city.lat) +
+          "&longitude=" + encodeURIComponent(city.lon) +
+          "&current=temperature_2m,relative_humidity_2m,weather_code&timezone=auto";
+        return fetch(url)
+          .then(function (r) {
+            if (!r.ok) throw new Error("HTTP " + r.status);
+            return r.json();
+          })
+          .then(function (j) {
+            var c = j.current || {};
+            $("mWTemp").textContent = (c.temperature_2m != null ? Math.round(c.temperature_2m) : "--") + "°";
+            $("mWDesc").textContent = (WMO[c.weather_code] || "—") +
+              (c.relative_humidity_2m != null ? " · 湿" + c.relative_humidity_2m + "%" : "");
+            try { localStorage.setItem(CITY_KEY, JSON.stringify(city)); } catch (e) {}
+          })
+          .catch(function () {
+            $("mWDesc").textContent = "天气暂不可用";
+          });
+      }
+
+      fetchWeather(loadCity());
+      $("mWeather").addEventListener("click", function () {
+        if (!navigator.geolocation) return;
+        $("mWDesc").textContent = "定位中…";
+        navigator.geolocation.getCurrentPosition(function (pos) {
+          var lat = pos.coords.latitude;
+          var lon = pos.coords.longitude;
+          fetch("https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=" + lat +
+            "&longitude=" + lon + "&localityLanguage=zh")
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (j) {
+              var name = (j && (j.city || j.locality || j.principalSubdivision)) || "当前位置";
+              fetchWeather({ name: name, lat: lat, lon: lon });
+            })
+            .catch(function () { fetchWeather({ name: "当前位置", lat: lat, lon: lon }); });
+        }, function () {
+          $("mWDesc").textContent = "定位失败";
+        }, { timeout: 10000, maximumAge: 600000 });
+      });
+
+      /* ---------- Madrid clock ---------- */
+      function tickClock() {
+        try {
+          var parts = {};
+          new Intl.DateTimeFormat("en-GB", {
+            timeZone: "Europe/Madrid", hour: "2-digit", minute: "2-digit", hour12: false
+          }).formatToParts(new Date()).forEach(function (p) {
+            if (p.type !== "literal") parts[p.type] = p.value;
+          });
+          var h = parts.hour === "24" ? "00" : parts.hour;
+          $("mClockTime").textContent = h + ":" + parts.minute;
+          var hour = parseInt(h, 10);
+          $("mClock").classList.toggle("is-day", hour >= 6 && hour < 18);
+        } catch (e) {}
+      }
+      tickClock();
+      setInterval(tickClock, 15000);
+
+      /* ---------- Quick grid (first group = 首页) ---------- */
+      var grid = $("mGrid");
+      var sheet = $("mSheet");
+      var openFolder = null;
+
+      function logoOrLetter(item) {
+        if (item.logo) {
+          var img = document.createElement("img");
+          img.src = item.logo;
+          img.alt = "";
+          img.loading = "lazy";
+          img.width = 40;
+          img.height = 40;
+          img.onerror = function () {
+            var ph = document.createElement("span");
+            ph.className = "ph";
+            ph.textContent = (item.name || "?").charAt(0);
+            if (img.parentNode) img.parentNode.replaceChild(ph, img);
+          };
+          return img;
+        }
+        var ph = document.createElement("span");
+        ph.className = "ph";
+        ph.textContent = (item.name || "?").charAt(0);
+        return ph;
+      }
+
+      function labelEl(name) {
+        var s = document.createElement("span");
+        s.className = "lab";
+        s.textContent = name || "";
+        return s;
+      }
+
+      function closeSheet() {
+        sheet.hidden = true;
+        sheet.innerHTML = "";
+        openFolder = null;
+      }
+
+      function makeTile(item) {
+        if (item.children && item.children.length) {
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "tile";
+          btn.appendChild(logoOrLetter(item));
+          btn.appendChild(labelEl(item.name));
+          btn.addEventListener("click", function () {
+            if (openFolder === item) { closeSheet(); return; }
+            sheet.innerHTML = "";
+            var t = document.createElement("div");
+            t.className = "t";
+            t.textContent = item.name;
+            sheet.appendChild(t);
+            item.children.forEach(function (child) {
+              if (child.divider) { sheet.appendChild(document.createElement("hr")); return; }
+              sheet.appendChild(makeA(child.name, child.url));
+            });
+            sheet.hidden = false;
+            openFolder = item;
+            sheet.scrollIntoView({ block: "nearest", behavior: "smooth" });
+          });
+          return btn;
+        }
+        var a = document.createElement("a");
+        var href = resolveUrl(item.url);
+        a.href = href;
+        openable(a, href);
+        a.appendChild(logoOrLetter(item));
+        a.appendChild(labelEl(item.name));
+        return a;
+      }
+
+      var hot = groups[0] && groups[0].items ? groups[0].items : [];
+      hot.forEach(function (item) { grid.appendChild(makeTile(item)); });
+
+      /* ---------- All categories + find ---------- */
+      var cats = $("mCats");
+      var rest = groups.slice(1);
+
+      // Flatten once; folder items index each child on its own.
+      var index = [];
+      rest.forEach(function (g) {
+        (g.items || []).forEach(function (it) {
+          if (!it || !it.name) return;
+          if (it.children && it.children.length) {
+            it.children.forEach(function (c) {
+              if (c && c.name && c.url) index.push({ name: c.name, url: c.url, group: g.name });
+            });
+          } else {
+            index.push({ name: it.name, url: it.url, group: g.name });
+          }
+        });
+      });
+
+      rest.forEach(function (g) {
+        var items = g.items || [];
+        if (!items.length) return;
+        var d = document.createElement("details");
+        d.className = "card m-cat";
+        var s = document.createElement("summary");
+        var nm = document.createElement("span");
+        nm.textContent = g.name;
+        var n = document.createElement("span");
+        n.className = "n";
+        n.textContent = items.length + " ›";
+        s.appendChild(nm);
+        s.appendChild(n);
+        d.appendChild(s);
+        var chips = document.createElement("div");
+        chips.className = "chips";
+        var built = false;
+        d.addEventListener("toggle", function () {
+          if (!d.open || built) return;
+          built = true;
+          items.forEach(function (it) {
+            if (it.children && it.children.length) {
+              it.children.forEach(function (c) {
+                if (c && c.name && c.url) chips.appendChild(makeA(c.name, c.url));
+              });
+            } else {
+              chips.appendChild(makeA(it.name, it.url));
+            }
+          });
+        });
+        d.appendChild(chips);
+        cats.appendChild(d);
+      });
+
+      var allBtn = $("mAllBtn");
+      var allPanel = $("mAll");
+      allBtn.addEventListener("click", function () {
+        var open = allPanel.hidden;
+        allPanel.hidden = !open;
+        allBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      /* pinyin: full + initials, polyphones capped */
+      var pyChar = null;
+      function pinyinTable() {
+        if (pyChar) return pyChar;
+        pyChar = {};
+        [window.PINYIN_MAIN, window.PINYIN_EXTRA].forEach(function (packed) {
+          if (!packed) return;
+          packed.split("|").forEach(function (seg) {
+            var p = seg.indexOf(":");
+            var syl = seg.slice(0, p);
+            var cs = seg.slice(p + 1);
+            for (var k = 0; k < cs.length; k++) {
+              (pyChar[cs[k]] || (pyChar[cs[k]] = [])).push(syl);
+            }
+          });
+        });
+        return pyChar;
+      }
+
+      function pinyinOf(name) {
+        if (!/[一-鿿]/.test(name)) return null;
+        var table = pinyinTable();
+        var variants = [{ full: "", ini: "" }];
+        for (var i = 0; i < name.length; i++) {
+          var c = name.charAt(i);
+          var opts = table[c];
+          if (!opts) {
+            if (!/[a-z0-9]/i.test(c)) continue;
+            opts = [c.toLowerCase()];
+          }
+          var next = [];
+          for (var v = 0; v < variants.length; v++) {
+            for (var o = 0; o < opts.length && next.length < 16; o++) {
+              next.push({ full: variants[v].full + opts[o], ini: variants[v].ini + opts[o].charAt(0) });
+            }
+          }
+          variants = next;
+        }
+        return variants;
+      }
+
+      function matches(it, q) {
+        var name = it.name.toLowerCase();
+        if (name.indexOf(q) !== -1 || it.group.toLowerCase().indexOf(q) !== -1) return true;
+        if (!/^[a-z0-9]+$/.test(q)) return false;
+        if (it.py === undefined) it.py = pinyinOf(it.name);
+        if (!it.py) return false;
+        for (var i = 0; i < it.py.length; i++) {
+          if (it.py[i].full.indexOf(q) !== -1 || it.py[i].ini.indexOf(q) !== -1) return true;
+        }
+        return false;
+      }
+
+      var findEl = $("mFind");
+      var resultsEl = $("mResults");
+      findEl.addEventListener("input", function () {
+        var q = (findEl.value || "").trim().toLowerCase().replace(/\s+/g, "");
+        if (!q) {
+          resultsEl.hidden = true;
+          cats.hidden = false;
+          return;
+        }
+        cats.hidden = true;
+        resultsEl.hidden = false;
+        resultsEl.innerHTML = "";
+        // name contains q → pinyin starts with q → looser pinyin hits
+        function rank(it) {
+          if (it.name.toLowerCase().indexOf(q) !== -1) return 0;
+          if (it.py) {
+            for (var i = 0; i < it.py.length; i++) {
+              if (it.py[i].full.indexOf(q) === 0 || it.py[i].ini.indexOf(q) === 0) return 1;
+            }
+          }
+          return 2;
+        }
+        var hits = index.filter(function (it) { return matches(it, q); })
+          .sort(function (a, b) { return rank(a) - rank(b); })
+          .slice(0, 60);
+        if (!hits.length) {
+          var e = document.createElement("div");
+          e.className = "m-empty";
+          e.textContent = "没有找到匹配的链接。";
+          resultsEl.appendChild(e);
+          return;
+        }
+        var box = document.createElement("div");
+        box.className = "chips";
+        hits.forEach(function (it) {
+          var a = makeA(it.name, it.url);
+          a.title = it.group;
+          box.appendChild(a);
+        });
+        resultsEl.appendChild(box);
+      });
+    })();
+  </script>
+</body>
+</html>

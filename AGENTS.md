@@ -39,6 +39,7 @@ Commit and push only if I say 提交/上传/上线.
 | `text.html` | **Pure text view** — same layout/features as `index.html`, but **does not render item logos**. |
 | `icons.html` | **Legacy redirect** → `index.html` (keep for old bookmarks). Do not put a second full copy here. |
 | `icons-lite.html` | **Compact icon view** — classic tile grid + avatar; lighter chrome. |
+| `mobile.html` | **Phone view** — search + engine chips, 首页 icon grid (4 cols, folder tiles open a sheet), weather/Madrid-time strip, and a collapsed **全部分类** panel with name/pinyin find. Drops hot lists, bus monitor, 小工具, FX, world clocks, date capsule, pending cases. **Auto-routing (client-side, GitHub Pages has no server):** `index.html` sends phones (`userAgentData.mobile` or phone UA, and short screen side ≤ 600) to `mobile.html`; `mobile.html` sends everything else back to `index.html`. `?view=desktop|mobile|auto` pins/unpins the choice for the browser tab (`sessionStorage` key `cn-nav-view`); the 手机版 / 电脑版 links use it. Keep the two inline routing snippets identical in meaning. |
 | `data.js` | Single shared `window.NAV_DATA` for **all** views. |
 
 Cross-links (keep working):
@@ -46,6 +47,7 @@ Cross-links (keep working):
 - Full icon ↔ text: `index.html` ↔ `text.html`
 - Compact icon ↔ others: `icons-lite.html` ↔ `index.html` / `text.html`
 - `icons.html` → `index.html` (redirect only)
+- `mobile.html` → `index.html?view=desktop` (电脑版), `text.html`, `icons-lite.html`; `index.html` / `text.html` → `mobile.html?view=mobile` (手机版)
 
 ### Sync rules (important)
 
@@ -55,6 +57,7 @@ When changing layout/UX on the full homepage:
 2. Keep in sync across entry pages: `resolveUrl` + `OBF_KEY` (`cn-nav-k7`), theme boot script / `cn-nav-theme`, and `data.js?v=...` cache-bust (bump **all** HTML files that load `data.js`).
 3. `icons-lite.html` only needs sync for: `OBF_KEY` / `resolveUrl`, theme key, `data.js?v=...`, and cross-links — not the full hao268 layout.
 4. Do not reintroduce a full duplicate page at `icons.html`; keep it as a redirect to `index.html`.
+5. `mobile.html` is its own lightweight page (not a copy of `index.html`). Keep in sync with the others only: `OBF_KEY` / `resolveUrl`, theme key + boot script, `data.js?v=...`, `assets/pinyin.js?v=...`, and the weather city key `cn-nav-weather-city`.
 
 ---
 
@@ -84,10 +87,11 @@ CSS tokens on the full pages live in `:root` / `html[data-theme="dark"]` (e.g. `
 | `text.html` | Full layout, text-only (no item logos) | Yes |
 | `icons.html` | Redirect to `index.html` | Yes |
 | `icons-lite.html` | Compact tile icon view | Yes |
+| `mobile.html` | Phone view (see Views); `index.html` redirects phones here | Yes |
 | `data.js` | Public navigation data | Yes |
 | `assets/logos/*` | Item logos | Yes |
 | `assets/pic/headpic.jpg` | Avatar / favicon | Yes |
-| `assets/pinyin.js` | Generated pinyin table (GB2312 + site chars, via pypinyin) for `/` jump search — `jd` / `jingdong` → 京东; loaded by `index.html` + `text.html` | Yes |
+| `assets/pinyin.js` | Generated pinyin table (GB2312 + site chars, via pypinyin) for `/` jump search — `jd` / `jingdong` → 京东; loaded by `index.html`, `text.html` + `mobile.html` | Yes |
 | `AGENTS.md` | This guide | Yes |
 | `data.company.local.js` | Optional local plaintext company links (`window.NAV_COMPANY`) | **No** (`.gitignore`) |
 | `*.infinity`, `link*.json` | Local backups | **No** (`.gitignore`) |
@@ -152,7 +156,7 @@ def deobf1(s: str) -> str:
 - Confirm **no** sensitive host fragments appear as plaintext in the file.
 - Bump the cache-bust query on **all** HTML entry points, e.g.  
   `data.js?v=20260808a` → `data.js?v=20260808b`  
-  in `index.html`, `text.html`, and `icons-lite.html` (not needed on redirect-only `icons.html`)
+  in `index.html`, `text.html`, `icons-lite.html`, and `mobile.html` (not needed on redirect-only `icons.html`)
   (also update the comment at the top of `data.js` if present).
 
 This scramble is **not strong crypto** (key is in the page). It only reduces accidental discovery via repository search.
@@ -237,7 +241,7 @@ Do not invent parallel groups for the same purpose without user request.
 3. Encode sensitive URLs with `obf1:`; leave clearly public URLs plain.
 4. Apply display-name conventions; insert into correct position within group order.
 5. Choose an existing logo path (or `""` if none).
-6. Bump `data.js?v=...` in **`index.html`**, **`text.html`**, and **`icons-lite.html`**.
+6. Bump `data.js?v=...` in **`index.html`**, **`text.html`**, **`icons-lite.html`**, and **`mobile.html`**.
 7. Grep the working tree for accidental plaintext sensitive hosts before commit.
 8. Commit and push **only when the user asks**.
 
@@ -282,7 +286,7 @@ Then commit and push if I say 提交/上传/上线.
 - [ ] Sensitive URLs are `obf1:` only in committed files
 - [ ] Company group order: Code → Wiki → other
 - [ ] Display names follow conventions
-- [ ] Cache-bust query updated on `index.html`, `text.html`, and `icons-lite.html`
+- [ ] Cache-bust query updated on `index.html`, `text.html`, `icons-lite.html`, and `mobile.html`
 - [ ] If UX changed on full homepage: `index.html` and `text.html` still aligned (except intentional icon/label differences)
 - [ ] Default root still serves 有图 (`index.html`); `icons.html` remains redirect only
 - [ ] Theme / `OBF_KEY` still consistent across entry pages
