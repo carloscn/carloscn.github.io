@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20260928b). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20261004a). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -426,6 +426,11 @@ window.NAV_DATA = {
           "name": "Giffgaff",
           "url": "https://www.giffgaff.com/profile/details",
           "logo": "assets/logos/giffgaff.png"
+        },
+        {
+          "name": "Red Pocket",
+          "url": "https://www.redpocket.com/login",
+          "logo": ""
         },
         {
           "name": "深圳移动",
