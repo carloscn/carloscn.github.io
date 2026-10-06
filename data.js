@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20261004a). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20261006a). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -705,6 +705,11 @@ window.NAV_DATA = {
         {
           "name": "Badalona 海滩实况",
           "url": "https://platges.bdnmedia.cat/",
+          "logo": ""
+        },
+        {
+          "name": "SkylineWebcams",
+          "url": "https://www.skylinewebcams.com/",
           "logo": ""
         },
         {
