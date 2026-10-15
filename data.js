@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20261006a). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20261015a). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -339,7 +339,7 @@ window.NAV_DATA = {
         },
         {
           "name": "HSBC HK",
-          "url": "https://www.hsbc.com.hk/zh-hk/security",
+          "url": "https://www.hsbc.com.hk/",
           "logo": "assets/logos/hsbc_hk.png"
         },
         {
