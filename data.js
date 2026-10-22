@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20261015a). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20261022a). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -1085,6 +1085,11 @@ window.NAV_DATA = {
         {
           "name": "Clouding",
           "url": "https://portal.clouding.io/dsb/vmm/vmlist",
+          "logo": ""
+        },
+        {
+          "name": "ByteVirt",
+          "url": "https://bytevirt.com/",
           "logo": ""
         },
         {
