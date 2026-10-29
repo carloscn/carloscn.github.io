@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20261022a). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20261029a). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -21,9 +21,9 @@ window.NAV_DATA = {
           "logo": "assets/logos/reddit.png"
         },
         {
-          "name": "Bluesky",
-          "url": "https://bsky.app/",
-          "logo": "assets/logos/bluesky.jpg"
+          "name": "ChatGPT",
+          "url": "https://chatgpt.com/",
+          "logo": "assets/logos/chatgpt.webp"
         },
         {
           "name": "Threads",
