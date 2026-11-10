@@ -1955,7 +1955,7 @@
             <li data-tab="translate" role="tab">翻 译</li>
             <li data-tab="music" role="tab">音 乐</li>
           </ul>
-          <form class="search-box" id="searchForm" action="https://www.google.com/search" method="get" target="_blank" rel="noopener">
+          <form class="search-box" id="searchForm" action="https://www.google.com.hk/search" method="get" target="_blank" rel="noopener">
             <input type="search" id="searchInput" name="q" placeholder="Google 网页搜索…" autocomplete="off" />
             <button type="submit">搜索</button>
           </form>
@@ -2059,10 +2059,10 @@
           <div class="side-inner side-tools">
             <h3>小工具</h3>
             <div class="side-tools-grid">
-              <a href="https://www.google.com/search?q=weather" target="_blank" rel="noopener noreferrer">天气详情</a>
+              <a href="https://www.google.com.hk/search?q=weather" target="_blank" rel="noopener noreferrer">天气详情</a>
               <a href="https://www.timeanddate.com/worldclock/" target="_blank" rel="noopener noreferrer">世界时钟</a>
               <a href="https://calendar.google.com/" target="_blank" rel="noopener noreferrer">日历</a>
-              <a href="https://www.google.com/search?q=calculator" target="_blank" rel="noopener noreferrer">计算器</a>
+              <a href="https://www.google.com.hk/search?q=calculator" target="_blank" rel="noopener noreferrer">计算器</a>
               <a href="https://translate.google.com/" target="_blank" rel="noopener noreferrer">翻译</a>
               <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">地图</a>
               <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer">网速测试</a>
@@ -2394,10 +2394,10 @@
       // Each entry: { action, param, extra?, method? } — query goes into `param`
       var SEARCH_MAP = {
         google: {
-          web: { action: "https://www.google.com/search", param: "q", extra: {} },
-          image: { action: "https://www.google.com/search", param: "q", extra: { tbm: "isch" } },
-          video: { action: "https://www.google.com/search", param: "q", extra: { tbm: "vid" } },
-          news: { action: "https://www.google.com/search", param: "q", extra: { tbm: "nws" } },
+          web: { action: "https://www.google.com.hk/search", param: "q", extra: {} },
+          image: { action: "https://www.google.com.hk/search", param: "q", extra: { tbm: "isch" } },
+          video: { action: "https://www.google.com.hk/search", param: "q", extra: { tbm: "vid" } },
+          news: { action: "https://www.google.com.hk/search", param: "q", extra: { tbm: "nws" } },
           map: { action: "https://www.google.com/maps/search/", param: "api", pathQuery: true },
           scholar: { action: "https://scholar.google.com/scholar", param: "q", extra: {} },
           translate: { action: "https://translate.google.com/", param: "text", extra: { sl: "auto", tl: "zh-CN", op: "translate" } },
