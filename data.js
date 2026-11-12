@@ -1,4 +1,4 @@
-/** Public personal navigation data (cache-bust 20261029a). Internal URLs use obf1: scramble. */
+/** Public personal navigation data (cache-bust 20261112a). Internal URLs use obf1: scramble. */
 window.NAV_DATA = {
   "title": "Carlos' Navigator",
   "groups": [
@@ -651,6 +651,11 @@ window.NAV_DATA = {
           "name": "SaveTwitter",
           "url": "https://savetwitter.net/zh-cn3",
           "logo": "assets/logos/savetwitter.png"
+        },
+        {
+          "name": "FLVTO",
+          "url": "https://v1.flvto.nu/",
+          "logo": ""
         },
         {
           "name": "Speedtest",
